@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ImgClientController;
 use App\Http\Controllers\ImgGalerryController;
@@ -38,11 +39,9 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function() {
     Route::resource('/post', PostController::class);
     Route::resource('/client', ImgClientController::class);
     Route::resource('/galery', ImgGalerryController::class);
+    Route::get('/admin-dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 });
 
-Route::get('/admin-dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified', 'admin'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

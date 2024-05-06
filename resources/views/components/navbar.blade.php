@@ -21,13 +21,13 @@
                 </ul>
             </div>
             <div class="dropdown dropdown-hover dropdown-end">
-                <div tabindex="0" role="button" class="menu-title rounded-md text-slate-700 m-1 {{ in_array($currentRoute, ['outsourcing-perusahaan']) ? "bg-lime-600 text-slate-50" : "" }}">Layanan</div>
+                <div tabindex="0" role="button" class="menu-title rounded-md text-slate-700 m-1 {{ $currentRoute == 'outsourcing-perusahaan' ? "bg-lime-600 text-slate-50" : "" }}">Layanan</div>
                 <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                     <li class="{{ $currentRoute == 'outsourcing-perusahaan' ? "border-b-2 border-lime-600 border-solid" : "" }}"><a href="{{ route('outsourcing-perusahaan') }}">Outsourcing</a></li>
                     <li><a href="https://umroh.sac-po.com/">Agen Umroh</a></li>
                 </ul>
             </div>
-            <a href="{{ route('kontak-perusahaan') }}" class="menu-title rounded-md text-slate-700">Kontak</a>
+            <a href="{{ route('kontak-perusahaan') }}" class="menu-title rounded-md text-slate-700 {{ $currentRoute == 'kontak-perusahaan' ? "bg-lime-600 text-slate-50" : "" }}">Kontak</a>
         </div>
     </div>
     <div class="absolute z-30 top-5 right-[5vw] md:hidden">

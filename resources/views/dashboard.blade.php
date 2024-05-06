@@ -68,45 +68,55 @@
             <p class="text-sm text-center md:text-start md:text-base font-semibold"><i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i> Melayani Dengan Lebih Baik <i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i></p>
         </div>
         {{-- hero --}}
-        <div class="mx-5 md:mx-10 md:flex mt-5 bg-lime-600 p-2 md:py-5 rounded-md drop-shadow-md text-slate-50">
+        <div class="mx-5 md:mx-10 md:flex mt-5 bg-lime-600 p-2 md:p-5 rounded-md drop-shadow-md text-slate-50">
             <div class="md:w-2/3">
                 <p class="font-black capitalize text-2xl">PT Surya Amanah Cendekia Ponorogo</p>
                 <p class="pt-5 font-medium text-lg text-slate-50">Diakui sebagai perusahaan penyedia jasa dengan Sumber Daya Manusia (SDM) yang unggul dan berwawasan saling menguntungkan.</p>
             </div>
             <div class="pt-5 flex gap-2 justify-around w-full md:w-1/3 md:items-end">
                 <span class="w-1/2">
-                    <a href="#" class="btn btn-md w-full btn-info">Layanan Kami</a>
+                    <a href="{{ route('outsourcing-perusahaan') }}" class="btn btn-md w-full bg-lime-800 hover:bg-lime-700 border-none text-slate-50">Layanan Kami</a>
                 </span>
                 <span class="w-1/2">
 
-                    <a href="#" class="btn btn-md w-full btn-success">Tentang Kami</a>
+                    <a href="{{ route('profile-perusahaan') }}" class="btn btn-md w-full bg-slate-50 text-slate-800">Tentang Kami</a>
                 </span>
             </div>
         </div>
         {{-- tujuan --}}
-        <div class="mx-5 md:mx-10 mt-5">
-            <p class="text-sm text-center font-semibold"><i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i> Tujuan PT SAC Ponorogo <i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i></p>
-        </div>
-        <div class="mx-5 md:mx-10 mt-5 text-center ">
-            <p class="font-bold capitalize text-xl">PT Surya Amanah Cendekia Ponorogo</p>
-            <p class="font-medium pt-2 capitalize text-lg">Memiliki Beberapa Tujuan Diantaranya adalah sebagai Berikut</p>
+        
+        <div class="mx-5 md:mx-10 mt-5 md:mt-10 text-center ">
+            {{-- <p class="font-bold capitalize text-xl">PT Surya Amanah Cendekia Ponorogo</p>
+            <p class="font-medium pt-2 capitalize text-lg">Info Lebih Lanjut</p> --}}
             <div class="pt-5 md:flex md:items-start md:w-full">
-                <div class="flex flex-col items-center md:w-1/3 justify-center gap-4">
-                    <img src="{{ asset('image/imeg1.png') }}" width="200" alt="imeg1" srcset="">
-                    <p class="font-medium capitalize text-lg">Membantu Menjaga Kebersihan Dan Kenyamanan Setiap Ruangan Dalam Gedung Klien Kami.</p>
+                <div class="flex flex-col items-center md:w-1/3 justify-between gap-4">
+                    <img src="{{ asset('image/outsourcing.svg') }}" width="250" alt="imeg1" srcset="">
+                    <div class="flex flex-col items-center justify-end">
+                        <p class="font-black capitalize text-2xl text-lime-600">300++</p>
+                        <p class="font-bold capitalize text-lg">Outsourcing</p>
+                        <p class="font-semibold capitalize text-lg">( Cleaning Service, Security, etc )</p>
+                    </div>
                 </div>
-                <div class="flex flex-col items-center md:w-1/3 justify-center gap-4">
-                    <img src="{{ asset('image/imeg2.png') }}" width="200" alt="imeg1" srcset="">
-                    <p class="font-medium capitalize text-lg">Membantu Perawatan Gedung Dan Taman Klien Kami.</p>
+                <div class="flex flex-col items-center md:w-1/3 justify-between gap-4">
+                    <img src="{{ asset('image/mitra.svg') }}" width="250" alt="imeg1" srcset="">
+                    <div class="flex flex-col items-center justify-end">
+                        <p class="font-black capitalize text-2xl text-lime-600">23</p>
+                        <p class="font-bold capitalize text-lg">Mitra</p>
+                        <p class="font-semibold capitalize text-lg">( Rumah Sakit, Sekolah, Etc )</p>
+                    </div>
                 </div>
-                <div class="flex flex-col items-center md:w-1/3 justify-center gap-4">
-                    <img src="{{ asset('image/imeg3.png') }}" width="200" alt="imeg1" srcset="">
-                    <p class="font-medium capitalize text-lg">Memudahkan Klien Kami Dengan Lebih Praktis Dan Biaya Hemat.</p>
+                <div class="flex flex-col items-center md:w-1/3 justify-between gap-4">
+                    <img src="{{ asset('image/kerjasama.svg') }}" width="250" alt="imeg1" srcset="">
+                    <div class="flex flex-col items-center justify-end">
+                        <p class="font-black capitalize text-2xl text-lime-600">5</p>
+                        <p class="font-bold capitalize text-lg">Kerjasama</p>
+                        <p class="font-semibold capitalize text-lg">( Menara Kamilah, Gada Pratama,Gada Madya,Gada Utama, BNSP RI )</p>
+                    </div>
                 </div>
             </div>
         </div>  
         {{-- budaya Kerja --}}
-        <div class="mx-5 md:mx-10 mt-5 ">
+        {{-- <div class="mx-5 md:mx-10 mt-5 ">
             <p class="text-sm text-center font-semibold"><i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i> Budaya Kerja Perusahaan <i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i></p>
         </div>
         <div class="mx-5 md:mx-10 md:flex ">
@@ -136,34 +146,12 @@
                     </ul>
                 </div>
             </div>
-        </div>
+        </div> --}}
         {{-- additional --}}
-        <div class="mx-5 md:mx-10 mt-5 bg-gradient-to-bl from-amber-500 via-orange-400 to-rose-300 flex justify-center rounded-lg">
-            <div class="p-4">
-                <span class="flex items-center gap-2">
-                    <i class="ri-customer-service-2-fill text-4xl font-bold text-white"></i>
-                    <p class="text-xl font-bold text-white">Responsible</p>
-                </span>
-                <span class="flex items-center gap-2">
-                    <i class="ri-share-fill text-4xl font-bold text-white"></i>
-                    <p class="text-xl font-bold text-white">Share</p>
-                </span>
-                <span class="flex items-center gap-2">
-                    <i class="ri-settings-4-fill text-4xl font-bold text-white"></i>
-                    <p class="text-xl font-bold text-white">Principle</p>
-                </span>
-                <span class="flex items-center gap-2">
-                    <i class="ri-sparkling-2-fill text-4xl font-bold text-white"></i> 
-                    <p class="text-xl font-bold text-white">Excellent</p>
-                </span>
-                <span class="flex items-center gap-2">
-                    <i class="ri-user-smile-fill text-4xl font-bold text-white"></i> 
-                    <p class="text-xl font-bold text-white">Euthusiasme</p>
-                </span>
-                <span class="flex items-center gap-2">
-                    <i class="ri-shake-hands-fill text-4xl font-bold text-white"></i> 
-                    <p class="text-xl font-bold text-white">Commitment</p>
-                </span>
+        <p class="font-bold capitalize text-center mt-5 mb-2 text-xl">Lokasi Mitra PT. SAC</p>
+        <div class="mx-5 md:mx-10 mt-5 bg-gradient-to-bl from-stone-700 via-stone-600 to-stone-500 flex justify-center rounded-lg">
+            <div class="p-1 w-full">
+                <img src="{{ asset('image/map.png') }}" alt="">
             </div>
         </div>
         {{-- client --}}
@@ -171,11 +159,11 @@
             <div class="mx-5 my-5">
                 <p class="text-base text-center font-bold"><i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i> Our Client <i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i></p>
             </div>
-            <div class="grid grid-cols-3 md:grid-cols-5 justify-center gap-2">
-                @for ($i = 1; $i < 10; $i++)
-                    <div class="flex flex-col items-center">
-                        <img src="https://placehold.co/64x64/orange/white" alt="imeg1" srcset="">
-                        <p class="text-xs font-semibold">aku mitra ke {{ $i }}</p>
+            <div class="grid grid-flow-col overflow-hidden gap-4 transition-all duration-100 ease-in-out" id="scrollContainer">
+                @for ($i = 1; $i <= 23; $i++)
+                    <div class="flex flex-col items-center min-w-16 transition-all duration-100 ease-in-out">
+                        <img src="https://placehold.co/64x64/green/white"  alt="imeg1" srcset="">
+                        <p class="text-[10px] font-bold text-center">aku mitra ke {{ $i }}</p>
                     </div>
                 @endfor
             </div>
@@ -188,7 +176,7 @@
             <div class="beritaSlider carousel rounded-md aspect-video">
                 @for ($i = 1; $i < 5; $i++)
                     <div class="carousel-item w-1/2 flex flex-col mx-1 font-medium transition-all duration-300 ease-in-out max-w-md">
-                        <img src="https://placehold.co/1600x900/orange/white" alt="imeg1" srcset="" class="rounded-md object-cover">
+                        <img src="https://placehold.co/1600x900/green/white" alt="imeg1" srcset="" class="rounded-md object-cover">
                         <p class="text-sm md:text-base pt-4 font-semibold text-slate-400">{{ Carbon\Carbon::now()->format('Y-m') }}-{{ $i }}</p>
                         <p class="text-sm md:text-base pb-2 capitalize line-clamp-3">judul {{ $i }}</p>
                     </div>
@@ -196,23 +184,23 @@
             </div>
         </div>
         {{-- Testimoni --}}
-        <div class="mx-5 md:mx-10 mt-5">
+        <div class=" mt-5">
             <div class="mx-5 my-5">
                 <p class="text-base text-center font-bold"><i class="ri-subtract-line font-semibold text-amber-500"></i> Testimonial Pengguna Jasa <i class="ri-subtract-line font-semibold text-amber-500"></i></p>
             </div>
-            <div class="carousel testiSlider w-full space-x-4">
-                <div class="carousel-item flex flex-col gap-2 text-center items-center whitespace-pre-line w-full transition-all duration-300 ease-in-out">
+            <div class="carousel testiSlider w-full">
+                <div class="carousel-item flex flex-col  gap-2 text-center items-center whitespace-pre-line w-[90svw] px-[5svw] transition-all duration-300 ease-in-out">
                     <p>Pelayanan bagus, cepat dan rapi. Pakaian karyawan juga semua rapi rapi recomended banget
                     </p>
                     <p class="font-semibold">- Pengguna Jasa PT. SAC Ponorogo -</p>
                 </div>
-                <div class="carousel-item flex flex-col gap-2 text-center items-center whitespace-pre-line w-full transition-all duration-300 ease-in-out">
+                <div class="carousel-item flex flex-col  gap-2 text-center items-center whitespace-pre-line w-[90svw] px-[5svw] transition-all duration-300 ease-in-out">
                     <p>Aplikasi absensi dan pelaporan dari karyawan sangat inovatif,
                         bukan hanya itu absensi menggunakan lokasi serta pelaporan menggunakan
                         barcode scan</p>
                     <p class="font-semibold">- Pengguna Jasa PT. SAC Ponorogo -</p>
                 </div>
-                <div class="carousel-item flex flex-col gap-2 text-center items-center whitespace-pre-line w-full transition-all duration-300 ease-in-out">
+                <div class="carousel-item flex flex-col  gap-2 text-center items-center whitespace-pre-line w-[90svw] px-[5svw] transition-all duration-300 ease-in-out">
                     <p>Cukup satu kata luar biasa, bisa sat set segala hal bersih, rapi
                         Satpam juga sigap, bisa diandalkan</p>
                     <p class="font-semibold">- Pengguna Jasa PT. SAC Ponorogo -</p>
@@ -227,6 +215,38 @@
     </div>
     <script>
         $(document).ready(function() {
+
+            // Initialize variables
+        var scrollAmount = 0;
+        var scrolling = false;
+        var container = $("#scrollContainer");
+        var scrollDistance = container.width();
+        var totalWidth = container[0].scrollWidth;
+        
+        // Function to smoothly autoslide
+        function autoSlide() {
+            if (!scrolling) {
+                scrolling = true;
+                container.animate({
+                    scrollLeft: scrollAmount + scrollDistance
+                }, 1000, function() {
+                    scrolling = false;
+                    scrollAmount += scrollDistance;
+                    if (scrollAmount >= totalWidth - container.width()) {
+                        // Reached the end, reverse direction
+                        scrollAmount = totalWidth - container.width();
+                        scrollDistance = -scrollDistance;
+                    } else if (scrollAmount <= 0) {
+                        // Reached the start, reverse direction
+                        scrollAmount = 0;
+                        scrollDistance = -scrollDistance;
+                    }
+                });
+            }
+        }
+        
+        // Call autoSlide function every 3 seconds
+        setInterval(autoSlide, 3000);
 
             let currentSlide = 0;
             let currentBerita = 0;
@@ -259,7 +279,7 @@
             function showTesti(n){
                 // console.log(n);
                 testiSlider.forEach((testi) => {
-                    testi.style.transform = 'translateX(' + (n * -105) + '%)';
+                    testi.style.transform = 'translateX(' + (n * -100) + 'svw)';
                 });
             };
 

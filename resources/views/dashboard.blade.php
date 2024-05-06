@@ -68,10 +68,10 @@
             <p class="text-sm text-center md:text-start md:text-base font-semibold"><i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i> Melayani Dengan Lebih Baik <i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i></p>
         </div>
         {{-- hero --}}
-        <div class="mx-5 md:mx-10 md:flex mt-5 bg-[#FFC100] p-2 md:py-5 rounded-md drop-shadow-md text-[#6B240C]">
+        <div class="mx-5 md:mx-10 md:flex mt-5 bg-lime-600 p-2 md:py-5 rounded-md drop-shadow-md text-slate-50">
             <div class="md:w-2/3">
                 <p class="font-black capitalize text-2xl">PT Surya Amanah Cendekia Ponorogo</p>
-                <p class="pt-5 font-medium text-lg text-[#7d2a0e]">Diakui sebagai perusahaan penyedia jasa dengan Sumber Daya Manusia (SDM) yang unggul dan berwawasan saling menguntungkan.</p>
+                <p class="pt-5 font-medium text-lg text-slate-50">Diakui sebagai perusahaan penyedia jasa dengan Sumber Daya Manusia (SDM) yang unggul dan berwawasan saling menguntungkan.</p>
             </div>
             <div class="pt-5 flex gap-2 justify-around w-full md:w-1/3 md:items-end">
                 <span class="w-1/2">

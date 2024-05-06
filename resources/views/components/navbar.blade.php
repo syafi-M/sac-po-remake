@@ -1,4 +1,7 @@
 {{-- Navbar --}}
+@php
+    $currentRoute = request()->route()->getName();
+@endphp
 <div class="fixed z-10 w-full top-0">
     <div class="bg-white py-4 px-4 drop-shadow-lg flex justify-between items-center">
         <div class="flex gap-2 items-center">
@@ -6,25 +9,25 @@
             <p class="font-bold text-xs">PT. Surya Amanah Cendikia</p>
         </div>
         <div class="hidden md:flex items-center">
-            <a href="/" class="py-2 px-4 text-lg font-bold bg-amber-500 rounded-md">Beranda</a>
+            <a href="/" class="py-2 px-4 text-lg font-bold rounded-md {{ $currentRoute == '/' ? "bg-lime-600 text-slate-50" : "" }}">Beranda</a>
             <div class="dropdown dropdown-hover">
-                <div tabindex="0" role="button" class="menu-title text-slate-700 m-1">Tentang Kami</div>
+                <div tabindex="0" role="button" class="menu-title rounded-md text-slate-700 m-1 {{ in_array($currentRoute, ['profile-perusahaan', 'portofolio-perusahaan', 'client-perusahaan', 'galeri-perusahaan', 'profile-company-perusahaan']) ? "bg-lime-600 text-slate-50" : "" }}">Tentang Kami</div>
                 <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                    <li><a href="{{ route('profile-perusahaan') }}">Profile</a></li>
-                    <li><a href="{{ route('client-perusahaan') }}">Mitra Kerjasama</a></li>
-                    <li><a href="{{ route('portofolio-perusahaan') }}">Portofolio</a></li>
-                    <li><a href="{{ route('galeri-perusahaan') }}">Galeri</a></li>
-                    <li><a href="{{ route('company-profile-perusahaan') }}">Lihat Company Profile</a></li>
+                    <li class="{{ $currentRoute == 'profile-perusahaan' ? "border-b-2 border-lime-600 border-solid" : "" }}"><a href="{{ route('profile-perusahaan') }}">Profile</a></li>
+                    <li class="{{ $currentRoute == 'client-perusahaan' ? "border-b-2 border-lime-600 border-solid" : "" }}"><a href="{{ route('client-perusahaan') }}">Mitra Kerjasama</a></li>
+                    <li class="{{ $currentRoute == 'portofolio-perusahaan' ? "border-b-2 border-lime-600 border-solid" : "" }}"><a href="{{ route('portofolio-perusahaan') }}">Portofolio</a></li>
+                    <li class="{{ $currentRoute == 'galeri-perusahaan' ? "border-b-2 border-lime-600 border-solid" : "" }}"><a href="{{ route('galeri-perusahaan') }}">Galeri</a></li>
+                    <li class="{{ $currentRoute == 'company-profile-perusahaan' ? "border-b-2 border-lime-600 border-solid" : "" }}"><a href="{{ route('company-profile-perusahaan') }}">Lihat Company Profile</a></li>
                 </ul>
             </div>
             <div class="dropdown dropdown-hover dropdown-end">
-                <div tabindex="0" role="button" class="menu-title text-slate-700 m-1">Layanan</div>
+                <div tabindex="0" role="button" class="menu-title rounded-md text-slate-700 m-1">Layanan</div>
                 <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                     <li><a href="{{ route('outsourcing-perusahaan') }}">Outsourcing</a></li>
                     <li><a href="https://umroh.sac-po.com/">Agen Umroh</a></li>
                 </ul>
             </div>
-            <a href="{{ route('kontak-perusahaan') }}" class="menu-title text-slate-700">Kontak</a>
+            <a href="{{ route('kontak-perusahaan') }}" class="menu-title rounded-md text-slate-700">Kontak</a>
         </div>
     </div>
     <div class="absolute z-30 top-5 right-[5vw] md:hidden">
@@ -39,7 +42,7 @@
         class="absolute right-[-100%] z-10 top-0 ml-[25%] transition-all duration-300 ease-in-out rounded-md drop-shadow-lg bg-white">
         <div class="py-10 px-5">
             <div class="mt-5">
-                <a href="/" class="py-2 px-4 text-lg font-bold bg-amber-500 rounded-md">Beranda</a>
+                <a href="/" class="py-2 px-4 text-lg font-bold bg-lime-600 rounded-md text-slate-50">Beranda</a>
             </div>
             <div class="my-4">
                 <ul class="menu rounded-box">

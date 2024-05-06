@@ -20,7 +20,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 //     return view('welcome');
 // });
 
-Route::get('/', [DashboardController::class, 'index']);
+Route::get('/', [DashboardController::class, 'index'])->name('/');
 Route::get('/profile-sac', [DashboardController::class, 'profil'])->name('profile-perusahaan');
 Route::get('/portofolio-sac', [DashboardController::class, 'porto'])->name('portofolio-perusahaan');
 Route::get('/galeri-sac', [DashboardController::class, 'galeri'])->name('galeri-perusahaan');

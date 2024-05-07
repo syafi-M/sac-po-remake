@@ -12,11 +12,12 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
+        <script src="{{ asset('js/jquery.min.js') }}"></script>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
+            <x-navbar></x-navbar>
 
             <!-- Page Heading -->
             @if (isset($header))
@@ -32,5 +33,24 @@
                 {{ $slot }}
             </main>
         </div>
+        <script>
+        $('#img').change(function() {
+				const input = $(this)[0];
+				const preview = $('.preview');
+
+				if (input.files && input.files[0]) {
+					const reader = new FileReader();
+
+					reader.onload = function(e) {
+						preview.show();
+						preview.find('img').attr('src', e.target.result);
+						preview.removeClass('hidden');
+						preview.find('img').addClass('rounded-md shadow-md my-4');
+					};
+
+					reader.readAsDataURL(input.files[0]);
+				}
+        })
+    </script>
     </body>
 </html>

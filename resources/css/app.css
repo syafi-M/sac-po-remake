@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+.required::after {
+    content: "*";
+    color: red;
+}
+
 /* For WebKit browsers like Chrome and Safari */
 /* Track */
 ::-webkit-scrollbar {

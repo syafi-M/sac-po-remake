@@ -18,16 +18,17 @@
         <x-navbar />
     </div>
     <div class="mt-20 mx-5 md:mx-10">
-        <div class="aspect-[21/9]">
-            <img src="https://placehold.co/2100x900" class="object-cover " alt="" srcset="">
+        <div class="drop-shadow-md aspect-[21/9] md:aspect-auto">
+            {{-- <img src="https://placehold.co/2100x900" class="object-cover " alt="" srcset=""> --}}
+            <img src="{{ asset('image/bannerProfile.jpeg.jpg') }}" class="object-cover object-center w-[95svw] h-[35svh] md:h-[55svh] block rounded-md" alt="" srcset="">
         </div>
         <div>
             <div class="mx-5 md:mx-10 mt-10 ">
-                <p class="text-sm text-center md:text-start md:text-base font-semibold"><i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i> Tentang Kami <i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i></p>
+                <p class="text-sm text-center md:text-base font-semibold"><i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i> Tentang Kami <i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i></p>
             </div>
             <div class="">
-                <p>PT. Surya Amanah Cendikia merupakan perusahaan yang bergerak di bidang jasa outsourcing, kami senantiasa</p>
-                <div class="pt-10 space-y-2 md:grid md:grid-cols-3 justify-center">
+                <p class="text-center">PT. Surya Amanah Cendikia merupakan perusahaan yang bergerak di bidang jasa outsourcing, kami senantiasa</p>
+                {{-- <div class="pt-10 space-y-2 md:grid md:grid-cols-3 justify-center">
                     <span class="flex flex-col items-center justify-center text-center gap-2 text-gray-600">
                         <i class="ri-service-line text-4xl"></i>
                         <p class="font-semibold">Responsible</p>
@@ -63,12 +64,40 @@
                         <p class="font-semibold">Trust</p>
                         <p class="md:w-1/3">Menjunjung nilai kepercayaan yang telah diberikan oleh mitra kerja, menerapkan prinsip “Good Governance of Product”.</p>
                     </span>
+                </div> --}}
+                <div class="mx-5 md:mx-10 md:flex ">
+                    <div class="md:w-1/2 mt-5">
+                        <div class="flex justify-center"><i class="ri-service-fill text-9xl text-lime-600"></i></div>
+                        <p class="font-bold text-xl text-center">SIGAP</p>
+                        <div class="flex justify-center items-center pt-4">
+                            <ul class="font-semibold text-lg">
+                                <li><i class="ri-subtract-line font-semibold text-amber-500"></i> Safety</li>
+                                <li><i class="ri-subtract-line font-semibold text-amber-500"></i> Inisiatif</li>
+                                <li><i class="ri-subtract-line font-semibold text-amber-500"></i> Gesit</li>
+                                <li><i class="ri-subtract-line font-semibold text-amber-500"></i> Amanah</li>
+                                <li><i class="ri-subtract-line font-semibold text-amber-500"></i> Peduli</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 mt-5">
+                        <div class="flex justify-center"><i class="ri-eraser-fill text-9xl text-lime-600"></i></div>
+                        <p class="font-bold text-xl text-center">RESIK</p>
+                        <div class="flex justify-center items-center pt-4">
+                            <ul class="font-semibold text-lg">
+                                <li><i class="ri-subtract-line font-semibold text-amber-500"></i> Religius</li>
+                                <li><i class="ri-subtract-line font-semibold text-amber-500"></i> Excellent</li>
+                                <li><i class="ri-subtract-line font-semibold text-amber-500"></i> Service</li>
+                                <li><i class="ri-subtract-line font-semibold text-amber-500"></i> Integrity</li>
+                                <li><i class="ri-subtract-line font-semibold text-amber-500"></i> Komitmen</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="mx-5 md:mx-10 mt-10 ">
-                <p class="text-sm text-center md:text-start md:text-base font-semibold"><i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i> Organisasi Kelembagaan <i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i></p>
+                <p class="text-sm text-center  md:text-base font-semibold"><i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i> Organisasi Kelembagaan <i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i></p>
             </div>
-            <div class="bg-gradient-to-bl p-2 rounded-md from-amber-500 via-orange-400 to-rose-300 mx-[25%] flex justify-center">
+            <div class="bg-gradient-to-bl p-2 rounded-md from-lime-600 via-lime-500 to-lime-400 mx-[5%] md:mx-[25%] flex justify-center">
                 <table class="text-sm font-semibold text-slate-700">
                     <tbody>
                         <tr>
@@ -118,7 +147,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="w-full md:flex gap-2">
+            <div class="w-full md:flex gap-2 ">
                 <div class="md:w-1/2">
                     <div class="mx-5 md:mx-10 mt-10 mb-5 ">
                         <p class="text-base text-center md:text-base font-bold"><i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i> Visi <i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i></p>

@@ -18,14 +18,13 @@
         <x-navbar />
     </div>
     <div class="mt-20 mx-5 md:mx-10">
-        
-        <div class="space-y-10">
-            <div class="mx-5 md:mx-10 mt-10 ">
-                <p class="text-sm text-center md:text-start md:text-base font-semibold"><i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i> Company Profile <i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i></p>
+        <div class="space-y-5">
+            <div class="mx-5 md:mx-10 mt-28 ">
+                <p class="text-sm text-center md:text-base font-semibold"><i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i> Company Profile <i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i></p>
             </div>
             <div class="flex flex-col items-center gap-2 justify-center">
                 <p class="text-center font-bold text-lg md:text-2xl">Company Profile Kami</p>
-                <video src="{{ asset('video/SAC-PROFILE-1.mp4') }}" autoplay loop draggable="false"></video>
+                <video src="{{ asset('video/SAC-PROFILE-1.mp4') }}" autoplay loop draggable="false" class="aspect-video w-[90svw] sm:w-[50svw] rounded-md drop-shadow-md"></video>
             </div>
         </div>
     </div>

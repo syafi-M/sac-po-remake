@@ -18,12 +18,12 @@
         <x-navbar />
     </div>
     <div class="mt-20 mx-5 md:mx-10">
-        <div class="aspect-[21/9]">
-            <img src="https://placehold.co/2100x900" class="object-cover " alt="" srcset="">
+        <div class="aspect-[21/9] md:aspect-auto drop-shadow-md">
+            <img src="https://placehold.co/2100x900"  class="object-cover object-center w-[95svw] h-[35svh] md:h-[55svh] block rounded-md" alt="" srcset="">
         </div>
         <div>
             <div class="mx-5 md:mx-10 mt-10 ">
-                <p class="text-sm text-center md:text-start md:text-base font-semibold"><i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i> Portofolio Perusahaan <i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i></p>
+                <p class="text-sm text-center  md:text-base font-semibold"><i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i> Portofolio Perusahaan <i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i></p>
             </div>
             <div>
                 <p class="text-center font-bold text-lg md:text-2xl">Sertifikat Cleaner Oleh BNSP RI</p>

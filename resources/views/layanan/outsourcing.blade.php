@@ -21,10 +21,40 @@
         
         <div class="space-y-10">
             <div class="mx-5 md:mx-10 mt-10 ">
-                <p class="text-sm text-center md:text-start md:text-base font-semibold"><i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i> Layanan Outsourcing <i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i></p>
+                <p class="text-sm text-center md:text-base font-semibold"><i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i> Layanan Outsourcing <i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i></p>
             </div>
             <div class="flex flex-col items-center gap-2 justify-center">
                 <p class="text-center font-bold text-lg md:text-2xl">Layanan Outsourcing Kami</p>
+            </div>
+            <div class="flex flex-col items-center gap-2 justify-center">
+                <p class="text-center font-bold text-lg md:text-2xl">Cleaning Service</p>
+                <div class="gap-4  max-w-4xl items-center grid md:grid-cols-2 grid-cols-1 justify-center">
+                    @for ($i = 1; $i <= 6; $i++)
+                        <div class="w-full flex justify-center">
+                            <img src="https://placehold.co/2100x900" class="object-cover object-center md:w-[50svw] md:h-[35svh]" alt="img{{ $i }}" srcset="">
+                        </div>
+                    @endfor
+                </div>
+            </div>
+            <div class="flex flex-col items-center gap-2 justify-center">
+                <p class="text-center font-bold text-lg md:text-2xl">Security</p>
+                <div class="gap-4  max-w-4xl items-center grid md:grid-cols-2 grid-cols-1 justify-center">
+                    @for ($i = 1; $i <= 6; $i++)
+                        <div class="w-full flex justify-center">
+                            <img src="https://placehold.co/2100x900" class="object-cover object-center md:w-[50svw] md:h-[35svh]" alt="img{{ $i }}" srcset="">
+                        </div>
+                    @endfor
+                </div>
+            </div>
+            <div class="flex flex-col items-center gap-2 justify-center">
+                <p class="text-center font-bold text-lg md:text-2xl">Front Office</p>
+                <div class="gap-4  max-w-4xl items-center grid md:grid-cols-2 grid-cols-1 justify-center">
+                    @for ($i = 1; $i <= 6; $i++)
+                        <div class="w-full flex justify-center">
+                            <img src="https://placehold.co/2100x900" class="object-cover object-center md:w-[50svw] md:h-[35svh]" alt="img{{ $i }}" srcset="">
+                        </div>
+                    @endfor
+                </div>
             </div>
         </div>
     </div>

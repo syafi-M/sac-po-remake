@@ -17,13 +17,13 @@
     <div>
         <x-navbar />
     </div>
-    <div class="mt-20 mx-5 md:mx-10">
-        <div class="aspect-[21/9]">
-            <img src="https://placehold.co/2100x900" class="object-cover " alt="" srcset="">
+    <div class="mt-28 mx-5 md:mx-10">
+        <div class="aspect-[21/9] md:aspect-auto drop-shadow-md flex justify-center">
+            <img src="{{ asset('image/map.png') }}" class="object-cover object-center w-[95svw] md:w-[70svw] h-auto block rounded-md bg-gradient-to-bl from-stone-700 via-stone-600 to-stone-500" alt="" srcset="">
         </div>
         <div class="space-y-10">
             <div class="mx-5 md:mx-10 mt-10 ">
-                <p class="text-sm text-center md:text-start md:text-base font-semibold"><i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i> Klien Kami <i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i></p>
+                <p class="text-sm text-center  md:text-base font-semibold"><i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i> Klien Kami <i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i></p>
             </div>
             <div class="flex flex-col items-center gap-2 justify-center">
                 <p class="text-center font-bold text-lg md:text-2xl">Semua Klien Kami</p>

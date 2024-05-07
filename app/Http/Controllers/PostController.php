@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
     public function index()
     {
-        $post = Post::paginate(25);
+        $post = Post::paginate(2);
         return view('admin.post.index', compact('post'));
     }
 
@@ -21,12 +22,13 @@ class PostController extends Controller
     }
 
     public function store(PostRequest $request)
-    {   
+    {
         $posts = new Post();
         $post = [
             'title' => $request->title,
             'img' => $request->img,
-            'desc' => $request->desc
+            'desc' => $request->desc,
+            'author' => $request->author
         ];
 
         if($request->hasFile('img'))
@@ -34,15 +36,16 @@ class PostController extends Controller
             $post['img'] = UploadImage($request, 'img');
         }
 
-        try {
-            $posts->create($post);
-            toastr()->success('Post Has Been Created!', 'succcess');
-            return to_route('post.index');
-        } catch (\Illuminate\Database\QueryException $e) {
-            //throw $th;
-            toastr()->error('Post Failed To Created!', 'error');
-            return redirect()->back();
-        }
+
+            try {
+                $posts->create($post);
+                toastr()->success('Post Has Been Created!', 'succcess');
+                return to_route('post.index');
+            } catch (\Illuminate\Database\QueryException $e) {
+                //throw $th;
+                toastr()->error('Post Failed To Created!', 'error');
+                return redirect()->back();
+            }
     }
 
     public function edit($id)
@@ -58,7 +61,9 @@ class PostController extends Controller
         $post = [
             'title' => $request->title,
             'img' => $request->img,
-            'desc' => $request->desc
+            'desc' => $request->desc,
+            'author' => $request->author,
+
         ];
 
         if($request->hasFile('img'))
@@ -70,16 +75,19 @@ class PostController extends Controller
             $post['img'] = UploadImage($request, 'img');
         }
 
-        try {
-            $posts->update($post);
-            toastr()->success('Post Has Been Updated!', 'succcess');
-            return to_route('post.index');
-        } catch (\Illuminate\Database\QueryException $e) {
-            //throw $th;
-            return redirect()->back();
-            toastr()->error('Post Failed To Updated', 'error');
+        if(Auth::user()->name == $request->author)
+        {
+            try {
+                $posts->update($post);
+                toastr()->success('Post Has Been Updated!', 'succcess');
+                return to_route('post.index');
+            } catch (\Illuminate\Database\QueryException $e) {
+                //throw $th;
+                return redirect()->back();
+                toastr()->error('Post Failed To Updated', 'error');
+            }
         }
-        
+
     }
 
     public function destroy($id)

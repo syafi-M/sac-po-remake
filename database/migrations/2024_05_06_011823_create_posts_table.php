@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->string('author');
             $table->string('title');
             $table->string('img');
-            $table->text('desc')->max('9999999');
+            $table->longText('desc');
             $table->timestamps();
         });
     }

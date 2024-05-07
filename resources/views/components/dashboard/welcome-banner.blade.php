@@ -43,9 +43,20 @@
     </div>
 
     <!-- Content -->
-    <div class="relative">
-        <h1 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold mb-1">Wellcome Back !! , {{ Auth::user()->name }}</h1>
-        <p class="dark:text-indigo-200">Here is what's happening with your today</p>
-    </div>
+    <div class="flex justify-between items-center">
+        <div class="relative">
+            <h1 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold mb-1">Wellcome Back !! , {{ Auth::user()->name }}</h1>
+            <p class="dark:text-indigo-200">Here is what's happening with your today</p>
+        </div>
 
+
+        <form action="{{ route('logout')}}" method="post">
+            @csrf
+            @method('POST')
+            <button type="submit" class="btn btn-sm border-0 rounded-sm w-fit flex bg-red-500 font-semibold shadow-md hover:shadow-none text-white hover:text-red-900 hover:bg-red-600 transition-all ease-in-out duration-150">
+                <i class="ri-logout-box-r-line text-lg"></i>
+                <span class="">Sign Out</span>
+            </button>
+        </form>
+    </div>
 </div>

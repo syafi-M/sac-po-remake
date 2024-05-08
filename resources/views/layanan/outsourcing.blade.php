@@ -29,9 +29,9 @@
             <div class="flex flex-col items-center gap-2 justify-center">
                 <p class="text-center font-bold text-lg md:text-2xl">Cleaning Service</p>
                 <div class="gap-4  max-w-4xl items-center grid md:grid-cols-2 grid-cols-1 justify-center">
-                    @for ($i = 1; $i <= 6; $i++)
+                    @for ($i = 1; $i <= 3; $i++)
                         <div class="w-full flex justify-center">
-                            <img src="https://placehold.co/2100x900" class="object-cover object-center md:w-[50svw] md:h-[35svh]" alt="img{{ $i }}" srcset="">
+                            <img src="{{ asset('image/csrutin'. $i .'.jpg') }}" class="object-cover object-center md:w-[50svw] md:h-[35svh]" alt="img{{ $i }}" srcset="">
                         </div>
                     @endfor
                 </div>
@@ -39,19 +39,9 @@
             <div class="flex flex-col items-center gap-2 justify-center">
                 <p class="text-center font-bold text-lg md:text-2xl">Security</p>
                 <div class="gap-4  max-w-4xl items-center grid md:grid-cols-2 grid-cols-1 justify-center">
-                    @for ($i = 1; $i <= 6; $i++)
+                    @for ($i = 1; $i <= 3; $i++)
                         <div class="w-full flex justify-center">
-                            <img src="https://placehold.co/2100x900" class="object-cover object-center md:w-[50svw] md:h-[35svh]" alt="img{{ $i }}" srcset="">
-                        </div>
-                    @endfor
-                </div>
-            </div>
-            <div class="flex flex-col items-center gap-2 justify-center">
-                <p class="text-center font-bold text-lg md:text-2xl">Front Office</p>
-                <div class="gap-4  max-w-4xl items-center grid md:grid-cols-2 grid-cols-1 justify-center">
-                    @for ($i = 1; $i <= 6; $i++)
-                        <div class="w-full flex justify-center">
-                            <img src="https://placehold.co/2100x900" class="object-cover object-center md:w-[50svw] md:h-[35svh]" alt="img{{ $i }}" srcset="">
+                            <img src="{{ asset('image/scrrutin'. $i .'.jpg') }}" class="object-cover object-center md:w-[50svw] md:h-[35svh]" alt="img{{ $i }}" srcset="">
                         </div>
                     @endfor
                 </div>

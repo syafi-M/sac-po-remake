@@ -17,9 +17,9 @@
     <div>
         <x-navbar />
     </div>
-    <div class="mt-20 mx-5 md:mx-10">
+    <div class="mt-28 mx-5 md:mx-10">
         <div class="aspect-[21/9] md:aspect-auto drop-shadow-md">
-            <img src="https://placehold.co/2100x900"  class="object-cover object-center w-[95svw] h-[35svh] md:h-[55svh] block rounded-md" alt="" srcset="">
+            <img src="{{ asset('image/bannerProfile.jpeg.jpg') }}"  class="object-cover object-center w-[95svw] h-[35svh] md:h-[55svh] block rounded-md" alt="" srcset="">
         </div>
         <div>
             <div class="mx-5 md:mx-10 mt-10 ">

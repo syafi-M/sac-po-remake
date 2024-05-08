@@ -46,21 +46,30 @@
             <div class="absolute rounded-md inset-0 py-2 flex justify-center flex-col items-center">
 
                 <div class="slider flex carousel rounded-md mx-[2.5svw] sm:h-full">
+                    @forelse ($banner as $item)
+                        <div class="carousel-item aspect-[21/9] md:aspect-auto rounded-md">
+                            <img src="{{ asset('storage/images/'.$item->img) }}" alt="Image 1" width="2100" height="900"
+                                    class=" object-center w-[95svw] h-[25svh] md:h-[55svh] rounded-md"
+                                    style=" transition: transform 0.5s ease-in-out;">
+                        </div>
+                    @empty
                     <div class="carousel-item aspect-[21/9] md:aspect-auto rounded-md">
-                        <img src="{{ asset('image/banner_milad_sac.jpg') }}" alt="Image 1" width="2100" height="900"
-                                class=" object-center w-[95svw] h-[25svh] md:h-[55svh] rounded-md"
-                                style=" transition: transform 0.5s ease-in-out;">
+                        <p class="text-center font-bold text-slate-500">Data kosong</p>
                     </div>
-                    <div class="carousel-item aspect-[21/9] md:aspect-auto rounded-md">
+                    @endforelse
+                    {{-- <div class="carousel-item aspect-[21/9] md:aspect-auto rounded-md">
                         <img src="{{ asset('image/banner_disnaker.jpg') }}" alt="Image 1" width="2100" height="900"
                                 class=" object-center w-[95svw] h-[25svh] md:h-[55svh] rounded-md"
                                 style=" transition: transform 0.5s ease-in-out;">
-                    </div>
+                    </div> --}}
                 </div>
 
                 <ul class="slider-bullets">
-                    <li class="slider-bullet" data-slide="0"></li>
-                    <li class="slider-bullet" data-slide="1"></li>
+                    @forelse ($banner as $i => $item)
+                        <li class="slider-bullet" data-slide="{{ $i }}"></li>
+                    @empty
+                    @endforelse
+                    {{-- <li class="slider-bullet" data-slide="1"></li> --}}
                 </ul>
             </div>
         </div>
@@ -175,15 +184,17 @@
                         class="ri-subtract-line font-semibold text-amber-500"></i><i
                         class="ri-subtract-line font-semibold text-amber-500"></i></p>
             </div>
-            <div class="clientSlider w-full carousel transition-all  duration-300 ease-in-out" id="scrollContainer">
-                @for ($i = 1; $i <= 23; $i++)
+            <div class="clientSlider w-full carousel transition-all duration-300 ease-in-out px-[2.5svw]" id="scrollContainer">
+                @forelse ($client as $cli)
                     <div
-                        class="carousel-item flex flex-col items-center w-[25svw] px-[4svw] md:w-[10svw] h-auto md:px-[0.5svw] transition-all duration-300 ease-in-out">
-                        <img src="https://placehold.co/64x64/green/white" class="rounded-md object-cover" alt="imeg1"
+                        class="flex flex-col justify-between carousel-item aspect-square w-[20svw] px-[4svw] md:w-[10svw] h-auto md:px-[0.5svw] transition-all duration-300 ease-in-out">
+                        <img src="{{ asset('storage/images/'. $cli->img) }}" class="rounded-md object-cover" alt="imeg1"
                             srcset="">
-                        <p class="text-[10px] font-bold text-center">aku mitra ke {{ $i }}</p>
+                        <p class="text-center font-semibold text-sm">{{ $cli->name }}</p>
                     </div>
-                @endfor
+                @empty                    
+                @endforelse
+
             </div>
         </div>
         {{-- Berita Terkini --}}
@@ -195,17 +206,22 @@
                         class="ri-subtract-line font-semibold text-amber-500"></i><i
                         class="ri-subtract-line font-semibold text-amber-500"></i></p>
             </div>
-            <div class="beritaSlider carousel rounded-md aspect-video w-full max-h-[50svh]">
-                @for ($i = 1; $i < 5; $i++)
+            <div class="beritaSlider carousel rounded-md aspect-video px-[2.5svw] w-full max-h-[50svh]">
+                @forelse ($artikel as $art)
                     <div
-                        class="carousel-item flex flex-col font-medium w-[40svw] px-[5svw] md:w-[15svw] md:px-[5svw]  transition-all duration-300 ease-in-out">
-                        <img src="https://placehold.co/1600x900/green/white" alt="imeg1" srcset=""
-                            class="rounded-md object-cover">
-                        <p class="text-sm md:text-base pt-4 font-semibold text-slate-400">
-                            {{ Carbon\Carbon::now()->format('Y-m') }}-{{ $i }}</p>
-                        <p class="text-sm md:text-base pb-2 capitalize line-clamp-3">judul {{ $i }}</p>
+                        class="carousel-item font-medium w-[40svw] px-[5svw] md:w-[15svw] md:px-[5svw]  transition-all duration-300 ease-in-out">
+                        <a href="{{ route('artikel', $art->id) }}" class="flex flex-col">
+                            <img src="{{ asset('storage/images/'.$art->img) }}" alt="imeg1" srcset=""
+                                class="rounded-md object-cover aspect-video">
+                            <p class="text-sm md:text-base pt-4 font-semibold text-slate-400">
+                                {{ $art->created_at->format('Y-m-d') }}</p>
+                            <p class="text-sm md:text-base capitalize line-clamp-3">{{ $art->title }}</p>
+                        </a>
                     </div>
-                @endfor
+                    
+                @empty
+                    
+                @endforelse
             </div>
         </div>
         {{-- Testimoni --}}
@@ -258,7 +274,7 @@
             } else {
                 jmlSkip = 3;
             }
-            console.log(width, isSM);
+            // console.log(width, isSM);
             let currentSlide = 0;
             let currentBerita = 0;
             let currentTesti = 0;
@@ -317,7 +333,8 @@
             }
 
             function nextBerita() {
-                currentBerita = (currentBerita + 1) % (beritaSlider.length - jmlSkip);
+                currentBerita = (currentBerita + 1) % (beritaSlider.length - (width <= 640 ? 1 : 4) );
+                // console.log(currentBerita);
                 showBerita(currentBerita);
             }
 
@@ -327,7 +344,7 @@
             }
 
             function nextClient() {
-                currentClient = (currentClient + 1) % (clientSlider.length - 14);
+                currentClient = (currentClient + 1) % (clientSlider.length - (width <= 640 ? 2 : 6));
                 // console.log(currentClient);
                 showClient(currentClient);
             }

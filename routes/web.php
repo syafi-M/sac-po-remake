@@ -27,6 +27,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 // });
 
 Route::get('/', [DashboardController::class, 'index'])->name('/');
+Route::get('/artikel/{id}', [DashboardController::class, 'seeArtikel'])->name('artikel');
 Route::get('/profile-sac', [DashboardController::class, 'profil'])->name('profile-perusahaan');
 Route::get('/portofolio-sac', [DashboardController::class, 'porto'])->name('portofolio-perusahaan');
 Route::get('/galeri-sac', [DashboardController::class, 'galeri'])->name('galeri-perusahaan');

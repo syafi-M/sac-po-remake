@@ -7,7 +7,7 @@
         <div class="bg-indigo-500 hover:bg-indigo-400 transition-all ease-in-out duration-150 hover:text-slate-800 p-2 text-center text-white font-semibold rounded-t-[3.5px]">
             {!! $data !!}
         </div>
-        <div class="bg-indigo-300 p-2 text-center text-slate-900  rounded-b-[3.5px] line-clamp-4">{{ $desc }}</div>
+        <div class="bg-indigo-300 p-2 text-center text-slate-900  rounded-b-[3.5px] line-clamp-4">{!! $desc !!}</div>
     </div>
 
     <!-- Modal backdrop -->

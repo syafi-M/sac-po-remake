@@ -26,7 +26,7 @@
                         <div class="label">
                             <span class="label-text required">Desc</span>
                         </div>
-                        <textarea type="text" id="desc" name="desc" required placeholder="Desc Artikel" class="text-area text-area-sm text-area-bordered w-full rounded-[3.5px]" ></textarea>
+                        <textarea type="text" id="desc" name="desc" placeholder="Desc Artikel" class="text-area text-area-sm text-area-bordered w-full rounded-[3.5px]" ></textarea>
                         <x-input-error :messages="$errors->get('desc')" class="mt-2" />
                     </label>
                     <input type="text" name="author" class="hidden" value="{{ Auth::user()->name }}">
@@ -46,4 +46,14 @@
     </div>
     </div>
 
+<script src="https://cdn.jsdelivr.net/npm/tinymce@5.10.2/tinymce.min.js"></script>
+
+        <script>
+            tinymce.init({
+                selector: 'textarea',
+                plugins: 'lists link',
+                toolbar: 'undo redo | formatselect | bold italic | bullist numlist | link',
+                menubar: false
+            });
+        </script>
 </x-app-layout>

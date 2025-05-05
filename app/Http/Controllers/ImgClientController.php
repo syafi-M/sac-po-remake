@@ -25,6 +25,7 @@ class ImgClientController extends Controller
         $clients = new ImgClient();
         $client = [
             'img' => $request->img,
+            'name' => $request->name,
         ];
 
         if($request->hasFile('img'))

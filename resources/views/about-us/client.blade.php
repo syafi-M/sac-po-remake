@@ -27,12 +27,17 @@
             </div>
             <div class="flex flex-col items-center gap-2 justify-center">
                 <p class="text-center font-bold text-lg md:text-2xl">Semua Klien Kami</p>
-                <div class="gap-4  max-w-4xl items-center grid md:grid-cols-5 grid-cols-3 justify-center">
-                    @for ($i = 1; $i < 15; $i++)
-                        <div class="w-full flex justify-center">
-                            <img src="https://placehold.co/150x150" width="150" alt="img{{ $i }}" srcset="">
+                <div class="gap-4  max-w-4xl grid md:grid-cols-5 grid-cols-3 justify-center">
+                    @forelse ($client as $i => $item)
+                        <div class="w-full flex flex-col items-center justify-between">
+                            <img src="{{ asset('storage/images/'.$item->img) }}" width="100" alt="img{{ $i }}" srcset="">
+                            <p class="text-center font-semibold text-xs py-1 sm:text-sm">{{ $item->name }}</p>
                         </div>
-                    @endfor
+                        
+                    @empty
+                        
+                    @endforelse
+                    
                 </div>
             </div>
         </div>

@@ -98,7 +98,7 @@
                 <p class="text-sm text-center  md:text-base font-semibold"><i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i> Organisasi Kelembagaan <i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i></p>
             </div>
             <div class="bg-gradient-to-bl p-2 rounded-md from-lime-600 via-lime-500 to-lime-400 mx-[5%] md:mx-[25%] flex justify-center">
-                <table class="text-sm font-semibold text-slate-700">
+                <table class="text-sm font-semibold text-slate-700" style="	user-select: none;" dragable="false">
                     <tbody>
                         <tr>
                             <td>Nama</td>

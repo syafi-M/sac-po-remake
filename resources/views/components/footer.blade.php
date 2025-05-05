@@ -18,12 +18,12 @@
             <div class="flex flex-col gap-1 mt-5 md:mt-0">
                 <p class="text-amber-500">Alamat</p>
                 <p class="max-w-md">Jl. Budi Utomo No. 10, Ronowijayan, Kec. Ponorogo, Kabupaten Ponorogo, Jawa Timur, 63471</p>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d247.0182775528302!2d111.49565863476913!3d-7.864434353328986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e79a0344c1b4c3b%3A0xf83e671b9428f103!2sJl.%20Budi%20Utomo%20No.10%2C%20Ronowijayan%2C%20Kec.%20Siman%2C%20Kabupaten%20Ponorogo%2C%20Jawa%20Timur%2063471!5e0!3m2!1sid!2sid!4v1714805475453!5m2!1sid!2sid" width="250" height="150" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="rounded-lg"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d247.01827770063656!2d111.49569324152903!3d-7.864434105128663!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e79a1002f52f2b7%3A0x2c28fdd7da55d127!2sPT.%20SURYA%20AMANAH%20CENDIKIA%20PONOROGO!5e0!3m2!1sid!2sid!4v1724203297397!5m2!1sid!2sid" width="250" height="150" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="rounded-lg"></iframe>
             </div>
         </div>
         <div class="md:flex md:flex-row-reverse md:justify-around md:items-end">
             <div class="flex flex-col gap-1 mt-5 md:mt-0">
-                <p>Copyright {{ Carbon\Carbon::now()->year }} <span class="text-amber-500">PT. Surya Amanah Cendikia</span> All Right Reserved</p>
+                <p>Copyright {{ Carbon\Carbon::now()->year }} <a href="{{ route('/') }}" class="text-amber-500">PT. Surya Amanah Cendikia</a> All Right Reserved</p>
                 
             </div>
             <div class="flex flex-col gap-1 mt-5 md:mt-0">

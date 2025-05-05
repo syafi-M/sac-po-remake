@@ -15,27 +15,31 @@
                 <div class="label">
                         <span class="label-text required">Foto Client</span>
                 </div>
-                <div class="w-3/6 flex justify-between mb-2 gap-x-2">
+                <div class="w-3/6 flex justify-between items-center mb-2 gap-x-2">
                     <div>
                         <input id="img" name="img" type="file" required class="file-input file-input-sm file-input-bordered rounded-[3.5px]" />
                         <x-input-error :messages="$errors->get('img')" class="mt-2" />
-                        <div class="preview hidden">
-                            <img src="" alt="" srcset="" height="500px" width="500px">
-                        </div>
+                            <input type="text" name="name" id="name" placeholder="Nama Client.." class="input input-bordered input-sm w-full my-2">
+                            <div class="preview hidden">
+                                <img src="" alt="" srcset="" height="500px" width="500px">
+                            </div>
                     </div>
                     <button type="submit" class="btn btn-sm rounded-sm bg-indigo-500 hover:bg-indigo-700 text-indigo-900 hover:text-white">Save</button>
                     </div>
                 </label>
         </form>
-        <div class="flex justify-stretch max-w-screen gap-2">
+        <div class="grid grid-cols-7 justify-stretch max-w-screen gap-2">
 
             @php
                 $no = 1;
             @endphp
             @forelse ($client as $item)
-                <div class="flex gap-x-1">
-                    <span> {{ $no++ }}</span>
-                   <img src="{{ asset('storage/images/' . $item->img)}}" class="max-w-52" alt="Banner" srcset="{{ asset('storage/images/' . $item->img)}}">
+                <div class="flex flex-col justify-between gap-x-1">
+                    <span class="flex">
+                        <span>{{ $no++ }}. </span>
+                       <img src="{{ asset('storage/images/' . $item->img)}}" width="150" height="150" alt="Banner" srcset="{{ asset('storage/images/' . $item->img)}}">
+                    </span>
+                   <p class="text-center font-semibold text-sm">{{ $item->name }}</p>
                 </div>
             @empty
 

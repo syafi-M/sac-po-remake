@@ -21,12 +21,18 @@
                         </div>
                         <input id="img" name="img" type="file" required class="file-input file-input-sm file-input-bordered w-full rounded-[3.5px]" />
                         <x-input-error :messages="$errors->get('img')" class="mt-2" />
+                        <div id="divImg" class="form-control flex flex-col">
+                            
+                        </div>
+                        <div class="flex justify-end">
+                            <button id="addImg" type="button" style="background-color: blue; color: white; margin-top: 10px;" class="btn btn-sm">+ Foto</button>
+                        </div>
                     </label>
                     <label class="form-control w-full">
                         <div class="label">
                             <span class="label-text required">Desc</span>
                         </div>
-                        <textarea type="text" id="desc" name="desc" required placeholder="Desc Artikel" class="text-area text-area-sm text-area-bordered w-full rounded-[3.5px]" ></textarea>
+                        <textarea type="text" id="desc" name="desc" placeholder="Desc Artikel" class="text-area text-area-sm text-area-bordered w-full rounded-[3.5px]" ></textarea>
                         <x-input-error :messages="$errors->get('desc')" class="mt-2" />
                     </label>
                     <input type="text" name="author" class="hidden" value="{{ Auth::user()->name }}">
@@ -46,4 +52,29 @@
     </div>
     </div>
 
+<script src="https://cdn.jsdelivr.net/npm/tinymce@5.10.2/tinymce.min.js"></script>
+        <script>
+            tinymce.init({
+                selector: 'textarea',
+                plugins: 'lists link fontselect',
+                toolbar: [
+                    { name: 'history', items: [ 'undo', 'redo' ] },
+                    { name: 'formatselect', items: [ 'formatselect' ] },
+                    { name: 'fontselect', items: [ 'fontselect' ] },
+                    { name: 'styles', items: [ 'styles' ] },
+                    { name: 'formatting', items: [ 'bold', 'italic', 'underline' ] },
+                    { name: 'alignment', items: [ 'alignleft', 'aligncenter', 'alignright', 'alignjustify' ] },
+                    { name: 'indentation', items: [ 'outdent', 'indent' ] }
+                  ],
+                menubar: false
+            });
+        </script>
+        <script>
+            $(document).ready(function(){
+                $('#addImg').click(function(){
+                    $('#divImg').append('<div class="label"><span class="label-text">Foto Tambahan</span></div>')
+                    $('#divImg').append('<input name="addon_img[]" type="file" class="file-input file-input-sm file-input-bordered w-full rounded-[3.5px]" />');
+                });
+            })
+        </script>
 </x-app-layout>

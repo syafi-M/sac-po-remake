@@ -9,6 +9,7 @@ class ImgClient extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'img'
+        'img',
+        'name'
     ];
 }

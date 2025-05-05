@@ -2,12 +2,12 @@
 @php
     $currentRoute = request()->route()->getName();
 @endphp
-<div class="fixed z-10 w-full top-0">
+<div style="z-index: 91;" class="fixed w-full top-0">
     <div class="bg-white py-4 px-4 drop-shadow-lg flex justify-between items-center">
-        <div class="flex gap-2 items-center">
+        <a href="https://sac-po.com/" class="flex gap-2 items-center">
             <img src="{{ asset('image/sac.png') }}" class="w-[35px] md:w-[45px]" alt="logo sac" srcset="">
             <p class="font-bold text-xs md:text-base">PT. Surya Amanah Cendikia</p>
-        </div>
+        </a>
         <div class="hidden md:flex items-center">
             <a href="/"
                 class="py-2 px-4 text-lg font-bold rounded-md {{ $currentRoute == '/' ? 'bg-lime-600 text-slate-50' : '' }}">Beranda</a>
@@ -31,6 +31,9 @@
                     <li
                         class="{{ $currentRoute == 'company-profile-perusahaan' ? 'border-b-2 border-lime-600 border-solid' : '' }}">
                         <a href="{{ route('company-profile-perusahaan') }}">Lihat Company Profile</a></li>
+                    <li
+                    class="{{ $currentRoute == 'aplikasi.index' ? 'border-b-2 border-lime-600 border-solid' : '' }}">
+                    <a href="{{ route('aplikasi.index') }}">Sistem Aplikasi</a></li>
                 </ul>
             </div>
             <div class="dropdown dropdown-hover dropdown-end">
@@ -41,11 +44,15 @@
                     <li
                         class="{{ $currentRoute == 'outsourcing-perusahaan' ? 'border-b-2 border-lime-600 border-solid' : '' }}">
                         <a href="{{ route('outsourcing-perusahaan') }}">Outsourcing</a></li>
-                    <li><a href="https://umroh.sac-po.com/">Agen Umroh</a></li>
+                    <li><a href="https://umroh.sac-po.com/">Layanan Umroh</a></li>
                 </ul>
             </div>
             <a href="{{ route('kontak-perusahaan') }}"
                 class="menu-title rounded-md  {{ $currentRoute == 'kontak-perusahaan' ? 'bg-lime-600 text-slate-50' : 'text-slate-700' }}">Kontak</a>
+            @auth
+                <a href="{{ route('dashboard') }}"
+                    class="menu-title rounded-md bg-lime-600 text-slate-50">Admin Dashboard</a>
+            @endauth
         </div>
     </div>
     <div class="absolute z-30 top-5 right-[5vw] md:hidden">
@@ -72,6 +79,8 @@
                             <li class="{{ $currentRoute == 'portofolio-perusahaan' ? "border-b-2 border-lime-600 border-solid" : "" }}"><a href="{{ route('portofolio-perusahaan') }}">Portofolio</a></li>
                             <li class="{{ $currentRoute == 'galeri-perusahaan' ? "border-b-2 border-lime-600 border-solid" : "" }}"><a href="{{ route('galeri-perusahaan') }}">Galeri</a></li>
                             <li class="{{ $currentRoute == 'company-profile-perusahaan' ? "border-b-2 border-lime-600 border-solid" : "" }}"><a href="{{ route('company-profile-perusahaan') }}">Lihat Company Profile</a></li>
+                            <li class="{{ $currentRoute == 'aplikasi.index' ? 'border-b-2 border-lime-600 border-solid' : '' }}">
+                                <a href="{{ route('aplikasi.index') }}">Sistem Aplikasi</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -82,7 +91,7 @@
                         <h2 class="menu-title text-black">Layanan</h2>
                         <ul>
                             <li class="{{ $currentRoute == 'outsourcing-perusahaan' ? "border-b-2 border-lime-600 border-solid" : "" }}"><a href="{{ route('outsourcing-perusahaan') }}">Outsourcing</a></li>
-                            <li><a href="https://umroh.sac-po.com/">Agen Umroh</a></li>
+                            <li><a href="https://umroh.sac-po.com/">Layanan Umroh</a></li>
                         </ul>
                     </li>
                 </ul>

@@ -22,7 +22,8 @@ class ImgClientRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'img' => ['required', 'mimes:jpg,jpeg,png,svg']
+            'img' => ['required', 'mimes:jpg,jpeg,png,svg'],
+            'name' => ['required'],
         ];
     }
 }

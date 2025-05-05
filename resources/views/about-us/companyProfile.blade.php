@@ -24,7 +24,15 @@
             </div>
             <div class="flex flex-col items-center gap-2 justify-center">
                 <p class="text-center font-bold text-lg md:text-2xl">Company Profile Kami</p>
-                <video src="{{ asset('video/SAC-PROFILE-1.mp4') }}" autoplay loop draggable="false" class="aspect-video w-[90svw] sm:w-[50svw] rounded-md drop-shadow-md"></video>
+                <!--<video controls autoplay loop dragable="false" class="aspect-video w-[90svw] sm:w-[50svw] rounded-md drop-shadow-md">-->
+                <!--    <source src="https://drive.google.com/uc?export=download&id=1tYJratNjnPFNFo7w0DJx7QVkak1Y1LGN">-->
+                <!--</video>-->
+                <iframe 
+                    src="https://drive.google.com/file/d/1tYJratNjnPFNFo7w0DJx7QVkak1Y1LGN/preview" 
+                    autoplay="1"
+                    class="aspect-video w-[90svw] sm:w-[50svw] rounded-md drop-shadow-md">
+                </iframe>
+
             </div>
         </div>
     </div>

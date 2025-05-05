@@ -12,7 +12,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $post = Post::paginate(2);
+        $post = Post::latest()->paginate(2);
         return view('admin.post.index', compact('post'));
     }
 
@@ -27,6 +27,7 @@ class PostController extends Controller
         $post = [
             'title' => $request->title,
             'img' => $request->img,
+            'addon_img' => $request->addon_img,
             'desc' => $request->desc,
             'author' => $request->author
         ];
@@ -35,7 +36,26 @@ class PostController extends Controller
         {
             $post['img'] = UploadImage($request, 'img');
         }
-
+        
+        $imagePaths = [];
+        
+        if($request->hasFile('addon_img')){
+        
+             foreach ($request->file('addon_img') as $image) {
+                
+                
+                $extensions = $image->getClientOriginalExtension();
+                $randomNumber = mt_rand(1, 9999999);
+                $rename = 'data' . $randomNumber . '.' . $extensions;
+                
+                $path = public_path('storage/images/' . $rename);
+                $image->storeAs('images', $rename, 'public');
+            
+                $imagePaths[] = $rename; 
+                
+             }
+                $post['addon_img'] = $imagePaths; 
+        }
 
             try {
                 $posts->create($post);

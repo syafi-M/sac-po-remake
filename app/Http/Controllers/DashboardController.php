@@ -2,12 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ImgBanner;
+use App\Models\ImgClient;
+use App\Models\Post;
+use App\Models\User;
+use App\Models\Kerjasama;
+use App\Models\Coop;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
     public function index(){
-        return view('dashboard');
+        $client = ImgClient::all();
+        $coop = Coop::all();
+        $artikel = Post::latest()->get();
+        $banner = ImgBanner::latest()->get();
+        $userCount = User::on('mysql2')->whereNot('devisi_id', 8)->count();
+        $kerjasamaCount = Kerjasama::on('mysql2')->count();
+        return view('dashboard', compact('client', 'coop' , 'artikel', 'banner', 'userCount', 'kerjasamaCount'));
+    }
+    public function seeArtikel($id){
+        $artikel = Post::findOrFail($id);
+        return view('layanan.artikel', compact('artikel'));
     }
     public function profil(){
         return view('about-us.profile');
@@ -19,7 +35,8 @@ class DashboardController extends Controller
         return view('about-us.galeri');
     }
     public function client(){
-        return view('about-us.client');
+        $client = ImgClient::all();
+        return view('about-us.client', compact('client'));
     }
     public function companyProfile(){
         return view('about-us.companyProfile');

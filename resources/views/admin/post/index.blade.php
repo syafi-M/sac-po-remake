@@ -18,7 +18,7 @@
         </a>
         <div class="grid grid-flow-col grid-cols-3 gap-5">
             @forelse($post as $item)
-            <x-simple-modal data="{{ $item->title }}" desc="{{ $item->desc }}" id="modal" open="false" title="Show Data">
+            <x-simple-modal data="{{ $item->title }}" desc="{!! $item->desc !!}" id="modal" open="false" title="Show Data">
                 <div class="flex flex-col justify-center items-center">
                     <div class="flex flex-row mb-2">
                         <img src="{{ asset('storage/images/' . $item->img) }}" class="max-w-96 rounded-l-[3.5px]" alt="" srcset="">
@@ -31,7 +31,7 @@
                     <div class="bg-indigo-500 p-2 w-full text-center text-white font-semibold rounded-t-[3.5px]">
                         {{ $item->title }}
                     </div>
-                    <div class="bg-indigo-300 p-2 text-center text-slate-900 max-h-52 rounded-b-[3.5px] overflow-y-auto">{{ $item->desc }}</div>
+                    <div class="bg-indigo-300 p-2 text-center text-slate-900 max-h-52 rounded-b-[3.5px] overflow-y-auto">{!! $item->desc !!}</div>
                 </div>
             </x-simple-modal>
 

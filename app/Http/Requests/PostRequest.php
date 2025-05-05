@@ -23,7 +23,8 @@ class PostRequest extends FormRequest
     {
         return [
             'title' => ['required'],
-            'img' => ['required', 'mimes:jpg,jpeg,png,svg'],
+            'img' => ['required', 'max:5072'],
+            'addon_img' => ['nullable', 'max:5072'],
             'desc' => ['required'],
             'author' => ['required']
         ];

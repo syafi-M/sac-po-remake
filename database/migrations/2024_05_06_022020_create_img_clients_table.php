@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('img_clients', function (Blueprint $table) {
             $table->id();
             $table->string('img');
+            $table->string('name');
             $table->timestamps();
         });
     }

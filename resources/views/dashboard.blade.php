@@ -5,10 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Website portal berita serta deskripsi sac PT. Surya Amanah Cendekia">
+    <meta name="keywords" content="sac, surya amanah cendekia, cleaning service, security, outsourcing, PT. Surya Amanah Cendekia, PT. Surya Amanah Cendikia">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700,900&display=swap" rel="stylesheet" />
     <!-- Scripts -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5252551755919202"
+     crossorigin="anonymous"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <title>Sac-po.com</title>
@@ -33,6 +37,69 @@
         .slider-bullet.active {
             background-color: black;
         }
+        .clientDiv {
+            max-width: 25svw; 
+            @media (min-width: 768px) { 
+                width: 10svw; 
+            }
+        }
+        .beritaSlider {
+            max-height: 50svh;
+            @media (min-width: 768px) {
+                max-height: 45svh;
+            }
+        }
+        .beritaSlider div {
+            width: 45svw;
+            padding: 0 2.5svw 0 2.5svw;
+            @media (min-width: 768px) {
+                width: 20svw;
+                padding: 0 2.5svw 0 2.5svw;
+            }
+        }
+        .coopSlider {
+            justify-content: start;
+            @media (min-width: 1024px) { 
+                justify-content: center;                
+            }
+        }
+        
+        .img-berita {
+            transition: transform 0.3s ease, z-index 0.3s ease;
+        }
+        
+        .img-berita img {
+            transition: transform 0.3s ease;
+        }
+        .img-berita:hover {
+            transform: scale(1);
+            @media (min-width: 768px) {
+                transform: scale(1.05);
+            }
+        }
+        
+        /* Optional: Different hover effects for different images */
+        .img-berita:nth-child(odd):hover img {
+            transform: scale(1) rotate(0deg);
+            @media (min-width: 768px) {
+                transform: scale(1.03) rotate(-3deg);
+            }
+        }
+        
+        .img-berita:nth-child(even):hover img {
+            transform: scale(1) rotate(0deg);
+            @media (min-width: 768px) {
+                transform: scale(1.03) rotate(3deg);
+            }
+        }
+        
+        .beritaSlider {
+            min-height: 40svh;
+            @media (min-width: 768px) {
+                min-height: 50svh;
+            }
+        }
+
     </style>
 </head>
 
@@ -46,22 +113,65 @@
             <div class="absolute rounded-md inset-0 py-2 flex justify-center flex-col items-center">
 
                 <div class="slider flex carousel rounded-md mx-[2.5svw] sm:h-full">
+                    @forelse ($banner as $item)
+                        <div class="carousel-item aspect-[21/9] md:aspect-auto rounded-md">
+                            <img src="{{ asset('storage/images/'.$item->img) }}" alt="Image 1" width="2100" height="900"
+                                    class=" object-center w-[95svw] h-[25svh] md:h-[55svh] rounded-md"
+                                    style=" transition: transform 0.5s ease-in-out;"
+                                    loading="lazy">
+                        </div>
+                    @empty
                     <div class="carousel-item aspect-[21/9] md:aspect-auto rounded-md">
-                        <img src="{{ asset('image/banner_milad_sac.jpg') }}" alt="Image 1" width="2100" height="900"
-                                class=" object-center w-[95svw] h-[25svh] md:h-[55svh] rounded-md"
-                                style=" transition: transform 0.5s ease-in-out;">
+                        <p class="text-center font-bold text-slate-500">Data kosong</p>
                     </div>
-                    <div class="carousel-item aspect-[21/9] md:aspect-auto rounded-md">
+                    @endforelse
+                    {{-- <div class="carousel-item aspect-[21/9] md:aspect-auto rounded-md">
                         <img src="{{ asset('image/banner_disnaker.jpg') }}" alt="Image 1" width="2100" height="900"
                                 class=" object-center w-[95svw] h-[25svh] md:h-[55svh] rounded-md"
                                 style=" transition: transform 0.5s ease-in-out;">
-                    </div>
+                    </div> --}}
                 </div>
 
                 <ul class="slider-bullets">
-                    <li class="slider-bullet" data-slide="0"></li>
-                    <li class="slider-bullet" data-slide="1"></li>
+                    @forelse ($banner as $i => $item)
+                        <li class="slider-bullet" data-slide="{{ $i }}"></li>
+                    @empty
+                    @endforelse
+                    {{-- <li class="slider-bullet" data-slide="1"></li> --}}
                 </ul>
+            </div>
+        </div>
+        
+        {{-- Berita Terkini --}}
+        <div class="mt-5 div-news">
+            <div class="mx-5 my-5">
+                <p class="text-base text-center font-bold"><i
+                        class="ri-subtract-line font-semibold text-amber-500"></i><i
+                        class="ri-subtract-line font-semibold text-amber-500"></i> Berita Terkini <i
+                        class="ri-subtract-line font-semibold text-amber-500"></i><i
+                        class="ri-subtract-line font-semibold text-amber-500"></i></p>
+            </div>
+            <div style="overflow-x: scroll; overflow-y: hidden; padding-top: 3vh; position: relative; z-index: 90;" class="beritaSlider carousel rounded-md aspect-video w-full">
+                @forelse ($artikel as $art)
+                    <div
+                        class="carousel-item font-medium  transition-all duration-300 ease-in-out img-berita">
+                        <a href="{{ route('artikel', $art->id) }}" class="flex flex-col">
+                            <img src="{{ asset('storage/images/'.$art->img) }}" alt="imeg1" srcset="" loading="lazy"
+                                srcset="{{ asset('storage/images/'.$art->img) }} 1x, {{ asset('storage/images/'.$art->img.'_2x') }} 2x" 
+                                sizes="(max-width: 600px) 100vw, 50vw" 
+                                class="rounded-md object-cover aspect-video">
+                            <p class="text-sm md:text-base pt-4 font-semibold text-slate-400">
+                                {{ $art->created_at->format('Y-m-d') }}</p>
+                            <p class="text-sm md:text-base capitalize line-clamp-3">{{ $art->title }}</p>
+                        </a>
+                    </div>
+                    
+                @empty
+                    
+                @endforelse
+            </div>
+            <div id="paginatePost" class="flex justify-center">
+                
             </div>
         </div>
 
@@ -80,17 +190,27 @@
                 <p class="pt-5 font-medium text-lg text-slate-50">Diakui sebagai perusahaan penyedia jasa dengan Sumber
                     Daya Manusia (SDM) yang unggul dan berwawasan saling menguntungkan.</p>
             </div>
-            <div class="pt-5 flex gap-2 justify-around w-full md:w-1/3 md:items-end">
-                <span class="w-1/2">
-                    <a href="{{ route('outsourcing-perusahaan') }}"
-                        class="btn btn-md w-full bg-lime-800 hover:bg-lime-700 border-none text-slate-50">Layanan
-                        Kami</a>
-                </span>
-                <span class="w-1/2">
-
-                    <a href="{{ route('profile-perusahaan') }}"
-                        class="btn btn-md w-full bg-slate-50 text-slate-800">Tentang Kami</a>
-                </span>
+            <div class="pt-5 gap-2 flex flex-col justify-around w-full md:w-1/3 md:items-end">
+                <div class="flex gap-2 w-full">
+                    <span class="w-1/2">
+                        <a href="{{ route('outsourcing-perusahaan') }}"
+                            class="btn btn-md w-full bg-lime-800 hover:bg-lime-700 border-none text-slate-50">Layanan
+                            Kami</a>
+                    </span>
+                    <span class="w-1/2">
+    
+                        <a href="{{ route('profile-perusahaan') }}"
+                            class="btn btn-md w-full bg-slate-50 text-slate-800">Tentang Kami</a>
+                    </span>
+                </div>
+                <div class="w-full">
+                    <span class="w-1/2">
+    
+                        <a href="{{ route('aplikasi.index') }}"
+                            style="background-color: #57534e;"
+                            class="btn btn-md w-full text-slate-50 border-none">System Aplikasi Kerja</a>
+                    </span>
+                </div>
             </div>
         </div>
         {{-- tujuan --}}
@@ -99,15 +219,15 @@
             {{-- <p class="font-bold capitalize text-xl">PT Surya Amanah Cendekia Ponorogo</p>
             <p class="font-medium pt-2 capitalize text-lg">Info Lebih Lanjut</p> --}}
             <div class="pt-5 md:flex md:items-start md:w-full">
-                <div class="flex flex-col items-center md:w-1/3 justify-between gap-4">
+                <div class="flex flex-col items-center md:w-1/2 justify-between gap-4">
                     <img src="{{ asset('image/outsourcing.svg') }}" width="250" alt="imeg1" srcset="">
                     <div class="flex flex-col items-center justify-end">
-                        <p class="font-black capitalize text-2xl text-lime-600">300++</p>
+                        <p class="font-black capitalize text-2xl text-lime-600">{{ $userCount }}±</p>
                         <p class="font-bold capitalize text-lg">Outsourcing</p>
                         <p class="font-semibold capitalize text-lg">( Cleaning Service, Security, etc )</p>
                     </div>
                 </div>
-                <div class="flex flex-col items-center md:w-1/3 justify-between gap-4">
+                <div class="flex flex-col items-center md:w-1/2 justify-between gap-4">
                     <img src="{{ asset('image/mitra.svg') }}" width="250" alt="imeg1" srcset="">
                     <div class="flex flex-col items-center justify-end">
                         <p class="font-black capitalize text-2xl text-lime-600">23</p>
@@ -115,15 +235,15 @@
                         <p class="font-semibold capitalize text-lg">( Rumah Sakit, Sekolah, Etc )</p>
                     </div>
                 </div>
-                <div class="flex flex-col items-center md:w-1/3 justify-between gap-4">
+                {{-- <div class="flex flex-col items-center md:w-1/3 justify-between gap-4">
                     <img src="{{ asset('image/kerjasama.svg') }}" width="250" alt="imeg1" srcset="">
                     <div class="flex flex-col items-center justify-end">
-                        <p class="font-black capitalize text-2xl text-lime-600">5</p>
+                        <p class="font-black capitalize text-2xl text-lime-600">{{ $coop->count() }}</p>
                         <p class="font-bold capitalize text-lg">Kerjasama</p>
                         <p class="font-semibold capitalize text-lg">( Menara Kamilah, Gada Pratama,Gada Madya,Gada
-                            Utama, BNSP RI )</p>
+                            Utama, BNSP RI, Etc )</p>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
         {{-- budaya Kerja --}}
@@ -158,12 +278,59 @@
                 </div>
             </div>
         </div> --}}
+        {{-- kerjasama --}}
+        {{-- <div class=" mt-5">
+            <div class="mx-5 my-5">
+                <p class="text-base text-center font-bold"><i
+                        class="ri-subtract-line font-semibold text-amber-500"></i><i
+                        class="ri-subtract-line font-semibold text-amber-500"></i> Bekerjasama Dengan <i
+                        class="ri-subtract-line font-semibold text-amber-500"></i><i
+                        class="ri-subtract-line font-semibold text-amber-500"></i></p>
+            </div>
+            <div class="coopSlider w-full carousel transition-all duration-300 ease-in-out px-[2.5svw]" style="height: 100%; max-height: 32svh;" id="scrollCoop">
+                @forelse ($coop as $cli)
+                    <div
+                        class="flex flex-col justify-end coopDiv carousel-item aspect-square px-[4svw] md:px-[0.5svw] transition-all duration-300 ease-in-out"
+                        style="gap: 1rem;">
+                        <span class="flex justify-center">
+                            <img src="{{ asset('storage/images/'. $cli->img) }}" width="100" class="rounded-md object-cover" alt="imeg1" loading="lazy"
+                                srcset="">
+                        </span>
+                        <p class="text-center font-semibold text-xs "
+                        style="width: 100%; @media (min-width: 768px) { max-width: 5svw; } text-align: center;">{{ $cli->name }}</p>
+                    </div>
+                @empty                    
+                @endforelse
+
+            </div>
+        </div> --}}
         {{-- peta --}}
         <p class="font-bold capitalize text-center mt-5 mb-2 text-xl">Lokasi Mitra PT. SAC</p>
         <div
             class="mx-5 md:mx-10 mt-5 outline-4 outline-dashed outline-amber-500 drop-shadow-md outline-offset-2 bg-gradient-to-bl from-stone-700 via-stone-600 to-stone-500 flex justify-center rounded-lg">
-            <div class="p-1 w-full">
+            <div class="p-1 w-full relative">
                 <img src="{{ asset('image/map.png') }}" alt="">
+                
+                <!--surabaja-->
+                <!--<div style="position: absolute; z-index: 1; left: 38.8%; top: 76.2%; width: 0.4rem; height: 0.4rem;" class="bg-white rounded-full"></div>-->
+                <!--<div style="position: absolute; z-index: 2; left: 38.9%; top: 70%; width: 3.125rem; height: 2.1875rem; border-top: 0.25rem solid; border-left: 0.25rem solid; border-color: white; border-radius: 0.625rem 0 0 0;" class=""></div>-->
+                <!--<div style="position: absolute; z-index: 3; left: 43%; top: 68.6%;" class="text-white text-sm">Surabaya</div>-->
+                <!--malongan-->
+                <!--<div style="position: absolute; z-index: 1; left: 38.25%; top: 75.9%; width: 0.4rem; height: 0.4rem;" class="bg-white rounded-full"></div>-->
+                <!--<div style="position: absolute; z-index: 2; left: 38.3%; bottom: 23.8%; width: 45px; height: 55px; border-top: 4px solid; border-left: 4px solid; border-color: white; border-radius: 10px 0 0 0;" class=""></div>-->
+                <!--<div style="position: absolute; z-index: 3; left: 42.2%; bottom: 31.8%;" class="text-white text-sm">Lamongan</div>-->
+                <!--sidoarjo-->
+                <!--<div style="position: absolute; z-index: 1; left: 38.8%; top: 77.4%; width: 0.4rem; height: 0.4rem;" class="bg-white rounded-full"></div>-->
+                <!--<div style="position: absolute; z-index: 2; left: 39%; bottom: 21.7%; width: 80px; height: 4px; border-top: 4px solid; border-left: 4px solid; border-color: white;" class=""></div>-->
+                <!--<div style="position: absolute; z-index: 3; left: 45.6%; bottom: 20.2%;" class="text-white text-sm">Sidoarjo</div>-->
+                <!--ogoronop-->
+                <!--<div style="position: absolute; z-index: 1; left: 35.8%; top: 80.8%; width: 0.4rem; height: 0.4rem;" class="bg-white rounded-full"></div>-->
+                <!--<div style="position: absolute; z-index: 2; left: 33.5%; bottom: 10%; width: 35px; height: 45px; border-bottom: 4px solid; border-right: 4px solid; border-color: white; border-radius: 0 0 10px 0;" class=""></div>-->
+                <!--<div style="position: absolute; z-index: 3; left: 28.4%; bottom: 8.6%;" class="text-white text-sm">Ponorogo</div>-->
+                <!--mbediun-->
+                <!--<div style="position: absolute; z-index: 1; left: 36.3%; top: 79.5%; width: 0.4rem; height: 0.4rem;" class="bg-white rounded-full"></div>-->
+                <!--<div style="position: absolute; z-index: 2; left: 36.4%; bottom: 10%; width: 35px; height: 55px; border-bottom: 4px solid; border-left: 4px solid; border-color: white; border-radius: 0 0 0 10px;" class=""></div>-->
+                <!--<div style="position: absolute; z-index: 3; left: 39.4%; bottom: 8.5%;" class="text-white text-sm">Madiun</div>-->
             </div>
         </div>
         {{-- client --}}
@@ -171,43 +338,28 @@
             <div class="mx-5 my-5">
                 <p class="text-base text-center font-bold"><i
                         class="ri-subtract-line font-semibold text-amber-500"></i><i
-                        class="ri-subtract-line font-semibold text-amber-500"></i> Our Client <i
+                        class="ri-subtract-line font-semibold text-amber-500"></i> Klien Kami <i
                         class="ri-subtract-line font-semibold text-amber-500"></i><i
                         class="ri-subtract-line font-semibold text-amber-500"></i></p>
             </div>
-            <div class="clientSlider w-full carousel transition-all  duration-300 ease-in-out" id="scrollContainer">
-                @for ($i = 1; $i <= 23; $i++)
+            <div class="clientSlider w-full carousel transition-all duration-300 ease-in-out px-[2.5svw]" style="height: 100%; max-height: 32svh;" id="scrollContainer">
+                @forelse ($client as $cli)
                     <div
-                        class="carousel-item flex flex-col items-center w-[25svw] px-[4svw] md:w-[10svw] h-auto md:px-[0.5svw] transition-all duration-300 ease-in-out">
-                        <img src="https://placehold.co/64x64/green/white" class="rounded-md object-cover" alt="imeg1"
-                            srcset="">
-                        <p class="text-[10px] font-bold text-center">aku mitra ke {{ $i }}</p>
+                        class="flex flex-col justify-end clientDiv carousel-item aspect-square px-[4svw] md:px-[0.5svw] transition-all duration-300 ease-in-out"
+                        style="gap: 1rem;">
+                        <span class="flex justify-center">
+                            <img src="{{ asset('storage/images/'. $cli->img) }}" width="100" class="rounded-md object-cover" alt="imeg1" loading="lazy"
+                                srcset="">
+                        </span>
+                        <p class="text-center font-semibold text-xs "
+                        style="width: 100%; @media (min-width: 768px) { max-width: 5svw; } text-align: center;">{{ $cli->name }}</p>
                     </div>
-                @endfor
+                @empty                    
+                @endforelse
+
             </div>
         </div>
-        {{-- Berita Terkini --}}
-        <div class="mt-5">
-            <div class="mx-5 my-5">
-                <p class="text-base text-center font-bold"><i
-                        class="ri-subtract-line font-semibold text-amber-500"></i><i
-                        class="ri-subtract-line font-semibold text-amber-500"></i> Berita Terkini <i
-                        class="ri-subtract-line font-semibold text-amber-500"></i><i
-                        class="ri-subtract-line font-semibold text-amber-500"></i></p>
-            </div>
-            <div class="beritaSlider carousel rounded-md aspect-video w-full max-h-[50svh]">
-                @for ($i = 1; $i < 5; $i++)
-                    <div
-                        class="carousel-item flex flex-col font-medium w-[40svw] px-[5svw] md:w-[15svw] md:px-[5svw]  transition-all duration-300 ease-in-out">
-                        <img src="https://placehold.co/1600x900/green/white" alt="imeg1" srcset=""
-                            class="rounded-md object-cover">
-                        <p class="text-sm md:text-base pt-4 font-semibold text-slate-400">
-                            {{ Carbon\Carbon::now()->format('Y-m') }}-{{ $i }}</p>
-                        <p class="text-sm md:text-base pb-2 capitalize line-clamp-3">judul {{ $i }}</p>
-                    </div>
-                @endfor
-            </div>
-        </div>
+        
         {{-- Testimoni --}}
         <div class=" mt-5">
             <div class="mx-5 my-5">
@@ -215,24 +367,24 @@
                         class="ri-subtract-line font-semibold text-amber-500"></i> Testimonial Pengguna Jasa <i
                         class="ri-subtract-line font-semibold text-amber-500"></i></p>
             </div>
-            <div class="carousel testiSlider w-full">
+            <div class="carousel testiSlider w-full" style="font-style: italic;">
                 <div
                     class="carousel-item flex flex-col  gap-2 text-center items-center whitespace-pre-line w-[90svw] px-[5svw] transition-all duration-300 ease-in-out">
-                    <p>Pelayanan bagus, cepat dan rapi. Pakaian karyawan juga semua rapi rapi recomended banget
+                    <p>"Pelayanan bagus, cepat dan rapi. Pakaian karyawan juga semua rapi rapi recomended banget"
                     </p>
                     <p class="font-semibold">- Pengguna Jasa PT. SAC Ponorogo -</p>
                 </div>
                 <div
                     class="carousel-item flex flex-col  gap-2 text-center items-center whitespace-pre-line w-[90svw] px-[5svw] transition-all duration-300 ease-in-out">
-                    <p>Aplikasi absensi dan pelaporan dari karyawan sangat inovatif,
+                    <p>"Aplikasi absensi dan pelaporan dari karyawan sangat inovatif,
                         bukan hanya itu absensi menggunakan lokasi serta pelaporan menggunakan
-                        barcode scan</p>
+                        barcode scan"</p>
                     <p class="font-semibold">- Pengguna Jasa PT. SAC Ponorogo -</p>
                 </div>
                 <div
                     class="carousel-item flex flex-col  gap-2 text-center items-center whitespace-pre-line w-[90svw] px-[5svw] transition-all duration-300 ease-in-out">
-                    <p>Cukup satu kata luar biasa, bisa sat set segala hal bersih, rapi
-                        Satpam juga sigap, bisa diandalkan</p>
+                    <p>"Cukup satu kata luar biasa, bisa sat set segala hal bersih, rapi
+                        Satpam juga sigap, bisa diandalkan"</p>
                     <p class="font-semibold">- Pengguna Jasa PT. SAC Ponorogo -</p>
                 </div>
             </div>
@@ -244,120 +396,130 @@
         </div>
     </div>
     <script>
-        $(document).ready(function() {
+       $(document).ready(function() {
+    const width = $(window).width();
+    const isSM = width <= 640;
+    const isMD = width <= 768;
+    const jmlSkip = isSM ? 2 : 8;
 
-            var width = $(window).width();
-            var isSM = width <= 640;
-            var isMD = width <= 768;
-            var isLG = width <= 1024;
-            var jmlSkip;
-            if (isSM) {
-                jmlSkip = 1;
-            } else if (isMD) {
-                jmlSkip = 2;
-            } else {
-                jmlSkip = 3;
-            }
-            console.log(width, isSM);
-            let currentSlide = 0;
-            let currentBerita = 0;
-            let currentTesti = 0;
-            let currentClient = 0;
-            let intervalID;
-            const slides = document.querySelectorAll('.slider img');
-            const beritaSlider = document.querySelectorAll('.beritaSlider div');
-            const testiSlider = document.querySelectorAll('.testiSlider div');
-            const clientSlider = document.querySelectorAll('.clientSlider div');
-            const bullets = document.querySelectorAll('.slider-bullet');
+    let currentSlide = 0;
+    let currentTesti = 0;
+    let currentClient = 0;
+    let currentCoop = 0;
+    let intervalID;
+    let cPost = 0;
 
-            function showSlide(n) {
-                slides.forEach((slide) => {
-                    slide.style.transform = 'translateX(' + (n * -100) +
-                    '%)'; // Adjusting the direction of translation
-                });
-                bullets.forEach((bullet, index) => {
-                    if (index == n) {
-                        bullet.classList.add('active');
-                    } else {
-                        bullet.classList.remove('active');
+    const slides = $('.slider img');
+    const beritaSlider = $('.beritaSlider div');
+    const testiSlider = $('.testiSlider div');
+    const clientSlider = $('.clientSlider div');
+    const coopSlider = $('.coopSlider div');
+    const bullets = $('.slider-bullet');
 
-                    }
-                });
-            };
+    // Add pagination for posts
+    $('#paginatePost').append(`
+        <span class="flex justify-center font-semibold rounded-md" style="background-color: #e5e7eb; padding: 2px 4px; width: 75px; gap: 1rem;">
+            <button id="prevPost" class="text-lg">&laquo;</button>
+            <button id="currentPost">${cPost}</button>
+            <button id="nextPost" class="text-lg">&raquo;</button>
+        </span>
+    `);
 
-            function showClient(n) {
-                // console.log(n);
-                clientSlider.forEach((client, index) => {
-                    client.style.transform = 'translateX(' + (n * -25) + 'svw)';
-                });
-            };
+    // Pagination click handlers
+    $('#prevPost').click(() => {
+        if (cPost > 0) {
+            cPost--;
+            $('#currentPost').text(cPost);
+            updateSliderTransform(beritaSlider, cPost, -100);
+        }
+    });
 
-            function showBerita(n) {
-                // console.log(n);
-                beritaSlider.forEach((berita) => {
-                    berita.style.transform = 'translateX(' + (n * -50) + 'svw)';
-                });
-            };
+    $('#nextPost').click(() => {
+        if (cPost < (beritaSlider.length - jmlSkip)) {
+            cPost++;
+            $('#currentPost').text(cPost);
+            updateSliderTransform(beritaSlider, cPost, -100);
+        }
+    });
 
-            function showTesti(n) {
-                // console.log(n);
-                testiSlider.forEach((testi) => {
-                    testi.style.transform = 'translateX(' + (n * -100) + 'svw)';
-                });
-            };
+    // Update transform style for sliders
+    function updateSliderTransform(sliderElements, index, percentage) {
+        sliderElements.css('transform', `translateX(${index * percentage}%)`);
+    }
 
-            function nextSlide() {
-                currentSlide = (currentSlide + 1) % slides.length;
-                showSlide(currentSlide);
-            }
+    // Show specific slide
+    function showSlide(n) {
+        updateSliderTransform(slides, n, -100);
+        bullets.removeClass('active').eq(n).addClass('active');
+    }
 
-            function prevSlide() {
-                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-                showSlide(currentSlide);
-            }
+    // Show specific client
+    function showClient(n) {
+        updateSliderTransform(clientSlider, n, -100);
+    }
 
-            function nextBerita() {
-                currentBerita = (currentBerita + 1) % (beritaSlider.length - jmlSkip);
-                showBerita(currentBerita);
-            }
+    // Show specific cooperation
+    function showCoop(n) {
+        updateSliderTransform(coopSlider, n, -25);
+    }
 
-            function nextTesti() {
-                currentTesti = (currentTesti + 1) % testiSlider.length;
-                showTesti(currentTesti);
-            }
+    // Show specific testimonial
+    function showTesti(n) {
+        updateSliderTransform(testiSlider, n, -100);
+    }
 
-            function nextClient() {
-                currentClient = (currentClient + 1) % (clientSlider.length - 14);
-                // console.log(currentClient);
-                showClient(currentClient);
-            }
+    // Automatic sliding functions
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
 
-            function startSlideInterval() {
-                intervalID = setInterval(nextSlide, 3500);
-            }
+    function nextTesti() {
+        currentTesti = (currentTesti + 1) % testiSlider.length;
+        showTesti(currentTesti);
+    }
 
-            function stopSlideInterval() {
-                clearInterval(intervalID);
-                intervalID = setInterval(nextSlide, 3500);
-            }
+    function nextClient() {
+        currentClient = (currentClient + 1) % (clientSlider.length / (width <= 768 ? 1 : 2));
+        showClient(currentClient);
+    }
 
+    function nextCoop() {
+        currentCoop = (currentCoop + 1) % (coopSlider.length / (width <= 768 ? 1 : 6));
+        showCoop(currentCoop);
+    }
+
+    // Start and stop the slide interval
+    function startSlideInterval() {
+        intervalID = setInterval(nextSlide, 3500);
+    }
+
+    function stopSlideInterval() {
+        clearInterval(intervalID);
+        startSlideInterval();
+    }
+
+    // Initialize the sliders and intervals
+    showSlide(currentSlide);
+    showTesti(currentTesti);
+    showClient(currentClient);
+    showCoop(currentCoop);
+
+    setInterval(nextTesti, 5500);
+    setInterval(nextClient, 3000);
+    setInterval(nextCoop, 3500);
+    startSlideInterval();
+
+    // Bullet click handler
+    bullets.each((index, bullet) => {
+        $(bullet).click(() => {
+            currentSlide = index;
             showSlide(currentSlide);
-            showBerita(currentBerita);
-            showTesti(currentTesti);
-            showClient(currentClient);
-            setInterval(nextTesti, 5500);
-            setInterval(nextBerita, 6500);
-            setInterval(nextClient, 3000);
-            startSlideInterval();
+            stopSlideInterval();
+        });
+    });
+});
 
-            bullets.forEach((bullet, index) => {
-                bullet.addEventListener('click', () => {
-                    currentSlide = index;
-                    showSlide(currentSlide);
-                    stopSlideInterval();
-                });
-            });
-        })
     </script>
 </body>
 

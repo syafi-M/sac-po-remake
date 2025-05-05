@@ -7,6 +7,7 @@ use App\Http\Controllers\ImgClientController;
 use App\Http\Controllers\ImgGalerryController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CoopController;
 use App\Models\ImgClient;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -27,6 +28,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 // });
 
 Route::get('/', [DashboardController::class, 'index'])->name('/');
+Route::get('/artikel/{id}', [DashboardController::class, 'seeArtikel'])->name('artikel');
 Route::get('/profile-sac', [DashboardController::class, 'profil'])->name('profile-perusahaan');
 Route::get('/portofolio-sac', [DashboardController::class, 'porto'])->name('portofolio-perusahaan');
 Route::get('/galeri-sac', [DashboardController::class, 'galeri'])->name('galeri-perusahaan');
@@ -34,6 +36,8 @@ Route::get('/client-sac', [DashboardController::class, 'client'])->name('client-
 Route::get('/kontak-sac', [DashboardController::class, 'kontak'])->name('kontak-perusahaan');
 Route::get('/company-profile-sac', [DashboardController::class, 'companyProfile'])->name('company-profile-perusahaan');
 Route::get('/outsourcing-sac', [DashboardController::class, 'outsourcing'])->name('outsourcing-perusahaan');
+Route::view('/aplikasi-sac', 'aplikasi.index')->name('aplikasi.index');
+
 
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function() {
@@ -41,6 +45,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function() {
     Route::resource('/client', ImgClientController::class);
     Route::resource('/galery', ImgGalerryController::class);
     Route::resource('/banners', ImgBannerController::class);
+    Route::resource('/kerjasama', CoopController::class);
     Route::get('/admin-dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 });
 

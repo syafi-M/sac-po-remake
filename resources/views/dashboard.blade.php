@@ -79,17 +79,30 @@
         }
         
         /* Optional: Different hover effects for different images */
-        .img-berita:nth-child(odd):hover img {
+        .img-berita:nth-child(odd):hover .img1 {
             transform: scale(1) rotate(0deg);
             @media (min-width: 768px) {
                 transform: scale(1.03) rotate(-3deg);
             }
         }
         
-        .img-berita:nth-child(even):hover img {
+        .img-berita:nth-child(even):hover .img1 {
             transform: scale(1) rotate(0deg);
             @media (min-width: 768px) {
                 transform: scale(1.03) rotate(3deg);
+            }
+        }
+        .img-berita:nth-child(odd):hover .img2 {
+            transform: scale(1) rotate(0deg);
+            @media (min-width: 768px) {
+                transform: scale(1.03) rotate(2deg);
+            }
+        }
+        
+        .img-berita:nth-child(even):hover .img2 {
+            transform: scale(1) rotate(0deg);
+            @media (min-width: 768px) {
+                transform: scale(1.03) rotate(-2deg);
             }
         }
         
@@ -98,6 +111,22 @@
             @media (min-width: 768px) {
                 min-height: 50svh;
             }
+        }
+
+        @keyframes slideLeftThenBack {
+        0% {
+            transform: translateX(0);
+        }
+        50% {
+            transform: translateX(-80pt); /* move to the left */
+        }
+        100% {
+            transform: translateX(0); /* return to original */
+        }
+        }
+
+        .animate-left-bounce {
+            animation: slideLeftThenBack 1.5s ease-in-out;
         }
 
     </style>
@@ -156,10 +185,16 @@
                     <div
                         class="carousel-item font-medium  transition-all duration-300 ease-in-out img-berita">
                         <a href="{{ route('artikel', $art->id) }}" class="flex flex-col">
-                            <img src="{{ asset('storage/images/'.$art->img) }}" alt="imeg1" srcset="" loading="lazy"
-                                srcset="{{ asset('storage/images/'.$art->img) }} 1x, {{ asset('storage/images/'.$art->img.'_2x') }} 2x" 
-                                sizes="(max-width: 600px) 100vw, 50vw" 
-                                class="rounded-md object-cover aspect-video">
+                            <div class="relative flex justify-center items-start h-[65pt] md:h-[110pt]">
+                                <img src="{{ asset('storage/images/'.$art->img) }}" alt="imeg1" srcset="" loading="lazy"
+                                    srcset="{{ asset('storage/images/'.$art->img) }} 1x, {{ asset('storage/images/'.$art->img.'_2x') }} 2x" 
+                                    sizes="(max-width: 600px) 100vw, 50vw" 
+                                    class="rounded-md object-cover aspect-video absolute z-[3] img1">
+                                <img src="{{ asset('storage/images/'.$art->img) }}" alt="imeg1" srcset="" loading="lazy"
+                                    srcset="{{ asset('storage/images/'.$art->img) }} 1x, {{ asset('storage/images/'.$art->img.'_2x') }} 2x" 
+                                    sizes="(max-width: 600px) 100vw, 50vw" 
+                                    class="rounded-md object-cover aspect-video absolute z-[2] opacity-45 blur-[2px] img2">
+                            </div>
                             <p class="text-sm md:text-base pt-4 font-semibold text-slate-400">
                                 {{ $art->created_at->format('Y-m-d') }}</p>
                             <p class="text-sm md:text-base capitalize line-clamp-3">{{ $art->title }}</p>
@@ -169,9 +204,6 @@
                 @empty
                     
                 @endforelse
-            </div>
-            <div id="paginatePost" class="flex justify-center">
-                
             </div>
         </div>
 
@@ -216,8 +248,6 @@
         {{-- tujuan --}}
 
         <div class="mx-5 md:mx-10 mt-5 md:mt-10 text-center ">
-            {{-- <p class="font-bold capitalize text-xl">PT Surya Amanah Cendekia Ponorogo</p>
-            <p class="font-medium pt-2 capitalize text-lg">Info Lebih Lanjut</p> --}}
             <div class="pt-5 md:flex md:items-start md:w-full">
                 <div class="flex flex-col items-center md:w-1/2 justify-between gap-4">
                     <img src="{{ asset('image/outsourcing.svg') }}" width="250" alt="imeg1" srcset="">
@@ -235,15 +265,6 @@
                         <p class="font-semibold capitalize text-lg">( Rumah Sakit, Sekolah, Etc )</p>
                     </div>
                 </div>
-                {{-- <div class="flex flex-col items-center md:w-1/3 justify-between gap-4">
-                    <img src="{{ asset('image/kerjasama.svg') }}" width="250" alt="imeg1" srcset="">
-                    <div class="flex flex-col items-center justify-end">
-                        <p class="font-black capitalize text-2xl text-lime-600">{{ $coop->count() }}</p>
-                        <p class="font-bold capitalize text-lg">Kerjasama</p>
-                        <p class="font-semibold capitalize text-lg">( Menara Kamilah, Gada Pratama,Gada Madya,Gada
-                            Utama, BNSP RI, Etc )</p>
-                    </div>
-                </div> --}}
             </div>
         </div>
         {{-- budaya Kerja --}}
@@ -345,9 +366,9 @@
             <div class="clientSlider w-full carousel transition-all duration-300 ease-in-out px-[2.5svw]" style="height: 100%; max-height: 32svh;" id="scrollContainer">
                 @forelse ($client as $cli)
                     <div
-                        class="flex flex-col justify-end clientDiv carousel-item aspect-square px-[4svw] md:px-[0.5svw] transition-all duration-300 ease-in-out"
+                        class="flex flex-col justify-around clientDiv carousel-item aspect-square px-[4svw] md:px-[0.5svw] transition-all duration-300 ease-in-out"
                         style="gap: 1rem;">
-                        <span class="flex justify-center">
+                        <span class="flex justify-center items-center">
                             <img src="{{ asset('storage/images/'. $cli->img) }}" width="100" class="rounded-md object-cover" alt="imeg1" loading="lazy"
                                 srcset="">
                         </span>
@@ -396,129 +417,126 @@
         </div>
     </div>
     <script>
+        window.onload = function () {
+            const items = document.querySelectorAll('.img-berita');
+            items.forEach(item => {
+                item.classList.add('animate-left-bounce');
+            });
+        };
        $(document).ready(function() {
-    const width = $(window).width();
-    const isSM = width <= 640;
-    const isMD = width <= 768;
-    const jmlSkip = isSM ? 2 : 8;
+            const width = $(window).width();
+            const isSM = width <= 640;
+            const isMD = width <= 768;
+            const jmlSkip = isSM ? 2 : 8;
 
-    let currentSlide = 0;
-    let currentTesti = 0;
-    let currentClient = 0;
-    let currentCoop = 0;
-    let intervalID;
-    let cPost = 0;
+            let currentSlide = 0;
+            let currentTesti = 0;
+            let currentClient = 0;
+            let currentCoop = 0;
+            let intervalID;
+            let cPost = 0;
 
-    const slides = $('.slider img');
-    const beritaSlider = $('.beritaSlider div');
-    const testiSlider = $('.testiSlider div');
-    const clientSlider = $('.clientSlider div');
-    const coopSlider = $('.coopSlider div');
-    const bullets = $('.slider-bullet');
+            const slides = $('.slider img');
+            const beritaSlider = $('.beritaSlider div');
+            const testiSlider = $('.testiSlider div');
+            const clientSlider = $('.clientSlider div');
+            const coopSlider = $('.coopSlider div');
+            const bullets = $('.slider-bullet');
 
-    // Add pagination for posts
-    $('#paginatePost').append(`
-        <span class="flex justify-center font-semibold rounded-md" style="background-color: #e5e7eb; padding: 2px 4px; width: 75px; gap: 1rem;">
-            <button id="prevPost" class="text-lg">&laquo;</button>
-            <button id="currentPost">${cPost}</button>
-            <button id="nextPost" class="text-lg">&raquo;</button>
-        </span>
-    `);
+            // Pagination click handlers
+            $('#prevPost').click(() => {
+                if (cPost > 0) {
+                    cPost--;
+                    $('#currentPost').text(cPost);
+                    updateSliderTransform(beritaSlider, cPost, -100);
+                }
+            });
 
-    // Pagination click handlers
-    $('#prevPost').click(() => {
-        if (cPost > 0) {
-            cPost--;
-            $('#currentPost').text(cPost);
-            updateSliderTransform(beritaSlider, cPost, -100);
-        }
-    });
+            $('#nextPost').click(() => {
+                if (cPost < (beritaSlider.length - jmlSkip)) {
+                    cPost++;
+                    $('#currentPost').text(cPost);
+                    updateSliderTransform(beritaSlider, cPost, -100);
+                }
+            });
 
-    $('#nextPost').click(() => {
-        if (cPost < (beritaSlider.length - jmlSkip)) {
-            cPost++;
-            $('#currentPost').text(cPost);
-            updateSliderTransform(beritaSlider, cPost, -100);
-        }
-    });
+            // Update transform style for sliders
+            function updateSliderTransform(sliderElements, index, percentage) {
+                sliderElements.css('transform', `translateX(${index * percentage}%)`);
+            }
 
-    // Update transform style for sliders
-    function updateSliderTransform(sliderElements, index, percentage) {
-        sliderElements.css('transform', `translateX(${index * percentage}%)`);
-    }
+            // Show specific slide
+            function showSlide(n) {
+                updateSliderTransform(slides, n, -100);
+                bullets.removeClass('active').eq(n).addClass('active');
+            }
 
-    // Show specific slide
-    function showSlide(n) {
-        updateSliderTransform(slides, n, -100);
-        bullets.removeClass('active').eq(n).addClass('active');
-    }
+            // Show specific client
+            function showClient(n) {
+                updateSliderTransform(clientSlider, n, -100);
+            }
 
-    // Show specific client
-    function showClient(n) {
-        updateSliderTransform(clientSlider, n, -100);
-    }
+            // Show specific cooperation
+            function showCoop(n) {
+                updateSliderTransform(coopSlider, n, -25);
+            }
 
-    // Show specific cooperation
-    function showCoop(n) {
-        updateSliderTransform(coopSlider, n, -25);
-    }
+            // Show specific testimonial
+            function showTesti(n) {
+                updateSliderTransform(testiSlider, n, -100);
+            }
 
-    // Show specific testimonial
-    function showTesti(n) {
-        updateSliderTransform(testiSlider, n, -100);
-    }
+            // Automatic sliding functions
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
 
-    // Automatic sliding functions
-    function nextSlide() {
-        currentSlide = (currentSlide + 1) % slides.length;
-        showSlide(currentSlide);
-    }
+            function nextTesti() {
+                currentTesti = (currentTesti + 1) % testiSlider.length;
+                showTesti(currentTesti);
+            }
 
-    function nextTesti() {
-        currentTesti = (currentTesti + 1) % testiSlider.length;
-        showTesti(currentTesti);
-    }
+            function nextClient() {
+                currentClient = (currentClient + 1) % (clientSlider.length / (width <= 768 ? 1 : 2));
+                showClient(currentClient);
+            }
 
-    function nextClient() {
-        currentClient = (currentClient + 1) % (clientSlider.length / (width <= 768 ? 1 : 2));
-        showClient(currentClient);
-    }
+            function nextCoop() {
+                currentCoop = (currentCoop + 1) % (coopSlider.length / (width <= 768 ? 1 : 6));
+                showCoop(currentCoop);
+            }
 
-    function nextCoop() {
-        currentCoop = (currentCoop + 1) % (coopSlider.length / (width <= 768 ? 1 : 6));
-        showCoop(currentCoop);
-    }
+            // Start and stop the slide interval
+            function startSlideInterval() {
+                intervalID = setInterval(nextSlide, 3500);
+            }
 
-    // Start and stop the slide interval
-    function startSlideInterval() {
-        intervalID = setInterval(nextSlide, 3500);
-    }
+            function stopSlideInterval() {
+                clearInterval(intervalID);
+                startSlideInterval();
+            }
 
-    function stopSlideInterval() {
-        clearInterval(intervalID);
-        startSlideInterval();
-    }
-
-    // Initialize the sliders and intervals
-    showSlide(currentSlide);
-    showTesti(currentTesti);
-    showClient(currentClient);
-    showCoop(currentCoop);
-
-    setInterval(nextTesti, 5500);
-    setInterval(nextClient, 3000);
-    setInterval(nextCoop, 3500);
-    startSlideInterval();
-
-    // Bullet click handler
-    bullets.each((index, bullet) => {
-        $(bullet).click(() => {
-            currentSlide = index;
+            // Initialize the sliders and intervals
             showSlide(currentSlide);
-            stopSlideInterval();
+            showTesti(currentTesti);
+            showClient(currentClient);
+            showCoop(currentCoop);
+
+            setInterval(nextTesti, 5500);
+            setInterval(nextClient, 3000);
+            setInterval(nextCoop, 3500);
+            startSlideInterval();
+
+            // Bullet click handler
+            bullets.each((index, bullet) => {
+                $(bullet).click(() => {
+                    currentSlide = index;
+                    showSlide(currentSlide);
+                    stopSlideInterval();
+                });
+            });
         });
-    });
-});
 
     </script>
 </body>

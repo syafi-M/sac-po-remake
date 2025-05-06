@@ -27,18 +27,31 @@
             </div>
             <div class="flex flex-col items-center gap-2 justify-center">
                 <p class="text-center font-bold text-lg md:text-2xl">Semua Klien Kami</p>
-                <div class="gap-4  max-w-4xl grid md:grid-cols-5 grid-cols-3 justify-center">
-                    @forelse ($client as $i => $item)
-                        <div class="w-full flex flex-col items-center justify-between">
-                            <img src="{{ asset('storage/images/'.$item->img) }}" width="100" alt="img{{ $i }}" srcset="">
-                            <p class="text-center font-semibold text-xs py-1 sm:text-sm">{{ $item->name }}</p>
-                        </div>
-                        
-                    @empty
-                        
-                    @endforelse
-                    
-                </div>
+                @php
+                    $mitras = $client->values()->all();
+                    $pattern = [3, 2]; // Pola baris: 3 item, lalu 2 item, lalu ulangi
+                    $index = 0;
+                    $row = 0;
+                @endphp
+                @while ($index < count($mitras))
+                    @php
+                        $columns = $pattern[$row % count($pattern)];
+                        $items = collect($mitras)->slice($index, $columns);
+                    @endphp
+                    <div class="gap-4 max-w-4xl grid justify-center" style="grid-template-columns: repeat({{ $items->count() }}, minmax(0, 1fr)); justify-items: center;">
+                        @forelse ($items as $i => $item)
+                            <div class="w-full flex flex-col items-center justify-between">
+                                <img src="{{ asset('storage/images/'.$item->img) }}" class="object-contain w-24 h-24" alt="img{{ $i }}" srcset="">
+                                <p class="text-center font-semibold text-xs py-1 sm:text-sm w-24">{{ $item->name }}</p>
+                            </div>
+                        @empty
+                        @endforelse
+                    </div>
+                    @php
+                        $index += $columns;
+                        $row++;
+                    @endphp
+                @endwhile
             </div>
         </div>
     </div>

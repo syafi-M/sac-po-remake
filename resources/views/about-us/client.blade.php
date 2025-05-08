@@ -11,7 +11,7 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <title>Sac-po.com</title>
+    <title>Klien Kami - PT. Surya Amanah Cendikia Ponorogo</title>
 </head>
 <body class=" min-w-full min-h-screen">
     <div>

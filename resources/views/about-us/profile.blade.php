@@ -5,13 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Pelajari lebih lanjut tentang visi, misi, dan tim profesional di balik PT. Surya Amanah Cendikia, penyedia layanan SDM dan outsourcing terpercaya di Ponorogo." />
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700,900&display=swap" rel="stylesheet" />
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <title>Sac-po.com</title>
+    <title>Profile Perusahaan Kami - PT. Surya Amanah Cendikia Ponorogo</title>
 </head>
 <body class=" min-w-full min-h-screen">
     <div>

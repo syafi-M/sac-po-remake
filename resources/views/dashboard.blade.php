@@ -15,7 +15,7 @@
      crossorigin="anonymous"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <title>Sac-po.com</title>
+    <title>PT. Surya Amanah Cendikia Ponorogo – Penyedia Outsourcing & Pengembangan SDM Profesional</title>
     <style>
         .slider-bullets {
             display: flex;

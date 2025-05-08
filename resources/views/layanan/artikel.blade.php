@@ -12,7 +12,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <meta name="description" content="{{ $artikel->desc }}">
     <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <title>Sac-po.com - {{ $artikel->title }}</title>
+    <title>{{ $artikel->title }} - PT. Surya Amanah Cendikia</title>
 </head>
 <body class=" min-w-full min-h-screen">
     <div>

@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\ImgClient;
 use App\Models\ImgBanner;
 use App\Models\Coop;
+use App\Models\Videos;
 use Illuminate\Http\Request;
 
 class AdminDashboardController extends Controller
@@ -13,6 +14,9 @@ class AdminDashboardController extends Controller
     public function index(){
         $postCount = Post::count();
         $post = Post::latest()->first();
+
+        $videoCount = Videos::count();
+        $video = Videos::latest()->first();
         
         $clientCount = ImgClient::count();
         $client = ImgClient::latest()->first();
@@ -24,7 +28,7 @@ class AdminDashboardController extends Controller
         $kerjasama = Coop::latest()->first();
         
         // dd($kerjasama);
-        return view('admin.dashboard', compact('postCount', 'post', 'clientCount', 'client', 'bannerCount', 'banner', 'kerjasamaCount', 'kerjasama'));
+        return view('admin.dashboard', compact('postCount', 'post', 'clientCount', 'client', 'bannerCount', 'banner', 'kerjasamaCount', 'kerjasama', 'videoCount', 'video'));
     }
    
 }

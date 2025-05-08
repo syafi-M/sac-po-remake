@@ -8,6 +8,7 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Kerjasama;
 use App\Models\Coop;
+use App\Models\Videos;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -19,7 +20,8 @@ class DashboardController extends Controller
         $banner = ImgBanner::latest()->get();
         $userCount = User::on('mysql2')->whereNot('devisi_id', 8)->count();
         $kerjasamaCount = Kerjasama::on('mysql2')->count();
-        return view('dashboard', compact('client', 'coop' , 'artikel', 'banner', 'userCount', 'kerjasamaCount'));
+        $video = Videos::latest()->get();
+        return view('dashboard', compact('client', 'coop' , 'artikel', 'banner', 'userCount', 'kerjasamaCount', 'video'));
     }
     public function seeArtikel($id){
         $artikel = Post::findOrFail($id);

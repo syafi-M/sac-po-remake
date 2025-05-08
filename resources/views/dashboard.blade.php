@@ -129,6 +129,10 @@
             animation: slideLeftThenBack 1.5s ease-in-out;
         }
 
+        .animate-left-bounce2 {
+            animation: slideLeftThenBack 1.7s ease-in-out;
+        }
+
     </style>
 </head>
 
@@ -180,30 +184,60 @@
                         class="ri-subtract-line font-semibold text-amber-500"></i><i
                         class="ri-subtract-line font-semibold text-amber-500"></i></p>
             </div>
-            <div style="overflow-x: scroll; overflow-y: hidden; padding-top: 3vh; position: relative; z-index: 90;" class="beritaSlider carousel rounded-md aspect-video w-full">
-                @forelse ($artikel as $art)
-                    <div
-                        class="carousel-item font-medium  transition-all duration-300 ease-in-out img-berita">
-                        <a href="{{ route('artikel', $art->id) }}" class="flex flex-col">
-                            <div class="relative flex justify-center items-start h-[65pt] md:h-[110pt]">
-                                <img src="{{ asset('storage/images/'.$art->img) }}" alt="imeg1" srcset="" loading="lazy"
-                                    srcset="{{ asset('storage/images/'.$art->img) }} 1x, {{ asset('storage/images/'.$art->img.'_2x') }} 2x" 
-                                    sizes="(max-width: 600px) 100vw, 50vw" 
-                                    class="rounded-md object-cover aspect-video absolute z-[3] img1">
-                                <img src="{{ asset('storage/images/'.$art->img) }}" alt="imeg1" srcset="" loading="lazy"
-                                    srcset="{{ asset('storage/images/'.$art->img) }} 1x, {{ asset('storage/images/'.$art->img.'_2x') }} 2x" 
-                                    sizes="(max-width: 600px) 100vw, 50vw" 
-                                    class="rounded-md object-cover aspect-video absolute z-[2] opacity-45 blur-[2px] img2">
+            <div class="w-full flex flex-col md:flex-row">
+                <div class="bg-lime-600 w-full md:w-[40%] min-h-[220pt] md:h-auto rounded-b-md md:rounded-r-md md:rounded-bl-none flex overflow-x-scroll carousel">
+                    @forelse ($video as $vid)
+                        <div class="flex flex-col pt-2 justify-start items-center w-full transition-all duration-300 ease-in-out carousel-item vidDiv">
+                            <div class="flex flex-col justify-center items-center w-full max-w-[23rem] md:max-w-[26rem] p-2">
+                                <iframe class="w-full aspect-video rounded-md" src="{{ URL::asset('storage/' . $vid->video_path) }}?autoplay=0" 
+                                    loading="lazy"
+                                    title="{{ $vid->title }}" 
+                                    frameborder="0" 
+                                    sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-presentation"
+                                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen>
+                                </iframe>
                             </div>
-                            <p class="text-sm md:text-base pt-4 font-semibold text-slate-400">
-                                {{ $art->created_at->format('Y-m-d') }}</p>
-                            <p class="text-sm md:text-base capitalize line-clamp-3">{{ $art->title }}</p>
-                        </a>
-                    </div>
-                    
-                @empty
-                    
-                @endforelse
+                            <div class="text-center">
+                                <p class="font-semibold capitalize md:text-xl text-white">{{ $vid->title }}</p>
+                                <p class="font-semibold capitalize text-white text-xs mdtext-sm">{{ $vid->description }}</p>
+                            </div>
+                        </div>
+                    @empty
+                        <div class="flex flex-col pt-2 justify-start items-center w-full transition-all duration-300 ease-in-out carousel-item vidDiv">
+                            <div class="flex flex-col justify-center items-center w-full max-w-[23rem] md:max-w-[26rem] p-2">
+                                Kosong
+                            </div>
+                            <div class="text-center">
+                                <p class="font-semibold capitalize md:text-xl text-white">-</p>
+                                <p class="font-semibold capitalize text-white text-xs mdtext-sm">-</p>
+                            </div>
+                        </div>
+                    @endforelse
+                </div>
+                <div class="beritaSlider w-full md:w-[60%] relative z-[90] pt-[3vh] overflow-x-scroll overflow-y-hidden carousel rounded-md aspect-video">
+                    @forelse ($artikel as $art)
+                        <div
+                            class="carousel-item font-medium  transition-all duration-300 ease-in-out img-berita">
+                            <a href="{{ route('artikel', $art->id) }}" class="flex flex-col">
+                                <div class="relative flex justify-center items-start h-[65pt] md:h-[110pt]">
+                                    <img src="{{ asset('storage/images/'.$art->img) }}" alt="imeg1" srcset="" loading="lazy"
+                                        srcset="{{ asset('storage/images/'.$art->img) }} 1x, {{ asset('storage/images/'.$art->img.'_2x') }} 2x" 
+                                        sizes="(max-width: 600px) 100vw, 50vw" 
+                                        class="rounded-md object-cover aspect-video absolute z-[3] img1">
+                                    <img src="{{ asset('storage/images/'.$art->img) }}" alt="imeg1" srcset="" loading="lazy"
+                                        srcset="{{ asset('storage/images/'.$art->img) }} 1x, {{ asset('storage/images/'.$art->img.'_2x') }} 2x" 
+                                        sizes="(max-width: 600px) 100vw, 50vw" 
+                                        class="rounded-md object-cover aspect-video absolute z-[2] opacity-45 blur-[2px] img2">
+                                </div>
+                                <p class="text-sm md:text-base pt-4 font-semibold text-slate-400">
+                                    {{ $art->created_at->format('Y-m-d') }}</p>
+                                <p class="text-sm md:text-base capitalize line-clamp-3">{{ $art->title }}</p>
+                            </a>
+                        </div>
+                    @empty
+                    @endforelse
+                </div>
             </div>
         </div>
 
@@ -419,8 +453,12 @@
     <script>
         window.onload = function () {
             const items = document.querySelectorAll('.img-berita');
+            const vid = document.querySelectorAll('.vidDiv');
             items.forEach(item => {
                 item.classList.add('animate-left-bounce');
+            });
+            vid.forEach(item => {
+                item.classList.add('animate-left-bounce2');
             });
         };
        $(document).ready(function() {

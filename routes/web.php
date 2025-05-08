@@ -8,6 +8,7 @@ use App\Http\Controllers\ImgGalerryController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CoopController;
+use App\Http\Controllers\VideoController;
 use App\Models\ImgClient;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -46,6 +47,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function() {
     Route::resource('/galery', ImgGalerryController::class);
     Route::resource('/banners', ImgBannerController::class);
     Route::resource('/kerjasama', CoopController::class);
+    Route::resource('/videos', VideoController::class);
     Route::get('/admin-dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 });
 

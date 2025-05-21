@@ -185,7 +185,7 @@
                         class="ri-subtract-line font-semibold text-amber-500"></i></p>
             </div>
             <div class="w-full flex flex-col md:flex-row">
-                @if($video)
+                @if($video->count() > 0)
                 <div class="bg-lime-600 w-full md:w-[40%] min-h-[220pt] md:h-auto rounded-b-md md:rounded-r-md md:rounded-bl-none flex overflow-x-scroll carousel">
                     @forelse ($video as $vid)
                         <div class="flex flex-col pt-2 justify-start items-center w-full transition-all duration-300 ease-in-out carousel-item vidDiv">

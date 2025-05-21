@@ -185,6 +185,7 @@
                         class="ri-subtract-line font-semibold text-amber-500"></i></p>
             </div>
             <div class="w-full flex flex-col md:flex-row">
+                @if($video)
                 <div class="bg-lime-600 w-full md:w-[40%] min-h-[220pt] md:h-auto rounded-b-md md:rounded-r-md md:rounded-bl-none flex overflow-x-scroll carousel">
                     @forelse ($video as $vid)
                         <div class="flex flex-col pt-2 justify-start items-center w-full transition-all duration-300 ease-in-out carousel-item vidDiv">
@@ -215,7 +216,8 @@
                         </div>
                     @endforelse
                 </div>
-                <div class="beritaSlider w-full md:w-[60%] relative z-[90] pt-[3vh] overflow-x-scroll overflow-y-hidden carousel rounded-md aspect-video">
+                @endif
+                <div class="beritaSlider w-full {{ $video ? ' md:w-[60%]' : '' }} relative z-[90] pt-[3vh] overflow-x-scroll overflow-y-hidden carousel rounded-md aspect-video">
                     @forelse ($artikel as $art)
                         <div
                             class="carousel-item font-medium  transition-all duration-300 ease-in-out img-berita">

@@ -193,7 +193,9 @@
                                 <iframe class="w-full aspect-video rounded-md" src="{{ $vid->video_path }}" 
                                     loading="lazy"
                                     title="{{ $vid->title }}" 
-                                    allowfullscreen>
+                                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen 
+                                    >
                                 </iframe>
                             </div>
                             <div class="text-center">

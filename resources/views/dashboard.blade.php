@@ -186,14 +186,25 @@
             </div>
             <div class="w-full flex flex-col md:flex-row">
                 @if($video->count() > 0)
+                @php
+                    function convertToEmbedUrl($url) {
+                        if (strpos($url, 'youtu.be/') !== false) {
+                            return str_replace('youtu.be/', 'www.youtube.com/embed/', $url);
+                        } elseif (strpos($url, 'watch?v=') !== false) {
+                            return str_replace('watch?v=', 'embed/', $url);
+                        }
+                        return $url; // fallback
+                    }
+                @endphp
                 <div class="bg-lime-600 w-full md:w-[40%] min-h-[220pt] md:h-auto rounded-b-md md:rounded-r-md md:rounded-bl-none flex overflow-x-scroll carousel">
                     @forelse ($video as $vid)
                         <div class="flex flex-col pt-2 justify-start items-center w-full transition-all duration-300 ease-in-out carousel-item vidDiv">
                             <div class="flex flex-col justify-center items-center w-full max-w-[23rem] md:max-w-[26rem] p-2">
-                                <iframe class="w-full aspect-video rounded-md" src="{{ $vid->video_path }}" 
+                                <iframe class="w-full aspect-video rounded-md" 
+                                    src="{{ convertToEmbedUrl($vid->video_path) }}{{ $loop->first ? '?autoplay=1' : '' }}" 
                                     loading="lazy"
                                     title="{{ $vid->title }}" 
-                                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                     allowfullscreen 
                                     >
                                 </iframe>

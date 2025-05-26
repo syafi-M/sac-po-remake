@@ -12,7 +12,7 @@
                         <div class="label">
                             <span class="label-text required">Video</span>
                         </div>
-                        <input id="video" name="video" type="file" accept="video/*" required class="file-input file-input-sm file-input-bordered w-full rounded-[3.5px]" />
+                        <input id="video" name="video" required type="text" placeholder="Link Video (Drive, Youtube, Etc)" class="input input-sm input-bordered w-full rounded-[3.5px]" />
                         <x-input-error :messages="$errors->get('video')" class="mt-2" />
                     </label>
                     <label class="form-control w-full">

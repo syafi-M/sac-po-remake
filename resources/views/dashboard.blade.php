@@ -190,7 +190,7 @@
                     @forelse ($video as $vid)
                         <div class="flex flex-col pt-2 justify-start items-center w-full transition-all duration-300 ease-in-out carousel-item vidDiv">
                             <div class="flex flex-col justify-center items-center w-full max-w-[23rem] md:max-w-[26rem] p-2">
-                                <iframe class="w-full aspect-video rounded-md" src="{{ URL::asset('storage/' . $vid->video_path) }}?autoplay=0" 
+                                <iframe class="w-full aspect-video rounded-md" src="{{ $vid->video_path }}?autoplay=0" 
                                     loading="lazy"
                                     title="{{ $vid->title }}" 
                                     frameborder="0" 

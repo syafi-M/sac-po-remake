@@ -24,15 +24,15 @@ class VideoController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'nullable',
-            'video' => 'required|mimes:mp4,mov,avi|max:256000', // 250MB max
+            'video' => 'required', // 250MB max
         ]);
 
-        $path = $request->file('video')->store('videos', 'public');
+        // $path = $request->file('video')->store('videos', 'public');
 
         Videos::create([
             'title' => $request->title,
             'description' => $request->description,
-            'video_path' => $path,
+            'video_path' => $request->video,
         ]);
 
         return redirect()->route('videos.index')->with('success', 'Video uploaded successfully!');

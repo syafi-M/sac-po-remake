@@ -41,7 +41,8 @@ class DashboardController extends Controller
         return view('about-us.client', compact('client'));
     }
     public function companyProfile(){
-        return view('about-us.companyProfile');
+        $video = Videos::first();
+        return view('about-us.companyProfile', compact('video'));
     }
     public function kontak(){
         return view('about-us.kontak');

@@ -24,15 +24,26 @@
             </div>
             <div class="flex flex-col items-center gap-2 justify-center">
                 <p class="text-center font-bold text-lg md:text-2xl">Company Profile Kami</p>
-                <!--<video controls autoplay loop dragable="false" class="aspect-video w-[90svw] sm:w-[50svw] rounded-md drop-shadow-md">-->
-                <!--    <source src="https://drive.google.com/uc?export=download&id=1tYJratNjnPFNFo7w0DJx7QVkak1Y1LGN">-->
-                <!--</video>-->
-                <iframe 
-                    src="https://drive.google.com/file/d/1tYJratNjnPFNFo7w0DJx7QVkak1Y1LGN/preview" 
-                    autoplay="1"
-                    class="aspect-video w-[90svw] sm:w-[50svw] rounded-md drop-shadow-md">
-                </iframe>
-
+                @if($video->count() > 0)
+                    @php
+                        function convertToEmbedUrl($url) {
+                            if (strpos($url, 'youtu.be/') !== false) {
+                                return str_replace('youtu.be/', 'www.youtube.com/embed/', $url);
+                            } elseif (strpos($url, 'watch?v=') !== false) {
+                                return str_replace('watch?v=', 'embed/', $url);
+                            }
+                            return $url; // fallback
+                        }
+                    @endphp
+                    <iframe 
+                        src="{{ convertToEmbedUrl($video->video_path) }}" 
+                        loading="lazy"
+                        title="{{ $video->title }}" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen
+                        class="aspect-video w-[90svw] sm:w-[50svw] rounded-md drop-shadow-md">
+                    </iframe>
+                @endif
             </div>
         </div>
     </div>

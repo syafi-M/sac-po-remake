@@ -17,14 +17,6 @@
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <title>PT. Surya Amanah Cendikia Ponorogo – Penyedia Outsourcing & Pengembangan SDM Profesional</title>
     <style>
-        .slider-bullets {
-            display: flex;
-            justify-content: center;
-            margin-top: 10px;
-            list-style: none;
-            padding: 0;
-        }
-
         .slider-bullet {
             width: 10px;
             height: 10px;
@@ -143,12 +135,11 @@
     <div class="pt-[4.5rem] md:pt-20 w-full h-screen ">
         {{-- slider --}}
         <div class="w-full h-[35svh] md:h-[65svh] relative">
-            <div class="absolute rounded-md inset-0 py-2 flex justify-center flex-col items-center">
-
+            <div class="absolute rounded-md inset-0 py-2 flex justify-center flex-col md:items-center">
                 <div class="slider flex carousel rounded-md mx-[2.5svw] sm:h-full">
                     @forelse ($banner as $item)
                         <div class="carousel-item aspect-[21/9] md:aspect-auto rounded-md">
-                            <img src="{{ asset('storage/images/'.$item->img) }}" alt="Image 1" width="2100" height="900"
+                            <img src="{{ asset('storage/images/'.$item->img) }}" alt="Image 1"
                                     class=" object-center w-[95svw] h-[25svh] md:h-[55svh] rounded-md"
                                     style=" transition: transform 0.5s ease-in-out;"
                                     loading="lazy">
@@ -158,20 +149,14 @@
                         <p class="text-center font-bold text-slate-500">Data kosong</p>
                     </div>
                     @endforelse
-                    {{-- <div class="carousel-item aspect-[21/9] md:aspect-auto rounded-md">
-                        <img src="{{ asset('image/banner_disnaker.jpg') }}" alt="Image 1" width="2100" height="900"
-                                class=" object-center w-[95svw] h-[25svh] md:h-[55svh] rounded-md"
-                                style=" transition: transform 0.5s ease-in-out;">
-                    </div> --}}
                 </div>
 
-                <ul class="slider-bullets">
+                {{-- <ul class="slider-bullets">
                     @forelse ($banner as $i => $item)
                         <li class="slider-bullet" data-slide="{{ $i }}"></li>
                     @empty
                     @endforelse
-                    {{-- <li class="slider-bullet" data-slide="1"></li> --}}
-                </ul>
+                </ul> --}}
             </div>
         </div>
         
@@ -313,64 +298,6 @@
                 </div>
             </div>
         </div>
-        {{-- budaya Kerja --}}
-        {{-- <div class="mx-5 md:mx-10 mt-5 ">
-            <p class="text-sm text-center font-semibold"><i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i> Budaya Kerja Perusahaan <i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i></p>
-        </div>
-        <div class="mx-5 md:mx-10 md:flex ">
-            <div class="md:w-1/2 mt-5">
-                <div class="flex justify-center"><i class="ri-service-fill text-9xl text-amber-500"></i></div>
-                <p class="font-bold text-xl text-center">SIGAP</p>
-                <div class="flex justify-center items-center pt-4">
-                    <ul class="font-semibold text-lg">
-                        <li><i class="ri-subtract-line font-semibold text-amber-500"></i> Safety</li>
-                        <li><i class="ri-subtract-line font-semibold text-amber-500"></i> Inisiatif</li>
-                        <li><i class="ri-subtract-line font-semibold text-amber-500"></i> Gesit</li>
-                        <li><i class="ri-subtract-line font-semibold text-amber-500"></i> Amanah</li>
-                        <li><i class="ri-subtract-line font-semibold text-amber-500"></i> Peduli</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="md:w-1/2 mt-5">
-                <div class="flex justify-center"><i class="ri-eraser-fill text-9xl text-amber-500"></i></div>
-                <p class="font-bold text-xl text-center">RESIK</p>
-                <div class="flex justify-center items-center pt-4">
-                    <ul class="font-semibold text-lg">
-                        <li><i class="ri-subtract-line font-semibold text-amber-500"></i> Religius</li>
-                        <li><i class="ri-subtract-line font-semibold text-amber-500"></i> Excellent</li>
-                        <li><i class="ri-subtract-line font-semibold text-amber-500"></i> Service</li>
-                        <li><i class="ri-subtract-line font-semibold text-amber-500"></i> Integrity</li>
-                        <li><i class="ri-subtract-line font-semibold text-amber-500"></i> Komitmen</li>
-                    </ul>
-                </div>
-            </div>
-        </div> --}}
-        {{-- kerjasama --}}
-        {{-- <div class=" mt-5">
-            <div class="mx-5 my-5">
-                <p class="text-base text-center font-bold"><i
-                        class="ri-subtract-line font-semibold text-amber-500"></i><i
-                        class="ri-subtract-line font-semibold text-amber-500"></i> Bekerjasama Dengan <i
-                        class="ri-subtract-line font-semibold text-amber-500"></i><i
-                        class="ri-subtract-line font-semibold text-amber-500"></i></p>
-            </div>
-            <div class="coopSlider w-full carousel transition-all duration-300 ease-in-out px-[2.5svw]" style="height: 100%; max-height: 32svh;" id="scrollCoop">
-                @forelse ($coop as $cli)
-                    <div
-                        class="flex flex-col justify-end coopDiv carousel-item aspect-square px-[4svw] md:px-[0.5svw] transition-all duration-300 ease-in-out"
-                        style="gap: 1rem;">
-                        <span class="flex justify-center">
-                            <img src="{{ asset('storage/images/'. $cli->img) }}" width="100" class="rounded-md object-cover" alt="imeg1" loading="lazy"
-                                srcset="">
-                        </span>
-                        <p class="text-center font-semibold text-xs "
-                        style="width: 100%; @media (min-width: 768px) { max-width: 5svw; } text-align: center;">{{ $cli->name }}</p>
-                    </div>
-                @empty                    
-                @endforelse
-
-            </div>
-        </div> --}}
         {{-- peta --}}
         <p class="font-bold capitalize text-center mt-5 mb-2 text-xl">Lokasi Mitra PT. SAC</p>
         <div
@@ -491,7 +418,6 @@
             const testiSlider = $('.testiSlider div');
             const clientSlider = $('.clientSlider div');
             const coopSlider = $('.coopSlider div');
-            const bullets = $('.slider-bullet');
 
             // Pagination click handlers
             $('#prevPost').click(() => {
@@ -518,7 +444,6 @@
             // Show specific slide
             function showSlide(n) {
                 updateSliderTransform(slides, n, -100);
-                bullets.removeClass('active').eq(n).addClass('active');
             }
 
             // Show specific client
@@ -577,15 +502,6 @@
             setInterval(nextClient, 3000);
             setInterval(nextCoop, 3500);
             startSlideInterval();
-
-            // Bullet click handler
-            bullets.each((index, bullet) => {
-                $(bullet).click(() => {
-                    currentSlide = index;
-                    showSlide(currentSlide);
-                    stopSlideInterval();
-                });
-            });
         });
 
     </script>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ImgBanner;
 use App\Models\ImgClient;
+use App\Models\ImgGalerry;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Kerjasama;
@@ -34,7 +35,8 @@ class DashboardController extends Controller
         return view('about-us.porto');
     }
     public function galeri(){
-        return view('about-us.galeri');
+        $galeri = ImgGalerry::all();
+        return view('about-us.galeri', compact('galeri'));
     }
     public function client(){
         $client = ImgClient::all();

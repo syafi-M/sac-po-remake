@@ -26,6 +26,22 @@
             <div class="mx-5 md:mx-10 mt-10 ">
                 <p class="text-sm text-center md:text-base font-semibold"><i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i> Galeri Perusahaan <i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i></p>
             </div>
+            @if($galeri)
+                <div class="flex flex-col items-center gap-2 justify-center">
+                    <p class="text-center font-bold text-lg md:text-2xl">Foto Terbaru</p>
+                    <div class="gap-4  max-w-4xl items-center grid md:grid-cols-2 grid-cols-1 justify-center">
+                        @foreach ($galeri as $i => $item)
+                            @php
+                                $isLast = $i === count($galeri) - 1;
+                                $isOddCount = count($galeri) % 2 !== 0;
+                            @endphp
+                            <div class="w-full flex justify-center {{ $isLast && $isOddCount ? 'md:col-span-2' : '' }}">
+                                <img src="{{ asset('storage/images/' . $item->img) }}" class="object-cover object-center md:max-w-[50svw] md:max-h-[35svh]" alt="Galeri Image" srcset="">
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            @endif
             <div class="flex flex-col items-center gap-2 justify-center">
                 <p class="text-center font-bold text-lg md:text-2xl">Penyegaran Rutin</p>
                 <div class="gap-4  max-w-4xl items-center grid md:grid-cols-2 grid-cols-1 justify-center">

@@ -34,11 +34,11 @@ class ImgGalerryController extends Controller
 
         try {
             $galeries->create($galery);
-            toastr()->success('Galerry Has Been Created!', 'succcess');
+            toastr()->success('Foto Has Been Created!', 'succcess');
             return to_route('galery.index');
         } catch (\Illuminate\Database\QueryException $e) {
             //throw $th;
-            toastr()->error('Galerry Failed To Created!', 'error');
+            toastr()->error('Foto Failed To Created!', 'error');
             return redirect()->back();
         }
     }
@@ -67,12 +67,12 @@ class ImgGalerryController extends Controller
 
         try {
             $galeries->update($galery);
-            toastr()->success('Galerry Has Been Updated!', 'succcess');
+            toastr()->success('Foto Has Been Updated!', 'succcess');
             return to_route('galery.index');
         } catch (\Illuminate\Database\QueryException $e) {
             //throw $th;
             return redirect()->back();
-            toastr()->error('Galerry Failed To Updated', 'error');
+            toastr()->error('Foto Failed To Updated', 'error');
         }
         
     }
@@ -82,7 +82,7 @@ class ImgGalerryController extends Controller
         $galeries = ImgGalerry::findOrFail($id);
         Storage::disk('public')->delete('images/' . $galeries->img);
         $galeries->delete();
-        toastr()->warning('Galerry Has Been Deleted!', 'warning');
+        toastr()->warning('Foto Has Been Deleted!', 'warning');
         return redirect()->back();
     }
 }

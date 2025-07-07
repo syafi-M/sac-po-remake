@@ -12,7 +12,7 @@
             @method('POST')
             <label class="form-control">
                 <div class="label">
-                        <span class="label-text required">Foto Client</span>
+                        <span class="label-text required">Foto Galery (Rasio 3:4)</span>
                 </div>
                 <div class="w-3/6 flex justify-between mb-2 gap-x-2">
                     <div>
@@ -27,19 +27,32 @@
                 </label>
         </form>
         <div class="flex justify-stretch max-w-screen gap-2">
-
             @php
                 $no = 1;
             @endphp
             @forelse ($galery as $item)
                 <div class="flex gap-x-1">
                     <span> {{ $no++ }}</span>
-                   <img src="{{ asset('storage/images/' . $item->img)}}" class="max-w-52" alt="Banner" srcset="{{ asset('storage/images/' . $item->img)}}">
+                   <img src="{{ asset('storage/images/' . $item->img)}}" class="max-w-52 h-auto openModal" data-dataId="{{$item->id}}" alt="Banner" srcset="{{ asset('storage/images/' . $item->img)}}">
                 </div>
             @empty
-
             @endforelse
         </div>
+        {{-- modal delete --}}
+        <div class="fixed z-50 inset-x-[20%] top-[20%] hidden" id="deleteModal">
+            <div class="modal-box mx-auto">
+                <h2 class="font-bold text-lg">Hapus Galeri</h2>
+                <p>Apakah Anda yakin ingin menghapus foto ini?</p>
+                <img id="imgPrev" data-id="" src="" alt="" class="max-h-[300px]">
+                <div class="modal-action">
+                    <form action="" method="POST" id="deleteForm">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-sm btn-error" id="confirmDelete">Hapus</button>
+                    </form>
+                    <button class="btn btn-sm btn-secondary" id="cancelDelete">Batal</button>
+                </div>
+            </div>
     </div>
 
 <script>
@@ -48,5 +61,27 @@
     client.on("click", function() {
         $("#form").toggleClass('hidden').toggleClass('flex')
     })
+
+    $('.openModal').on('click', function() {
+        const imgSrc = $(this).attr('src');
+        const imgId = $(this).data('dataid');
+        $('#imgPrev').attr('src', imgSrc);
+        $('#imgPrev').data('id', imgId);
+        $('#deleteModal').show();
+    });
+
+    $('#cancelDelete').on('click', function() {
+        $('#deleteModal').hide();
+    });
+
+    $('#confirmDelete').on('click', function() {
+        const imgSrc = $('#imgPrev').attr('src');
+        const imgName = imgSrc.split('/').pop();
+        const imgId = $('#imgPrev').data('id');
+        $('#deleteForm').attr('action', "{{ route('galery.destroy', '') }}/" + imgId);
+        $('#deleteForm').submit();
+
+    });
+
 </script>
 </x-app-layout>

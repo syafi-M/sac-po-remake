@@ -191,7 +191,6 @@
 
                         return $embed;
                     }
-
                 @endphp
                 <div class="bg-lime-600 w-full md:w-[40%] min-h-[220pt] md:h-auto rounded-b-md md:rounded-r-md md:rounded-bl-none flex overflow-x-scroll carousel">
                     @forelse ($video as $vid)

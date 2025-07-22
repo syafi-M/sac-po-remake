@@ -30,9 +30,9 @@
             background-color: black;
         }
         .clientDiv {
-            max-width: 25svw; 
-            @media (min-width: 768px) { 
-                width: 10svw; 
+            max-width: 25svw;
+            @media (min-width: 768px) {
+                width: 10svw;
             }
         }
         .beritaSlider {
@@ -51,15 +51,15 @@
         }
         .coopSlider {
             justify-content: start;
-            @media (min-width: 1024px) { 
-                justify-content: center;                
+            @media (min-width: 1024px) {
+                justify-content: center;
             }
         }
-        
+
         .img-berita {
             transition: transform 0.3s ease, z-index 0.3s ease;
         }
-        
+
         .img-berita img {
             transition: transform 0.3s ease;
         }
@@ -69,7 +69,7 @@
                 transform: scale(1.05);
             }
         }
-        
+
         /* Optional: Different hover effects for different images */
         .img-berita:nth-child(odd):hover .img1 {
             transform: scale(1) rotate(0deg);
@@ -77,7 +77,7 @@
                 transform: scale(1.03) rotate(-3deg);
             }
         }
-        
+
         .img-berita:nth-child(even):hover .img1 {
             transform: scale(1) rotate(0deg);
             @media (min-width: 768px) {
@@ -90,14 +90,14 @@
                 transform: scale(1.03) rotate(2deg);
             }
         }
-        
+
         .img-berita:nth-child(even):hover .img2 {
             transform: scale(1) rotate(0deg);
             @media (min-width: 768px) {
                 transform: scale(1.03) rotate(-2deg);
             }
         }
-        
+
         .beritaSlider {
             min-height: 40svh;
             @media (min-width: 768px) {
@@ -159,7 +159,7 @@
                 </ul> --}}
             </div>
         </div>
-        
+
         {{-- Berita Terkini --}}
         <div class="mt-5 div-news">
             <div class="mx-5 my-5">
@@ -173,24 +173,36 @@
                 @if($video->count() > 0)
                 @php
                     function convertToEmbedUrl($url) {
+                        $embed = '';
                         if (strpos($url, 'youtu.be/') !== false) {
-                            return str_replace('youtu.be/', 'www.youtube.com/embed/', $url);
+                            $embed = str_replace('youtu.be/', 'www.youtube.com/embed/', $url);
                         } elseif (strpos($url, 'watch?v=') !== false) {
-                            return str_replace('watch?v=', 'embed/', $url);
+                            $embed = str_replace('watch?v=', 'embed/', $url);
+                        } else {
+                            $embed = $url; // fallback
                         }
-                        return $url; // fallback
+
+                        // Tambahkan ?rel=0 jika belum ada query param, jika sudah pakai &
+                        if (strpos($embed, '?') === false) {
+                            $embed .= '?rel=0';
+                        } else {
+                            $embed .= '&rel=0';
+                        }
+
+                        return $embed;
                     }
+
                 @endphp
                 <div class="bg-lime-600 w-full md:w-[40%] min-h-[220pt] md:h-auto rounded-b-md md:rounded-r-md md:rounded-bl-none flex overflow-x-scroll carousel">
                     @forelse ($video as $vid)
                         <div class="flex flex-col pt-2 justify-start items-center w-full transition-all duration-300 ease-in-out carousel-item vidDiv">
                             <div class="flex flex-col justify-center items-center w-full max-w-[23rem] md:max-w-[26rem] p-2">
-                                <iframe class="w-full aspect-video rounded-md" 
-                                    src="{{ convertToEmbedUrl($vid->video_path) }}{{ $loop->first ? '?autoplay=1' : '' }}" 
+                                <iframe class="w-full aspect-video rounded-md"
+                                    src="{{ convertToEmbedUrl($vid->video_path) }}{{ $loop->first ? '&autoplay=1' : '' }}"
                                     loading="lazy"
-                                    title="{{ $vid->title }}" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                    allowfullscreen 
+                                    title="{{ $vid->title }}"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen
                                     >
                                 </iframe>
                             </div>
@@ -219,12 +231,12 @@
                             <a href="{{ route('artikel', $art->id) }}" class="flex flex-col">
                                 <div class="relative flex justify-center items-start h-[65pt] md:h-[110pt]">
                                     <img src="{{ asset('storage/images/'.$art->img) }}" alt="imeg1" srcset="" loading="lazy"
-                                        srcset="{{ asset('storage/images/'.$art->img) }} 1x, {{ asset('storage/images/'.$art->img.'_2x') }} 2x" 
-                                        sizes="(max-width: 600px) 100vw, 50vw" 
+                                        srcset="{{ asset('storage/images/'.$art->img) }} 1x, {{ asset('storage/images/'.$art->img.'_2x') }} 2x"
+                                        sizes="(max-width: 600px) 100vw, 50vw"
                                         class="rounded-md object-cover aspect-video absolute z-[3] img1">
                                     <img src="{{ asset('storage/images/'.$art->img) }}" alt="imeg1" srcset="" loading="lazy"
-                                        srcset="{{ asset('storage/images/'.$art->img) }} 1x, {{ asset('storage/images/'.$art->img.'_2x') }} 2x" 
-                                        sizes="(max-width: 600px) 100vw, 50vw" 
+                                        srcset="{{ asset('storage/images/'.$art->img) }} 1x, {{ asset('storage/images/'.$art->img.'_2x') }} 2x"
+                                        sizes="(max-width: 600px) 100vw, 50vw"
                                         class="rounded-md object-cover aspect-video absolute z-[2] opacity-45 blur-[2px] img2">
                                 </div>
                                 <p class="text-sm md:text-base pt-4 font-semibold text-slate-400">
@@ -261,14 +273,14 @@
                             Kami</a>
                     </span>
                     <span class="w-1/2">
-    
+
                         <a href="{{ route('profile-perusahaan') }}"
                             class="btn btn-md w-full bg-slate-50 text-slate-800">Tentang Kami</a>
                     </span>
                 </div>
                 <div class="w-full">
                     <span class="w-1/2">
-    
+
                         <a href="{{ route('aplikasi.index') }}"
                             style="background-color: #57534e;"
                             class="btn btn-md w-full text-slate-50 border-none">System Aplikasi Kerja</a>
@@ -304,7 +316,7 @@
             class="mx-5 md:mx-10 mt-5 outline-4 outline-dashed outline-amber-500 drop-shadow-md outline-offset-2 bg-gradient-to-bl from-stone-700 via-stone-600 to-stone-500 flex justify-center rounded-lg">
             <div class="p-1 w-full relative">
                 <img src="{{ asset('image/map.png') }}" alt="">
-                
+
                 <!--surabaja-->
                 <!--<div style="position: absolute; z-index: 1; left: 38.8%; top: 76.2%; width: 0.4rem; height: 0.4rem;" class="bg-white rounded-full"></div>-->
                 <!--<div style="position: absolute; z-index: 2; left: 38.9%; top: 70%; width: 3.125rem; height: 2.1875rem; border-top: 0.25rem solid; border-left: 0.25rem solid; border-color: white; border-radius: 0.625rem 0 0 0;" class=""></div>-->
@@ -348,12 +360,12 @@
                         <p class="text-center font-semibold text-xs "
                         style="width: 100%; @media (min-width: 768px) { max-width: 5svw; } text-align: center;">{{ $cli->name }}</p>
                     </div>
-                @empty                    
+                @empty
                 @endforelse
 
             </div>
         </div>
-        
+
         {{-- Testimoni --}}
         <div class=" mt-5">
             <div class="mx-5 my-5">

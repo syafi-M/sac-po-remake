@@ -2,7 +2,7 @@ name: Update ke hosting
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   deploy:
@@ -14,16 +14,25 @@ jobs:
       - name: 🚚 Get latest code
         uses: actions/checkout@v4
 
+      # 📦 Cache Node.js dependencies
+      - name: Cache Node Modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: "18"
 
       - name: Install Dependencies
-        run: npm install
+        run: npm ci --prefer-offline
 
       - name: Build Assets
-        run: npm run build
+        run: npm run build --if-present
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -31,6 +40,8 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          dangerous-clean-slate: false
           # Daftar file/folder yang tidak perlu diupload
           exclude: |
             node_modules/**

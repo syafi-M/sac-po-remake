@@ -1,2 +1,9 @@
 RewriteEngine On
+
+# Paksa https + non-www
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^(.*)$ https://%1/$1 [L,R=301]
+
+# Laravel public
 RewriteRule ^(.*)$ public/$1 [L]

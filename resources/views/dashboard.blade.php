@@ -16,7 +16,7 @@
     <meta property="og:title" content="PT. Surya Amanah Cendikia Ponorogo – Jasa Outsourcing & Pengembangan SDM">
     <meta property="og:description"
         content="Penyedia jasa outsourcing terpercaya di Ponorogo dan Indonesia. Cleaning service, security, serta pengembangan SDM profesional.">
-    <meta property="og:image" content="{{ asset('images/preview-sac.jpg') }}">
+    <meta property="og:image" content="{{ asset('image/sac.png') }}">
     <meta property="og:url" content="https://sac-po.com">
     <meta property="og:type" content="website">
 
@@ -25,7 +25,9 @@
     <meta name="twitter:title" content="PT. Surya Amanah Cendikia – Outsourcing & Pengembangan SDM">
     <meta name="twitter:description"
         content="Outsourcing cleaning service, security, tenaga kerja profesional, dan pengembangan SDM di Ponorogo & Indonesia.">
-    <meta name="twitter:image" content="{{ asset('images/preview-sac.jpg') }}">
+    <meta name="twitter:image" content="{{ asset('image/sac.png') }}">
+
+    <link rel="icon" type="image/png" href="{{ asset('image/sac.png') }}" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -308,9 +310,10 @@
         {{-- hero --}}
         <div class="mx-5 md:mx-10 md:flex mt-5 bg-lime-600 p-2 md:p-5 rounded-md drop-shadow-md text-slate-50">
             <div class="md:w-2/3">
-                <p class="font-black capitalize text-2xl">PT Surya Amanah Cendekia Ponorogo</p>
-                <p class="pt-5 font-medium text-lg text-slate-50">Diakui sebagai perusahaan penyedia jasa dengan Sumber
-                    Daya Manusia (SDM) yang unggul dan berwawasan saling menguntungkan.</p>
+                <h1 class="font-black capitalize text-2xl">PT Surya Amanah Cendekia Ponorogo</h1>
+                <h1 class="pt-5 font-medium text-lg text-slate-50">Diakui sebagai perusahaan penyedia jasa dengan
+                    Sumber
+                    Daya Manusia (SDM) yang unggul dan berwawasan saling menguntungkan.</h1>
             </div>
             <div class="pt-5 gap-2 flex flex-col justify-around w-full md:w-1/3 md:items-end">
                 <div class="flex gap-2 w-full">

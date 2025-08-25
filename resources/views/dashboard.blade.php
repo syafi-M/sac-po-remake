@@ -5,9 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="Website portal berita serta deskripsi sac PT. Surya Amanah Cendekia">
+    <!-- SEO Meta -->
+    <meta name="description"
+        content="PT. Surya Amanah Cendikia Ponorogo (SAC) – Penyedia jasa outsourcing profesional di bidang cleaning service, security, tenaga kerja, serta pengembangan SDM berkualitas di Indonesia.">
     <meta name="keywords"
-        content="sac, surya amanah cendekia, cleaning service, security, outsourcing, PT. Surya Amanah Cendekia, PT. Surya Amanah Cendikia">
+        content="SAC, Surya Amanah Cendikia, outsourcing Ponorogo, cleaning service Ponorogo, jasa keamanan Ponorogo, jasa outsourcing profesional, PT. Surya Amanah Cendekia, pengembangan SDM Ponorogo, tenaga kerja outsourcing Indonesia">
+    <meta name="author" content="PT. Surya Amanah Cendikia">
+
+    <!-- Open Graph (Facebook & Social Media) -->
+    <meta property="og:title" content="PT. Surya Amanah Cendikia Ponorogo – Jasa Outsourcing & Pengembangan SDM">
+    <meta property="og:description"
+        content="Penyedia jasa outsourcing terpercaya di Ponorogo dan Indonesia. Cleaning service, security, serta pengembangan SDM profesional.">
+    <meta property="og:image" content="{{ asset('images/preview-sac.jpg') }}">
+    <meta property="og:url" content="https://sac-po.com">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PT. Surya Amanah Cendikia – Outsourcing & Pengembangan SDM">
+    <meta name="twitter:description"
+        content="Outsourcing cleaning service, security, tenaga kerja profesional, dan pengembangan SDM di Ponorogo & Indonesia.">
+    <meta name="twitter:image" content="{{ asset('images/preview-sac.jpg') }}">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700,900&display=swap" rel="stylesheet" />
@@ -591,9 +610,6 @@
             let labelPoint = L.point(cityPoint.x + offsetX, cityPoint.y + offsetY);
             let labelLatLng = map.layerPointToLatLng(labelPoint);
 
-            console.log(city, labelPoint.x, labelWidth);
-
-
             // ujung garis: tengah atas / bawah / tengah label
             let position = city.linePos || "middle"; // "top" | "bottom" | "middle"
             let endPoint;
@@ -664,9 +680,6 @@
             }).addTo(map);
         }
 
-
-
-
         // ✅ City labels (better placement)
         var cities = [{
                 name: "Surabaya",
@@ -728,7 +741,6 @@
 
         cities.forEach(addCityLabel);
     </script>
-
 </body>
 
 </html>

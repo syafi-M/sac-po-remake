@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- SEO Meta -->
     <meta name="description"
-        content="PT. Surya Amanah Cendikia Ponorogo (SAC) – Penyedia jasa outsourcing profesional di bidang cleaning service, security, tenaga kerja, serta pengembangan SDM berkualitas di Indonesia.">
+        content="PT. Surya Amanah Cendikia (SAC) – Outsourcing profesional untuk cleaning service, security, tenaga kerja, serta pengembangan SDM di Indonesia." />
     <meta name="keywords"
         content="SAC, Surya Amanah Cendikia, outsourcing Ponorogo, cleaning service Ponorogo, jasa keamanan Ponorogo, jasa outsourcing profesional, PT. Surya Amanah Cendekia, pengembangan SDM Ponorogo, tenaga kerja outsourcing Indonesia">
     <meta name="author" content="PT. Surya Amanah Cendikia">
@@ -40,7 +40,7 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <title>PT. Surya Amanah Cendikia Ponorogo – Penyedia Outsourcing & Pengembangan SDM Profesional</title>
+    <title>PT. SAC - Layanan Outsourcing & SDM</title>
     <style>
         .slider-bullet {
             width: 10px;
@@ -310,10 +310,10 @@
         {{-- hero --}}
         <div class="mx-5 md:mx-10 md:flex mt-5 bg-lime-600 p-2 md:p-5 rounded-md drop-shadow-md text-slate-50">
             <div class="md:w-2/3">
-                <h1 class="font-black capitalize text-2xl">PT Surya Amanah Cendekia Ponorogo</h1>
-                <h1 class="pt-5 font-medium text-lg text-slate-50">Diakui sebagai perusahaan penyedia jasa dengan
+                <h1 class="font-black capitalize text-2xl">PT. Surya Amanah Cendekia Ponorogo</h1>
+                <h2 class="pt-5 font-medium text-lg text-slate-50">Diakui sebagai perusahaan penyedia jasa dengan
                     Sumber
-                    Daya Manusia (SDM) yang unggul dan berwawasan saling menguntungkan.</h1>
+                    Daya Manusia (SDM) yang unggul dan berwawasan saling menguntungkan.</h2>
             </div>
             <div class="pt-5 gap-2 flex flex-col justify-around w-full md:w-1/3 md:items-end">
                 <div class="flex gap-2 w-full">
@@ -405,7 +405,7 @@
             <div class="carousel testiSlider w-full" style="font-style: italic;">
                 <div
                     class="carousel-item flex flex-col  gap-2 text-center items-center whitespace-pre-line w-[90svw] px-[5svw] transition-all duration-300 ease-in-out">
-                    <p>"Pelayanan bagus, cepat dan rapi. Pakaian karyawan juga semua rapi rapi recomended banget"
+                    <p>"Pelayanan bagus, cepat dan rapi. Pakaian karyawan juga semua rapi rapi recommended banget"
                     </p>
                     <p class="font-semibold">- Pengguna Jasa PT. SAC Ponorogo -</p>
                 </div>

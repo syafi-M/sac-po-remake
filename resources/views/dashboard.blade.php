@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="Website portal berita serta deskripsi sac PT. Surya Amanah Cendekia">
     <meta name="keywords"
@@ -342,7 +342,7 @@
         <div
             class="mx-5 md:mx-10 mt-5 outline-4 outline-dashed outline-amber-500 drop-shadow-md outline-offset-2 bg-gradient-to-bl from-stone-700 via-stone-600 to-stone-500 flex justify-center rounded-lg">
             <div class="p-1 w-full relative">
-                <div id="map" class="min-w-full min-h-[400px] bg-transparent"></div>
+                <div id="map" class="min-h-[200px] lg:min-h-[400px] bg-transparent"></div>
             </div>
         </div>
         {{-- client --}}
@@ -525,14 +525,21 @@
         });
     </script>
     <script>
+        let centerMap = [-2, 118]; // default Indonesia
+        let zoomMap = 5; // default zoom
+
+        // cek jika device mobile atau tablet
+        if (window.innerWidth <= 1024) {
+            centerMap = [-7.25, 111.75]; // tengah Jawa (kisaran Madiun)
+        }
         // Create flat map (no basemap)
         var map = L.map('map', {
-            center: [-2, 118], // Center Indonesia
-            zoom: 5,
+            center: centerMap, // Center Indonesia
+            zoom: zoomMap,
             preferCanvas: true, // Use canvas rendering for better performance
             zoomControl: false,
             attributionControl: false,
-            dragging: false,
+            dragging: true,
             scrollWheelZoom: false, // no scroll zoom
             doubleClickZoom: false, // no double click zoom
             boxZoom: false, // no box zoom

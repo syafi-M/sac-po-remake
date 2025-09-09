@@ -36,14 +36,28 @@
             </div>
             <div>
                 <p class="text-center font-bold text-lg md:text-2xl">Sertifikat Cleaner Oleh BNSP RI</p>
-                <div class="flex flex-col gap-4 items-center md:grid md:grid-cols-2 md:justify-center">
+                <div class="flex flex-col gap-2 md:gap-4 items-center md:grid md:grid-cols-2 md:justify-center">
                     @for ($i = 1; $i < 7; $i++)
-                        <div>
-                            <img src="{{ asset('image/Sertif' . $i . '.png') }}" class="p-[10%]"
-                                alt="img{{ $i }}" srcset="">
+                        <div class="relative w-full flex justify-center">
+                            <!-- Certificate Image -->
+                            <img src="{{ asset('image/Sertif' . $i . '.png') }}" alt="img{{ $i }}"
+                                class="p-[10%] select-none pointer-events-none" oncontextmenu="return false;"
+                                draggable="false">
+
+                            <!-- Transparent overlay to block interaction -->
+                            <div class="absolute inset-0"></div>
+
+                            <!-- Watermark -->
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span
+                                    class="text-gray-500 text-3xl md:text-5xl text-center font-bold opacity-30 select-none pointer-events-none rotate-[-25deg]">
+                                    © PT. Surya Amanah Cendikia Ponorogo
+                                </span>
+                            </div>
                         </div>
                     @endfor
                 </div>
+
                 <div class="my-5">
                     <p class="text-center font-bold text-lg md:text-2xl py-2">Company Profile</p>
                     <div class="flex justify-center">
@@ -54,8 +68,8 @@
                 <div class="flex justify-center w-full">
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d247.0182775528302!2d111.49565863476913!3d-7.864434353328986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e79a0344c1b4c3b%3A0xf83e671b9428f103!2sJl.%20Budi%20Utomo%20No.10%2C%20Ronowijayan%2C%20Kec.%20Siman%2C%20Kabupaten%20Ponorogo%2C%20Jawa%20Timur%2063471!5e0!3m2!1sid!2sid!4v1714805475453!5m2!1sid!2sid"
-                        width="640" height="480" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade" class="rounded-lg"></iframe>
+                        width="640" style="border:0;" class="h-[240px] md:h-[400px]" allowfullscreen=""
+                        loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="rounded-lg"></iframe>
                 </div>
             </div>
         </div>

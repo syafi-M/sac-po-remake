@@ -20,7 +20,7 @@
     <div>
         <x-navbar />
     </div>
-    <div class="mt-20 mx-5 md:mx-10">
+    <div class="mt-28 mx-5 md:mx-10">
         <div class="drop-shadow-md aspect-[21/9] md:aspect-auto">
             {{-- <img src="https://placehold.co/2100x900" class="object-cover " alt="" srcset=""> --}}
             <img src="{{ asset('image/bannerProfile.jpeg.jpg') }}"
@@ -37,7 +37,7 @@
             </div>
             <div class="">
                 <div
-                    class="max-w-3xl mx-auto space-y-2 text-justify  border-2 border-amber-500 border-dashed p-5 rounded-md">
+                    class="max-w-3xl mx-auto space-y-2 text-pretty text-justify border-2 border-amber-500 border-dashed p-5 rounded-md">
                     <p class="indent-8">PT. Surya Amanah Cendekia (SAC) adalah perusahaan jasa alih daya (outsourcing)
                         yang fokus pada penyediaan jasa Cleaning Service, Security Guard (Satpam), dan
                         penyedia Sumber Daya Manusia pendukung lainnya.</p>
@@ -92,7 +92,7 @@
                         class="ri-subtract-line font-semibold text-amber-500"></i></p>
             </div>
             <div
-                class="bg-gradient-to-bl p-1 rounded-lg from-lime-600 via-lime-500 to-lime-400 mx-auto w-[500px] flex justify-center">
+                class="bg-gradient-to-bl p-1 rounded-lg from-lime-600 via-lime-500 to-lime-400 mx-auto w-full md:w-[500px] flex justify-center">
                 <table class="text-sm font-semibold text-neutral-700 bg-white rounded-md w-full"
                     style="user-select: none;" dragable="false">
                     <tbody>
@@ -153,7 +153,7 @@
                                 class="ri-subtract-line font-semibold text-amber-500"></i></p>
                     </div>
                     <div>
-                        <p>“Menjadi perusahaan penyedia
+                        <p class="text-center">“Menjadi perusahaan penyedia
                             jasa tenaga kerja yang profesional,
                             terpercaya, dan unggul di bidang kebersihan serta keamanan di Indonesia.”</p>
                     </div>
@@ -166,7 +166,7 @@
                                 class="ri-subtract-line font-semibold text-amber-500"></i><i
                                 class="ri-subtract-line font-semibold text-amber-500"></i></p>
                     </div>
-                    <div>
+                    <div class="text-center md:text-justify">
                         <p><i class="ri-circle-fill text-[8px] font-semibold text-amber-500"></i> Menyediakan tenaga
                             kerja
                             yang

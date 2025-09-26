@@ -83,19 +83,24 @@
                         <ul>
                             <li
                                 class="{{ $currentRoute == 'profile-perusahaan' ? 'border-b-2 border-lime-600 border-solid' : '' }}">
-                                <a href="{{ route('profile-perusahaan') }}">Profile</a></li>
+                                <a href="{{ route('profile-perusahaan') }}">Profile</a>
+                            </li>
                             <li
                                 class="{{ $currentRoute == 'client-perusahaan' ? 'border-b-2 border-lime-600 border-solid' : '' }}">
-                                <a href="{{ route('client-perusahaan') }}">Mitra Kerjasama</a></li>
+                                <a href="{{ route('client-perusahaan') }}">Mitra Kerjasama</a>
+                            </li>
                             <li
                                 class="{{ $currentRoute == 'portofolio-perusahaan' ? 'border-b-2 border-lime-600 border-solid' : '' }}">
-                                <a href="{{ route('portofolio-perusahaan') }}">Portofolio</a></li>
+                                <a href="{{ route('portofolio-perusahaan') }}">Portofolio</a>
+                            </li>
                             <li
                                 class="{{ $currentRoute == 'galeri-perusahaan' ? 'border-b-2 border-lime-600 border-solid' : '' }}">
-                                <a href="{{ route('galeri-perusahaan') }}">Galeri</a></li>
+                                <a href="{{ route('galeri-perusahaan') }}">Galeri</a>
+                            </li>
                             <li
                                 class="{{ $currentRoute == 'company-profile-perusahaan' ? 'border-b-2 border-lime-600 border-solid' : '' }}">
-                                <a href="{{ route('company-profile-perusahaan') }}">Lihat Company Profile</a></li>
+                                <a href="{{ route('company-profile-perusahaan') }}">Lihat Company Profile</a>
+                            </li>
                             <li
                                 class="{{ $currentRoute == 'aplikasi.index' ? 'border-b-2 border-lime-600 border-solid' : '' }}">
                                 <a href="{{ route('aplikasi.index') }}">Sistem Aplikasi</a>
@@ -111,7 +116,8 @@
                         <ul>
                             <li
                                 class="{{ $currentRoute == 'outsourcing-perusahaan' ? 'border-b-2 border-lime-600 border-solid' : '' }}">
-                                <a href="{{ route('outsourcing-perusahaan') }}">Outsourcing</a></li>
+                                <a href="{{ route('outsourcing-perusahaan') }}">Outsourcing</a>
+                            </li>
                             <li><a href="https://umroh.sac-po.com/">Layanan Umroh</a></li>
                         </ul>
                     </li>

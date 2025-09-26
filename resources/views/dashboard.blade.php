@@ -7,13 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- SEO Meta -->
     <meta name="description"
-        content="PT. Surya Amanah Cendikia (SAC) – Outsourcing profesional untuk cleaning service, security, tenaga kerja, serta pengembangan SDM di Indonesia." />
+        content="PT. Surya Amanah Cendekia (SAC) – Outsourcing profesional untuk cleaning service, security, tenaga kerja, serta pengembangan SDM di Indonesia." />
     <meta name="keywords"
-        content="SAC, Surya Amanah Cendikia, outsourcing Ponorogo, cleaning service Ponorogo, jasa keamanan Ponorogo, jasa outsourcing profesional, PT. Surya Amanah Cendekia, pengembangan SDM Ponorogo, tenaga kerja outsourcing Indonesia">
-    <meta name="author" content="PT. Surya Amanah Cendikia">
+        content="SAC, Surya Amanah Cendekia, outsourcing Ponorogo, cleaning service Ponorogo, jasa keamanan Ponorogo, jasa outsourcing profesional, PT. Surya Amanah Cendekia, pengembangan SDM Ponorogo, tenaga kerja outsourcing Indonesia">
+    <meta name="author" content="PT. Surya Amanah Cendekia">
 
     <!-- Open Graph (Facebook & Social Media) -->
-    <meta property="og:title" content="PT. Surya Amanah Cendikia Ponorogo – Jasa Outsourcing & Pengembangan SDM">
+    <meta property="og:title" content="PT. Surya Amanah Cendekia Ponorogo – Jasa Outsourcing & Pengembangan SDM">
     <meta property="og:description"
         content="Penyedia jasa outsourcing terpercaya di Ponorogo dan Indonesia. Cleaning service, security, serta pengembangan SDM profesional.">
     <meta property="og:image" content="{{ asset('image/sac.png') }}">
@@ -22,7 +22,7 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="PT. Surya Amanah Cendikia – Outsourcing & Pengembangan SDM">
+    <meta name="twitter:title" content="PT. Surya Amanah Cendekia – Outsourcing & Pengembangan SDM">
     <meta name="twitter:description"
         content="Outsourcing cleaning service, security, tenaga kerja profesional, dan pengembangan SDM di Ponorogo & Indonesia.">
     <meta name="twitter:image" content="{{ asset('image/sac.png') }}">
@@ -310,7 +310,7 @@
         {{-- hero --}}
         <div class="mx-5 md:mx-10 md:flex mt-5 bg-lime-600 p-2 md:p-5 rounded-md drop-shadow-md text-slate-50">
             <div class="md:w-2/3">
-                <h1 class="font-black capitalize text-2xl">PT. Surya Amanah Cendekia Ponorogo</h1>
+                <h1 class="font-black capitalize text-2xl">PT. Surya Amanah Cendekia</h1>
                 <h2 class="pt-5 font-medium text-lg text-slate-50">Diakui sebagai perusahaan penyedia jasa dengan
                     Sumber
                     Daya Manusia (SDM) yang unggul dan berwawasan saling menguntungkan.</h2>
@@ -331,8 +331,9 @@
                 <div class="w-full">
                     <span class="w-1/2">
 
-                        <a href="{{ route('aplikasi.index') }}" style="background-color: #57534e;"
-                            class="btn btn-md w-full text-slate-50 border-none">System Aplikasi Kerja</a>
+                        <a href="{{ route('aplikasi.index') }}"
+                            class="btn btn-md w-full text-slate-50 border-none bg-stone-700">System Aplikasi
+                            Kerja</a>
                     </span>
                 </div>
             </div>

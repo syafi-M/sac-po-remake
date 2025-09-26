@@ -13,7 +13,7 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <title>Portofolio Kami - PT. Surya Amanah Cendikia Ponorogo</title>
+    <title>Portofolio Kami - PT. Surya Amanah Cendekia Ponorogo</title>
 </head>
 
 <body class=" min-w-full min-h-screen">
@@ -51,7 +51,7 @@
                             <div class="absolute inset-0 flex items-center justify-center">
                                 <span
                                     class="text-gray-500 text-3xl md:text-5xl text-center font-bold opacity-30 select-none pointer-events-none rotate-[-25deg]">
-                                    © PT. Surya Amanah Cendikia Ponorogo
+                                    © PT. Surya Amanah Cendekia Ponorogo
                                 </span>
                             </div>
                         </div>
@@ -61,7 +61,7 @@
                 <div class="my-5">
                     <p class="text-center font-bold text-lg md:text-2xl py-2">Company Profile</p>
                     <div class="flex justify-center">
-                        <iframe src="https://drive.google.com/file/d/1-sweWJtGmJ8tGqqx-_QXPTM05X2k6VIx/preview"
+                        <iframe src="https://drive.google.com/file/d/1Ea2SRcKb-j9io9ITikJK85etiksQkRpq/preview"
                             width="640" height="480" frameborder="0"></iframe>
                     </div>
                 </div>

@@ -794,12 +794,12 @@
                                 <div class="relative flex justify-center items-start h-[65pt] md:h-[110pt]">
                                     <img src="{{ asset('storage/images/' . $art->img) }}" alt="{{ $art->title }}"
                                         loading="lazy"
-                                        srcset="{{ asset('storage/images/' . $art->img) }} 1x, {{ asset('storage/images/' . $art->img . '_2x') }} 2x"
+                                        srcset="{{ asset('storage/images/' . $art->img) }}"
                                         sizes="(max-width: 600px) 100vw, 50vw"
                                         class="rounded-md object-cover aspect-video absolute z-[3] img1">
                                     <img src="{{ asset('storage/images/' . $art->img) }}" alt=""
                                         loading="lazy"
-                                        srcset="{{ asset('storage/images/' . $art->img) }} 1x, {{ asset('storage/images/' . $art->img . '_2x') }} 2x"
+                                        srcset="{{ asset('storage/images/' . $art->img) }}"
                                         sizes="(max-width: 600px) 100vw, 50vw"
                                         class="rounded-md object-cover aspect-video absolute z-[2] opacity-45 blur-[2px] img2"
                                         aria-hidden="true">

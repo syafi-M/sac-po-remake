@@ -9,6 +9,7 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Kerjasama;
 use App\Models\Coop;
+use App\Models\InfoLoker;
 use App\Models\Videos;
 use Illuminate\Http\Request;
 
@@ -22,7 +23,9 @@ class DashboardController extends Controller
         $userCount = User::on('mysql2')->whereNot('devisi_id', 8)->count();
         $kerjasamaCount = Kerjasama::on('mysql2')->count();
         $video = Videos::latest()->get();
-        return view('dashboard', compact('client', 'coop' , 'artikel', 'banner', 'userCount', 'kerjasamaCount', 'video'));
+        $loker = InfoLoker::active()->get()->groupBy('city');
+        $lastLoker = InfoLoker::active()->latest()->first();
+        return view('dashboard', compact('client', 'coop' , 'artikel', 'banner', 'userCount', 'kerjasamaCount', 'video', 'loker', 'lastLoker'));
     }
     public function seeArtikel($id){
         $artikel = Post::findOrFail($id);

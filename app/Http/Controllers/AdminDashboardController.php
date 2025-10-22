@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\ImgClient;
 use App\Models\ImgBanner;
 use App\Models\Coop;
+use App\Models\InfoLoker;
 use App\Models\Videos;
 use Illuminate\Http\Request;
 
@@ -21,18 +22,21 @@ class AdminDashboardController extends Controller
 
         $galeryCount = ImgGalerry::count();
         $galery = ImgGalerry::latest()->first();
-        
+
         $clientCount = ImgClient::count();
         $client = ImgClient::latest()->first();
-        
+
         $bannerCount = ImgBanner::count();
         $banner = ImgBanner::latest()->first();
-        
+
         $kerjasamaCount = Coop::count();
         $kerjasama = Coop::latest()->first();
-        
+
+        $infoLoker = InfoLoker::count();
+        $loker = InfoLoker::latest()->first();
+
         // dd($kerjasama);
-        return view('admin.dashboard', compact('postCount', 'post', 'clientCount', 'client', 'bannerCount', 'banner', 'kerjasamaCount', 'kerjasama', 'videoCount', 'video', 'galeryCount', 'galery'));
+        return view('admin.dashboard', compact('postCount', 'post', 'clientCount', 'client', 'bannerCount', 'banner', 'kerjasamaCount', 'kerjasama', 'videoCount', 'video', 'galeryCount', 'galery', 'infoLoker', 'loker'));
     }
-   
+
 }

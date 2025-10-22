@@ -11,19 +11,19 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <title>Company Profile - PT. Surya Amanah Cendikia Ponorogo</title>
+    <title>Company Profile - PT. Surya Amanah Cendekia</title>
 </head>
-<body class=" min-w-full min-h-screen">
+<body class="min-w-full min-h-screen ">
     <div>
         <x-navbar />
     </div>
-    <div class="mt-20 mx-5 md:mx-10">
+    <div class="mx-5 mt-20 md:mt-28 md:mx-10">
         <div class="space-y-5">
-            <div class="mx-5 md:mx-10 mt-28 ">
-                <p class="text-sm text-center md:text-base font-semibold"><i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i> Company Profile <i class="ri-subtract-line font-semibold text-amber-500"></i><i class="ri-subtract-line font-semibold text-amber-500"></i></p>
+            <div class="mx-5 mt-20 md:mx-10 ">
+                <p class="text-sm font-semibold text-center md:text-base"><i class="font-semibold ri-subtract-line text-amber-500"></i><i class="font-semibold ri-subtract-line text-amber-500"></i> Company Profile <i class="font-semibold ri-subtract-line text-amber-500"></i><i class="font-semibold ri-subtract-line text-amber-500"></i></p>
             </div>
-            <div class="flex flex-col items-center gap-2 justify-center">
-                <p class="text-center font-bold text-lg md:text-2xl">Company Profile Kami</p>
+            <div class="flex flex-col items-center justify-center gap-2">
+                <p class="text-lg font-bold text-center md:text-2xl">Company Profile Kami</p>
                 @if($video->count() > 0)
                     @php
                         function convertToEmbedUrl($url) {
@@ -35,11 +35,11 @@
                             return $url; // fallback
                         }
                     @endphp
-                    <iframe 
-                        src="{{ convertToEmbedUrl($video->video_path) }}" 
+                    <iframe
+                        src="{{ convertToEmbedUrl($video->video_path) }}"
                         loading="lazy"
-                        title="{{ $video->title }}" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        title="{{ $video->title }}"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen
                         class="aspect-video w-[90svw] sm:w-[50svw] rounded-md drop-shadow-md">
                     </iframe>

@@ -7,19 +7,101 @@
     color: red;
 }
 
-/* For WebKit browsers like Chrome and Safari */
-/* Track */
+/* Base scrollbar styling for all browsers */
 ::-webkit-scrollbar {
-    width: 10px; /* Width of the entire scrollbar */
+    width: 10px;
+    height: 10px;
 }
 
-/* Handle */
+/* Scrollbar track */
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 10px;
+}
+
+/* Scrollbar handle */
 ::-webkit-scrollbar-thumb {
-    background: #65a30d; /* Color of the scroll handle */
-    border-radius: 10px 0 0 10px;
+    background: #65a30d;
+    border-radius: 10px;
+    border: 2px solid #f1f5f9;
+    background-clip: padding-box;
 }
 
-/* Handle on hover */
+/* Scrollbar handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #406807; /* Color of the scroll handle when hovered */
+    background: #406807;
+}
+
+/* Scrollbar corner */
+::-webkit-scrollbar-corner {
+    background: #f1f5f9;
+}
+
+/* Firefox scrollbar styling */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: #65a30d #f1f5f9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    /* For tablets and smaller devices */
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 8px;
+        border-width: 1px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* For mobile devices */
+    ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 6px;
+        border-width: 1px;
+    }
+
+    /* Make scrollbar even less intrusive on mobile */
+    html {
+        scrollbar-width: none;
+    }
+
+    /* Hide scrollbar for mobile but keep functionality */
+    ::-webkit-scrollbar {
+        width: 0px;
+        background: transparent;
+    }
+
+    /* Optional: Show scrollbar on hover for mobile */
+    .show-scrollbar-on-hover::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .show-scrollbar-on-hover::-webkit-scrollbar-thumb {
+        background: #65a30d;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    ::-webkit-scrollbar-thumb {
+        background: #84cc16;
+        border-color: #1e293b;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #65a30d;
+    }
+
+    html {
+        scrollbar-color: #84cc16;
+    }
 }

@@ -22,22 +22,25 @@ class ImgBannerController extends Controller
 
     public function store(ImgBannerRequest $request)
     {
-        $banners = new ImgBanner();
-        $banner = [
-            'img' => $request->img,
-        ];
-
-        if($request->hasFile('img'))
-        {
-            $banner['img'] = UploadImage($request, 'img');
-        }
-
         try {
+            $banners = new ImgBanner();
+            $banner = [
+                'img' => $request->img,
+            ];
+
+            if($request->hasFile('img'))
+            {
+                $banner['img'] = UploadImage($request, 'img');
+            }
+
             $banners->create($banner);
-            toastr()->success('Banner Has Been Created!', 'succcess');
+            toastr()->success('Banner Has Been Created!', 'success');
             return to_route('banners.index');
-        } catch (\Illuminate\Database\QueryException $e) {
-            //throw $th;
+        } catch (\Illuminate\Http\Exceptions\PostTooLargeException $e) {
+            toastr()->error('The image is too large. Please upload a smaller image (max 20MB).', 'error');
+            return redirect()->back();
+        } catch (\Exception $e) {
+            \Log::error('Banner creation failed: ' . $e->getMessage());
             toastr()->error('Banner Failed To Created!', 'error');
             return redirect()->back();
         }

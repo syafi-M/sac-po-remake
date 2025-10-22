@@ -13,63 +13,131 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <title>Klien Kami - PT. Surya Amanah Cendikia Ponorogo</title>
+    <title>Klien Kami - PT. Surya Amanah Cendekia</title>
     <style>
         .leaflet-container {
             background: transparent;
         }
+
+        /* Custom grid styles for responsive client display */
+        .client-grid-mobile {
+            display: grid;
+            gap: 1rem;
+            justify-items: center;
+            justify-content: center;
+        }
+
+        .client-grid-mobile-3 {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .client-grid-mobile-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .client-grid-desktop {
+            display: none;
+            gap: 1rem;
+            justify-items: center;
+            justify-content: center;
+        }
+
+        .client-grid-desktop-5 {
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+        }
+
+        @media (min-width: 768px) {
+            .client-grid-mobile {
+                display: none;
+            }
+
+            .client-grid-desktop {
+                display: grid;
+            }
+        }
     </style>
 </head>
 
-<body class=" min-w-full min-h-screen">
+<body class="min-w-full min-h-screen ">
     <div>
         <x-navbar />
     </div>
-    <div class="mt-28 mx-5 md:mx-10">
-        <div
-            class="mx-5 md:mx-10 mt-5 outline-4 outline-dashed outline-amber-500 drop-shadow-md outline-offset-2 flex justify-center rounded-lg">
-            <div class="p-1 w-full relative bg-gradient-to-br from-stone-600 to-stone-700 rounded-lg">
+    <div class="mx-5 mt-20 md:mt-28 md:mx-10">
+        <div class="flex justify-center mx-5 mt-5 rounded-lg md:mx-10 outline-4 outline-dashed outline-amber-500 drop-shadow-md outline-offset-2">
+            <div class="relative w-full p-1 rounded-lg bg-gradient-to-br from-stone-600 to-stone-700">
                 <div id="map" class="min-h-[200px] lg:min-h-[400px] bg-transparent"></div>
             </div>
         </div>
         <div class="space-y-10">
-            <div class="mx-5 md:mx-10 mt-10 ">
-                <p class="text-sm text-center  md:text-base font-semibold"><i
-                        class="ri-subtract-line font-semibold text-amber-500"></i><i
-                        class="ri-subtract-line font-semibold text-amber-500"></i> Klien Kami <i
-                        class="ri-subtract-line font-semibold text-amber-500"></i><i
-                        class="ri-subtract-line font-semibold text-amber-500"></i></p>
+            <div class="mx-5 mt-10 md:mx-10 ">
+                <p class="text-sm font-semibold text-center md:text-base"><i class="font-semibold ri-subtract-line text-amber-500"></i><i class="font-semibold ri-subtract-line text-amber-500"></i> Klien Kami <i class="font-semibold ri-subtract-line text-amber-500"></i><i class="font-semibold ri-subtract-line text-amber-500"></i></p>
             </div>
-            <div class="flex flex-col items-center gap-2 justify-center">
-                <p class="text-center font-bold text-lg md:text-2xl">Semua Klien Kami</p>
-                @php
-                    $mitras = $client->values()->all();
-                    $pattern = [3, 2]; // Pola baris: 3 item, lalu 2 item, lalu ulangi
-                    $index = 0;
-                    $row = 0;
-                @endphp
-                @while ($index < count($mitras))
+            <div class="flex flex-col items-center justify-center gap-2">
+                <p class="text-lg font-bold text-center md:text-2xl">Semua Klien Kami</p>
+
+                <!-- Mobile Grid (3, 2 pattern) -->
+                <div class="w-full max-w-4xl">
                     @php
-                        $columns = $pattern[$row % count($pattern)];
-                        $items = collect($mitras)->slice($index, $columns);
+                        $mitras = $client->values()->all();
+                        $pattern = [3, 2]; // Pola untuk phone: 3 item, lalu 2 item
+                        $index = 0;
+                        $row = 0;
                     @endphp
-                    <div class="gap-4 max-w-4xl grid justify-center"
-                        style="grid-template-columns: repeat({{ $items->count() }}, minmax(0, 1fr)); justify-items: center;">
-                        @forelse ($items as $i => $item)
-                            <div class="w-full flex flex-col items-center justify-between">
-                                <img src="{{ asset('storage/images/' . $item->img) }}" class="object-contain w-24 h-24"
-                                    alt="img{{ $i }}" srcset="">
-                                <p class="text-center font-semibold text-xs py-1 sm:text-sm w-24">{{ $item->name }}
-                                </p>
-                            </div>
-                        @empty
-                        @endforelse
-                    </div>
+                    @while ($index < count($mitras))
+                        @php
+                            // Determine how many columns for this row based on the pattern
+                            $columns = $pattern[$row % count($pattern)];
+                            // Get the items for this row
+                            $items = collect($mitras)->slice($index, $columns);
+                            $gridClass = $columns === 3 ? 'client-grid-mobile-3' : 'client-grid-mobile-2';
+                        @endphp
+                        <div class="{{ $gridClass }} client-grid-mobile">
+                            @forelse ($items as $i => $item)
+                                <div class="flex flex-col items-center justify-start w-full">
+                                    <img src="{{ asset('storage/images/' . $item->img) }}" class="object-contain w-16 h-16" alt="{{ $item->name }}" srcset="">
+                                    <p class="w-24 py-2 text-[8pt] font-semibold text-center">{{ $item->name }}</p>
+                                </div>
+                            @empty
+                            @endforelse
+                        </div>
+                        @php
+                            $index += $columns;
+                            $row++;
+                        @endphp
+                    @endwhile
+                </div>
+
+                <!-- Desktop Grid (5, 5 pattern) -->
+                <div class="w-full max-w-6xl">
                     @php
-                        $index += $columns;
-                        $row++;
+                        $index = 0;
+                        $row = 0;
+                        $desktopPattern = [5, 5]; // Pola untuk PC: 5 item, lalu 5 item
                     @endphp
-                @endwhile
+                    @while ($index < count($mitras))
+                        @php
+                            // Determine how many columns for this row based on the pattern
+                            $columns = $desktopPattern[$row % count($desktopPattern)];
+                            // Get the items for this row
+                            $items = collect($mitras)->slice($index, $columns);
+                            // All desktop rows use the same grid class (5 columns)
+                            $gridClass = 'client-grid-desktop-5';
+                        @endphp
+                        <div class="{{ $gridClass }} client-grid-desktop">
+                            @forelse ($items as $i => $item)
+                                <div class="flex flex-col items-center justify-start w-full">
+                                    <img src="{{ asset('storage/images/' . $item->img) }}" class="object-contain md:w-20 md:h-20" alt="{{ $item->name }}" srcset="">
+                                    <p class="w-24 py-2 text-xs font-semibold text-center md:w-28">{{ $item->name }}</p>
+                                </div>
+                            @empty
+                            @endforelse
+                        </div>
+                        @php
+                            $index += $columns;
+                            $row++;
+                        @endphp
+                    @endwhile
+                </div>
             </div>
         </div>
     </div>

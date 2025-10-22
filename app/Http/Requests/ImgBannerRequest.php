@@ -22,7 +22,7 @@ class ImgBannerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'img' => ['required']
+            'img' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:30720', // Max 10MB
         ];
     }
 }

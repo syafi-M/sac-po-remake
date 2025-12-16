@@ -17,6 +17,7 @@ class InfoLoker extends Model
         'is_active',
         'expiry_date',
         'description',
+        'img',
     ];
 
     protected $casts = [

@@ -249,6 +249,16 @@
                 background-position: -200% 0;
             }
         }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; transform: translateY(0); }
+            to { opacity: 0; transform: translateY(10px); }
+        }
     </style>
 </head>
 
@@ -472,239 +482,214 @@
                 </div>
             </div>
 
-            <!-- Job Vacancies Table -->
-            <div class="m-5 mt-8 overflow-hidden bg-white shadow-md rounded-xl md:m-10">
-                <div class="relative px-4 py-3 bg-gradient-to-r from-lime-600 to-emerald-600 sm:px-6 sm:py-4">
+            <!-- Job Vacancies Section -->
+            <div class="m-5 mt-8 overflow-hidden bg-white shadow-lg rounded-xl md:m-10">
+                <!-- Header Section -->
+                <div class="relative px-4 py-5 bg-gradient-to-r from-lime-600 to-emerald-600 sm:px-6 sm:py-6">
                     <!-- Decorative elements -->
                     <div class="absolute top-0 right-0 w-64 h-64 -mb-32 -mr-32 bg-white rounded-full opacity-10"></div>
-                    <div class="absolute bottom-0 left-0 w-48 h-48 -mt-24 -ml-24 bg-white rounded-full opacity-10">
-                    </div>
+                    <div class="absolute bottom-0 left-0 w-48 h-48 -mt-24 -ml-24 bg-white rounded-full opacity-10"></div>
 
                     <div class="flex flex-col justify-between sm:flex-row sm:items-center">
                         <div>
-                            <h3 class="flex items-center text-lg font-bold text-white sm:text-xl">
+                            <h3 class="flex items-center text-xl font-bold text-white sm:text-2xl">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                    class="w-5 h-5 mr-2 ">
+                                    class="w-6 h-6 mr-2">
                                     <path
                                         d="M7 5V2C7 1.44772 7.44772 1 8 1H16C16.5523 1 17 1.44772 17 2V5H21C21.5523 5 22 5.44772 22 6V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V6C2 5.44772 2.44772 5 3 5H7ZM4 16V19H20V16H4ZM4 14H20V7H4V14ZM9 3V5H15V3H9ZM11 11H13V13H11V11Z">
                                     </path>
                                 </svg>
                                 Lowongan Pekerjaan Tersedia
                             </h3>
-                            <p class="mt-1 text-xs text-lime-100 sm:text-sm">Bergabunglah bersama tim profesional kami
-                            </p>
+                            <p class="mt-1 text-sm text-lime-100 sm:text-base">Bergabunglah bersama tim profesional kami</p>
                         </div>
-                        <div class="mt-2 sm:mt-0">
+                        <div class="mt-3 sm:mt-0">
                             <span
-                                class="inline-flex items-center px-3 py-1 text-xs font-medium text-white bg-white rounded-full bg-opacity-20">
-                                <i class="mr-1 ri-refresh-line"></i>
+                                class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-white bg-white rounded-full bg-opacity-20">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 mr-1.5">
+                                    <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd" />
+                                </svg>
                                 Update: {{ $lastLoker ? $lastLoker->created_at->format('d M Y') : 'Never' }}
                             </span>
                         </div>
                     </div>
                 </div>
 
-                <div class="p-4">
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full divide-y divide-gray-200">
-                            <thead>
-                                <tr>
-                                    <th
-                                        class="sticky left-0 z-10 px-2 py-2 text-xs font-medium tracking-wider text-left text-gray-500 uppercase sm:px-4 bg-gray-50 whitespace-nowrap">
-                                        <div class="flex items-center justify-center sm:justify-start">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                                fill="currentColor" class="w-3 h-3 mr-1 sm:mr-2 text-amber-500">
-                                                <path
-                                                    d="M12 20.8995L16.9497 15.9497C19.6834 13.2161 19.6834 8.78392 16.9497 6.05025C14.2161 3.31658 9.78392 3.31658 7.05025 6.05025C4.31658 8.78392 4.31658 13.2161 7.05025 15.9497L12 20.8995ZM12 23.7279L5.63604 17.364C2.12132 13.8492 2.12132 8.15076 5.63604 4.63604C9.15076 1.12132 14.8492 1.12132 18.364 4.63604C21.8787 8.15076 21.8787 13.8492 18.364 17.364L12 23.7279ZM12 13C13.1046 13 14 12.1046 14 11C14 9.89543 13.1046 9 12 9C10.8954 9 10 9.89543 10 11C10 12.1046 10.8954 13 12 13ZM12 15C9.79086 15 8 13.2091 8 11C8 8.79086 9.79086 7 12 7C14.2091 7 16 8.79086 16 11C16 13.2091 14.2091 15 12 15Z">
-                                                </path>
-                                            </svg>
-                                            <span class="hidden sm:inline">Kota</span>
-                                        </div>
-                                    </th>
-                                    <th
-                                        class="px-2 py-2 text-xs font-medium tracking-wider text-center text-gray-500 uppercase sm:px-4 bg-gray-50 whitespace-nowrap">
-                                        <div class="flex items-center justify-center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                                fill="currentColor" class="w-3 h-3 mr-1 text-blue-500 sm:mr-2">
-                                                <path
-                                                    d="M7 5V2C7 1.44772 7.44772 1 8 1H16C16.5523 1 17 1.44772 17 2V5H21C21.5523 5 22 5.44772 22 6V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V6C2 5.44772 2.44772 5 3 5H7ZM4 16V19H20V16H4ZM4 14H20V7H4V14ZM9 3V5H15V3H9ZM11 11H13V13H11V11Z">
-                                                </path>
-                                            </svg>
-                                            <span class="hidden sm:inline">Pekerjaan</span>
-                                        </div>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody class="bg-white divide-y divide-gray-200" id="job-vacancies-tbody">
-                                <!-- Job vacancies rows -->
-                                @forelse ($loker as $index => $lok)
-                                    <tr
-                                        class="transition-colors duration-150 hover:bg-gray-50 job-row {{ $loop->index >= 2 ? 'hidden' : '' }}">
-                                        <td class="sticky left-0 z-10 px-2 py-2 bg-white sm:px-4 whitespace-nowrap">
-                                            <div class="flex items-center">
-                                                <div
-                                                    class="flex items-center justify-center flex-shrink-0 w-8 h-8 rounded-full bg-amber-100">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                                        fill="currentColor" class="w-4 h-4 text-amber-600">
-                                                        <path
-                                                            d="M18.364 17.364L12 23.7279L5.63604 17.364C2.12132 13.8492 2.12132 8.15076 5.63604 4.63604C9.15076 1.12132 14.8492 1.12132 18.364 4.63604C21.8787 8.15076 21.8787 13.8492 18.364 17.364ZM12 13C13.1046 13 14 12.1046 14 11C14 9.89543 13.1046 9 12 9C10.8954 9 10 9.89543 10 11C10 12.1046 10.8954 13 12 13Z">
-                                                        </path>
-                                                    </svg>
-                                                </div>
-                                                <div class="ml-2 capitalize sm:ml-4 text-start">
-                                                    <div class="text-sm font-medium text-gray-900">{{ $index }}
-                                                    </div>
-                                                    <div class="hidden text-xs text-gray-500 sm:block">
-                                                        {{ $lok[0]->province }}</div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="px-2 py-2 sm:px-4">
-                                            <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
-                                                @foreach ($lok as $job)
-                                                    @php
-                                                        // Get position name and count
-                                                        $positionName = $job->position;
-                                                        $count = $job->count;
+                <!-- Job Listings Section -->
+                <div class="p-4 sm:p-6">
+                    @forelse ($loker as $index => $lok)
+                    <!-- Location Section -->
+                    <div class="mb-8 location-section {{ $loop->index >= 2 ? 'hidden' : '' }}">
+                        <!-- Location Header -->
+                        <div class="flex items-center mb-4">
+                            <div class="flex items-center justify-center flex-shrink-0 w-10 h-10 rounded-full bg-amber-100">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-amber-600">
+                                    <path d="M18.364 17.364L12 23.7279L5.63604 17.364C2.12132 13.8492 2.12132 8.15076 5.63604 4.63604C9.15076 1.12132 14.8492 1.12132 18.364 4.63604C21.8787 8.15076 21.8787 13.8492 18.364 17.364ZM12 13C13.1046 13 14 12.1046 14 11C14 9.89543 13.1046 9 12 9C10.8954 9 10 9.89543 10 11C10 12.1046 10.8954 13 12 13Z"></path>
+                                </svg>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-semibold text-gray-900 capitalize">{{ $index }}</h4>
+                                <p class="text-sm text-gray-500 capitalize">{{ $lok[0]->province }}</p>
+                            </div>
+                        </div>
 
-                                                        // Determine icon and color based on position
-                                                        $icon = 'ri-briefcase-line'; // Default icon
-                                                        $textClass = 'text-gray-800'; // Default text color
-                                                        $bgClass = 'bg-gray-100'; // Default background color
+                        <!-- Jobs Grid -->
+                        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                            @foreach ($lok as $job)
+                            <!-- Job Card -->
+                            <div class="flex flex-col overflow-hidden transition-all duration-500 transform border border-gray-200 rounded-lg shadow-sm group hover:shadow-xl hover:-translate-y-2">
+                                <!-- Portrait Image Container -->
+                                <div class="relative flex-shrink-0 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 aspect-[3/4]">
+                                    <img class="absolute inset-0 object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
+                                        src="{{ asset('storage') . '/' . $job->img }}"
+                                        alt="{{ $job->position }}">
 
-                                                        // Management positions
-                                                        if (
-                                                            str_contains(strtolower($positionName), 'manajemen') ||
-                                                            str_contains(strtolower($positionName), 'manager') ||
-                                                            str_contains(strtolower($positionName), 'supervisor') ||
-                                                            str_contains(strtolower($positionName), 'spv') ||
-                                                            str_contains(strtolower($positionName), 'leader')
-                                                        ) {
-                                                            $icon = 'ri-user-star-line';
-                                                            $textClass = 'text-purple-800';
-                                                            $bgClass = 'bg-purple-100';
-                                                        }
-                                                        // IT positions
-                                                        elseif (
-                                                            str_contains(strtolower($positionName), 'it') ||
-                                                            str_contains(strtolower($positionName), 'teknisi')
-                                                        ) {
-                                                            $icon = 'ri-computer-line';
-                                                            $textClass = 'text-blue-800';
-                                                            $bgClass = 'bg-blue-100';
-                                                        }
-                                                        // Cleaning positions
-                                                        elseif (
-                                                            str_contains(strtolower($positionName), 'cleaning service') ||
-                                                            str_contains(strtolower($positionName), 'ocs') ||
-                                                            str_contains(strtolower($positionName), 'taman')
-                                                        ) {
-                                                            $icon = 'ri-team-line';
-                                                            $textClass = 'text-green-800';
-                                                            $bgClass = 'bg-green-100';
-                                                        }
-                                                        // Security positions
-                                                        elseif (
-                                                            str_contains(strtolower($positionName), 'security') ||
-                                                            str_contains(strtolower($positionName), 'scr') ||
-                                                            str_contains(strtolower($positionName), 'danru') ||
-                                                            str_contains(strtolower($positionName), 'satpam') ||
-                                                            str_contains(strtolower($positionName), 'parkir')
-                                                        ) {
-                                                            $icon = 'ri-shield-check-line';
-                                                            $textClass = 'text-red-800';
-                                                            $bgClass = 'bg-red-100';
-                                                        }
-                                                        // Office/Admin positions
-                                                        elseif (
-                                                            str_contains(strtolower($positionName), 'administrasi') ||
-                                                            str_contains(strtolower($positionName), 'kepegawaian') ||
-                                                            str_contains(strtolower($positionName), 'resep') ||
-                                                            str_contains(strtolower($positionName), 'front office') ||
-                                                            str_contains(strtolower($positionName), 'kasir') ||
-                                                            str_contains(strtolower($positionName), 'fo') ||
-                                                            str_contains(strtolower($positionName), 'porter')
-                                                        ) {
-                                                            $icon = 'ri-building-line';
-                                                            $textClass = 'text-yellow-800';
-                                                            $bgClass = 'bg-yellow-100';
-                                                        }
-                                                        // Other positions
-                                                        elseif (str_contains(strtolower($positionName), 'mitra')) {
-                                                            $icon = 'ri-handshake-line';
-                                                            $textClass = 'text-teal-800';
-                                                            $bgClass = 'bg-teal-100';
-                                                        } elseif (
-                                                            str_contains(strtolower($positionName), 'gizi') ||
-                                                            str_contains(strtolower($positionName), 'masak')
-                                                        ) {
-                                                            $icon = 'ri-restaurant-line';
-                                                            $textClass = 'text-pink-800';
-                                                            $bgClass = 'bg-pink-100';
-                                                        } elseif (str_contains(strtolower($positionName), 'magang')) {
-                                                            $icon = 'ri-book-2-line';
-                                                            $textClass = 'text-orange-800';
-                                                            $bgClass = 'bg-orange-100';
-                                                        } elseif (str_contains(strtolower($positionName), 'direksi')) {
-                                                            $icon = 'ri-vip-crown-line';
-                                                            $textClass = 'text-indigo-800';
-                                                            $bgClass = 'bg-indigo-100';
-                                                        }
-                                                    @endphp
-                                                    @if ($count > 0)
-                                                        <span
-                                                            class="capitalize inline-flex items-center px-2 py-1 text-xs font-medium rounded-full {{ $textClass }} {{ $bgClass }}">
-                                                            <i class="mr-1 {{ $icon }}"></i>
-                                                            {{ $positionName }}: {{ $count }}
-                                                        </span>
-                                                    @endif
-                                                @endforeach
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="2" class="px-2 py-3 text-center text-gray-500 sm:px-4">
-                                            Tidak ada lowongan pekerjaan tersedia saat ini.
-                                        </td>
-                                    </tr>
-                                @endforelse
-
-                                <!-- Show more/less buttons -->
-                                <tr id="show-more-row" class="{{ count($loker) <= 2 ? 'hidden' : '' }}">
-                                    <td colspan="2" class="px-2 py-3 text-center sm:px-4">
-                                        <button id="show-more-btn"
-                                            class="inline-flex items-center px-3 py-2 text-xs font-medium text-white rounded-md shadow-sm bg-gradient-to-r from-lime-600 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-lime-500 sm:text-sm sm:px-4">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                                fill="currentColor" class="w-4 h-4 mr-1 sm:mr-2">
-                                                <path
-                                                    d="M13.0001 16.1716L18.3641 10.8076L19.7783 12.2218L12.0001 20L4.22192 12.2218L5.63614 10.8076L11.0001 16.1716V4H13.0001V16.1716Z">
-                                                </path>
+                                    <!-- Status Badge Overlay -->
+                                    <div class="absolute transition-all duration-300 transform top-3 right-3 group-hover:scale-110">
+                                        @if($job->is_active)
+                                        <span class="inline-flex items-center px-3 py-1 text-xs font-medium text-white bg-green-500 rounded-full shadow-lg backdrop-blur-sm">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-3 h-3 mr-1">
+                                                <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
                                             </svg>
-                                            Tampilkan Lebih Banyak
+                                            Tersedia
+                                        </span>
+                                        @else
+                                        <span class="inline-flex items-center px-3 py-1 text-xs font-medium text-white bg-red-500 rounded-full shadow-lg backdrop-blur-sm">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-3 h-3 mr-1">
+                                                <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z" clip-rule="evenodd" />
+                                            </svg>
+                                            Tidak Tersedia
+                                        </span>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <!-- Job Details -->
+                                <div class="flex flex-col flex-1 p-4 bg-white">
+                                    <div class="flex-1">
+                                        <h4 class="text-lg font-semibold text-gray-900 transition-colors duration-300 group-hover:text-lime-600">{{ $job->position }}</h4>
+
+                                        <!-- Job Description -->
+                                        <p class="mt-2 text-sm text-gray-600 transition-colors duration-300 line-clamp-2 group-hover:text-gray-700">{{ $job->description }}</p>
+                                    </div>
+
+                                    <!-- Action Button -->
+                                    <div class="mt-4">
+                                        <button
+                                            class="detail-button w-full py-2.5 px-4 text-sm font-medium text-white bg-gradient-to-r from-lime-600 to-emerald-600 rounded-md shadow-sm hover:from-lime-700 hover:to-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-lime-500 transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                                            data-job-id="{{ $job->id }}"
+                                            data-job-position="{{ $job->position }}"
+                                            data-job-description="{{ $job->description }}"
+                                            data-job-count="{{ $job->count }}"
+                                            data-job-status="{{ $job->is_active ? 'Tersedia' : 'Tidak Tersedia' }}"
+                                            data-job-image="{{ asset('storage') . '/' . $job->img }}"
+                                            data-job-location="{{ $index }}, {{ $job->province }}">
+                                            Lihat Detail
                                         </button>
-                                    </td>
-                                </tr>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    @empty
+                    <!-- Empty State -->
+                    <div class="py-12 text-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-16 h-16 mx-auto text-gray-400">
+                            <path fill-rule="evenodd" d="M7.5 5.25a3 3 0 013-3h3a3 3 0 013 3v.205c.933.085 1.857.197 2.774.334 1.454.218 2.476 1.483 2.476 2.917v3.033c0 1.211-.734 2.352-1.936 2.752A24.726 24.726 0 0112 15.75c-2.73 0-5.392-.462-7.814-1.309C3.034 14.072 2.25 12.941 2.25 11.738v-3.03c0-1.434 1.022-2.7 2.476-2.917A48.814 48.814 0 017.5 5.455V5.25zm7.5 0v.09a49.488 49.488 0 00-6 0v-.09a1.5 1.5 0 011.5-1.5h3a1.5 1.5 0 011.5 1.5zm-3 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z" clip-rule="evenodd" />
+                            <path d="M3 18.4v-2.796a4.3 4.3 0 00.713.31A26.226 26.226 0 0012 17.25c2.892 0 5.68-.468 8.287-1.323a4.3 4.3 0 00.713-.31v2.796c0 1.452-1.047 2.728-2.523 2.923-2.12.282-4.282.427-6.477.427s-4.357-.145-6.477-.427C4.047 21.128 3 19.852 3 18.4z" />
+                        </svg>
+                        <p class="mt-4 text-lg font-medium text-gray-700">Tidak ada lowongan pekerjaan tersedia saat ini</p>
+                        <p class="mt-1 text-gray-500">Silakan periksa kembali di lain waktu</p>
+                    </div>
+                    @endforelse
 
-                                <tr id="view-all-row" class="hidden">
-                                    <td colspan="2" class="px-2 py-3 text-center sm:px-4">
-                                        <div
-                                            class="flex flex-col items-center justify-center gap-2 sm:flex-row sm:gap-4">
-                                            <button id="show-less-btn"
-                                                class="inline-flex items-center px-3 py-2 text-xs font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-lime-500 sm:text-sm sm:px-4">
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                                    fill="currentColor" class="w-4 h-4 mr-1 sm:mr-2">
-                                                    <path
-                                                        d="M13.0001 7.82843V20H11.0001V7.82843L5.63614 13.1924L4.22192 11.7782L12.0001 4L19.7783 11.7782L18.3641 13.1924L13.0001 7.82843Z">
-                                                    </path>
-                                                </svg>
-                                                Tampilkan Lebih Sedikit
-                                            </button>
+                    <!-- Show more/less buttons -->
+                    <div class="mt-8 text-center {{ count($loker) <= 2 ? 'hidden' : '' }}">
+                        <button id="show-more-btn" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-white rounded-md shadow-sm bg-gradient-to-r from-lime-600 to-emerald-600 hover:from-lime-700 hover:to-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-lime-500 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 mr-2">
+                                <path d="M13.0001 16.1716L18.3641 10.8076L19.7783 12.2218L12.0001 20L4.22192 12.2218L5.63614 10.8076L11.0001 16.1716V4H13.0001V16.1716Z"></path>
+                            </svg>
+                            Tampilkan Lebih Banyak Lokasi
+                        </button>
+                    </div>
+
+                    <div id="view-all-section" class="hidden mt-8 text-center">
+                        <button id="show-less-btn" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-lime-500 transition-all duration-300 transform hover:scale-105 hover:shadow-md">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 mr-2">
+                                <path d="M13.0001 7.82843V20H11.0001V7.82843L5.63614 13.1924L4.22192 11.7782L12.0001 4L19.7783 11.7782L18.3641 13.1924L13.0001 7.82843Z"></path>
+                            </svg>
+                            Tampilkan Lebih Sedikit
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Job Detail Modal -->
+            <div id="jobModal" class="fixed inset-0 z-[900] hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                <!-- Background overlay with blur effect -->
+                <div class="fixed inset-0 transition-opacity duration-300 ease-in-out bg-gray-900 bg-opacity-50 opacity-0 backdrop-blur-sm" id="modal-backdrop" aria-hidden="true"></div>
+
+                <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+                    <!-- This element is to trick the browser into centering the modal contents. -->
+                    <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+
+                    <!-- Modal content with transition -->
+                    <div class="inline-block overflow-hidden text-left align-bottom transition-all duration-300 ease-in-out transform translate-y-4 bg-white rounded-lg shadow-2xl opacity-0 sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" id="modal-content">
+                        <!-- Modal header -->
+                        <div class="px-4 py-3 bg-gradient-to-r from-lime-600 to-emerald-600 sm:px-6">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-lg font-medium text-white" id="modal-title">Detail Lowongan</h3>
+                                <button type="button" id="modal-close-btn" class="p-1 text-white transition-colors duration-200 rounded-md hover:text-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white">
+                                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="px-4 pt-5 pb-4 bg-white sm:p-6 sm:pb-4">
+                            <div class="sm:flex sm:items-start">
+                                <div class="w-full mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                    <!-- Job image with animation -->
+                                    <div class="relative mb-4 overflow-hidden rounded-lg shadow-md">
+                                        <img id="modal-image" src="" alt="" class="object-cover w-full h-64 transition-transform duration-500 hover:scale-105">
+                                        <div class="absolute inset-0 transition-opacity duration-300 opacity-0 bg-gradient-to-t from-black/30 to-transparent hover:opacity-100"></div>
+                                    </div>
+
+                                    <!-- Job details with animation -->
+                                    <div class="space-y-3">
+                                        <div class="transition-all duration-300 transform hover:translate-x-1">
+                                            <h4 class="text-xl font-bold text-gray-900" id="modal-position"></h4>
                                         </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+
+                                        <div class="flex items-center justify-center text-sm text-gray-500 capitalize transition-all duration-300 hover:text-gray-700">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 mr-1.5">
+                                                <path d="M18.364 17.364L12 23.7279L5.63604 17.364C2.12132 13.8492 2.12132 8.15076 5.63604 4.63604C9.15076 1.12132 14.8492 1.12132 18.364 4.63604C21.8787 8.15076 21.8787 13.8492 18.364 17.364ZM12 13C13.1046 13 14 12.1046 14 11C14 9.89543 13.1046 9 12 9C10.8954 9 10 9.89543 10 11C10 12.1046 10.8954 13 12 13Z"></path>
+                                            </svg>
+                                            <span id="modal-location"></span>
+                                        </div>
+
+                                        <div class="p-4 mt-4 transition-all duration-300 rounded-lg bg-gray-50 hover:bg-gray-100">
+                                            <h5 class="mb-2 text-sm font-medium text-gray-700">Deskripsi Pekerjaan</h5>
+                                            <p class="text-sm text-gray-600" id="modal-description"></p>
+                                        </div>
+
+                                        <div class="mt-2 transition-all duration-300 transform hover:translate-x-1">
+                                            <span id="modal-status" class="inline-flex items-center px-3 py-1 text-xs font-medium rounded-full"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="px-4 py-3 bg-gray-50 sm:px-6 sm:flex sm:flex-row-reverse">
+                            <button id="modal-close-footer-btn" type="button" class="inline-flex justify-center w-full px-4 py-2 text-base font-medium text-white transition-all duration-300 transform border border-transparent rounded-md shadow-sm bg-gradient-to-r from-lime-600 to-emerald-600 hover:from-lime-700 hover:to-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-lime-500 sm:ml-3 sm:w-auto sm:text-sm hover:scale-105 hover:shadow-md">
+                                Tutup
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -919,34 +904,146 @@
     <script>
         // Initialize all functionality when DOM is ready
         document.addEventListener('DOMContentLoaded', function() {
-            // Job vacancies show/hide functionality
+            // Show more/less functionality
             const showMoreBtn = document.getElementById('show-more-btn');
             const showLessBtn = document.getElementById('show-less-btn');
-            const showMoreRow = document.getElementById('show-more-row');
-            const viewAllRow = document.getElementById('view-all-row');
-            const jobRows = document.querySelectorAll('.job-row');
+            const viewAllSection = document.getElementById('view-all-section');
+            const hiddenSections = document.querySelectorAll('.location-section.hidden');
 
-            // Show more functionality
             if (showMoreBtn) {
                 showMoreBtn.addEventListener('click', function() {
-                    jobRows.forEach(row => row.classList.remove('hidden'));
-                    showMoreRow.classList.add('hidden');
-                    viewAllRow.classList.remove('hidden');
+                    hiddenSections.forEach(section => {
+                        section.classList.remove('hidden');
+                        section.style.animation = 'fadeIn 0.5s ease-in-out';
+                    });
+                    showMoreBtn.parentElement.classList.add('hidden');
+                    viewAllSection.classList.remove('hidden');
                 });
             }
 
-            // Show less functionality
             if (showLessBtn) {
                 showLessBtn.addEventListener('click', function() {
-                    // Hide all rows beyond the first two
-                    jobRows.forEach((row, index) => {
-                        if (index >= 2) {
-                            row.classList.add('hidden');
-                        }
+                    hiddenSections.forEach(section => {
+                        section.style.animation = 'fadeOut 0.3s ease-in-out';
+                        setTimeout(() => {
+                            section.classList.add('hidden');
+                        }, 300);
                     });
-                    showMoreRow.classList.remove('hidden');
-                    viewAllRow.classList.add('hidden');
+                    showMoreBtn.parentElement.classList.remove('hidden');
+                    viewAllSection.classList.add('hidden');
                 });
+            }
+
+            // Modal functionality
+            const detailButtons = document.querySelectorAll('.detail-button');
+            const modal = document.getElementById('jobModal');
+            const modalBackdrop = document.getElementById('modal-backdrop');
+            const modalContent = document.getElementById('modal-content');
+            const modalCloseBtn = document.getElementById('modal-close-btn');
+            const modalCloseFooterBtn = document.getElementById('modal-close-footer-btn');
+
+            // Function to close modal
+            function closeModal() {
+                // Animate modal closing
+                modalBackdrop.classList.remove('opacity-100');
+                modalBackdrop.classList.add('opacity-0');
+                modalContent.classList.remove('opacity-100', 'translate-y-0');
+                modalContent.classList.add('opacity-0', 'translate-y-4');
+
+                setTimeout(() => {
+                        modal.classList.add('hidden');
+                        document.body.style.overflow = 'auto'; // Restore background scrolling
+                    }, 300);
+            }
+
+            // Attach event listeners to close buttons
+            if (modalCloseBtn) {
+                modalCloseBtn.addEventListener('click', closeModal);
+            }
+
+            if (modalCloseFooterBtn) {
+                modalCloseFooterBtn.addEventListener('click', closeModal);
+            }
+
+
+            detailButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Get data attributes from the button
+                    const position = this.getAttribute('data-job-position');
+                    const description = this.getAttribute('data-job-description');
+                    const count = this.getAttribute('data-job-count');
+                    const status = this.getAttribute('data-job-status');
+                    const image = this.getAttribute('data-job-image');
+                    const location = this.getAttribute('data-job-location');
+
+                    // Set modal content
+                    document.getElementById('modal-position').textContent = position;
+                    document.getElementById('modal-description').textContent = description;
+                    document.getElementById('modal-image').src = image;
+                    document.getElementById('modal-image').alt = position;
+                    document.getElementById('modal-location').textContent = location;
+
+                    // Set status badge
+                    const statusBadge = document.getElementById('modal-status');
+                    if (status === 'Tersedia') {
+                        statusBadge.className = 'inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800';
+                        statusBadge.innerHTML = `
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-3 h-3 mr-1">
+                                <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                            </svg>
+                            Tersedia
+                        `;
+                    } else {
+                        statusBadge.className = 'inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800';
+                        statusBadge.innerHTML = `
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-3 h-3 mr-1">
+                                <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z" clip-rule="evenodd" />
+                            </svg>
+                            Tidak Tersedia
+                        `;
+                    }
+
+                    // Show modal with animation
+                    modal.classList.remove('hidden');
+                    setTimeout(() => {
+                        modalBackdrop.classList.remove('opacity-0');
+                        modalBackdrop.classList.add('opacity-100');
+                        modalContent.classList.remove('opacity-0', 'translate-y-4');
+                        modalContent.classList.add('opacity-100', 'translate-y-0');
+                    }, 10);
+
+                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                });
+            });
+
+            // Close modal when clicking outside
+            modalBackdrop.addEventListener('click', function() {
+                closeModal();
+            });
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
+                    closeModal();
+                }
+            });
+
+            // Function to close modal
+            function closeModal() {
+                const modal = document.getElementById('jobModal');
+                const modalBackdrop = document.getElementById('modal-backdrop');
+                const modalContent = document.getElementById('modal-content');
+
+                // Animate modal closing
+                modalBackdrop.classList.remove('opacity-100');
+                modalBackdrop.classList.add('opacity-0');
+                modalContent.classList.remove('opacity-100', 'translate-y-0');
+                modalContent.classList.add('opacity-0', 'translate-y-4');
+
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = 'auto'; // Restore background scrolling
+                }, 300);
             }
 
             // Scroll indicator functionality
@@ -1094,89 +1191,92 @@
             const clientSlider = $('.clientSlider div');
             const coopSlider = $('.coopSlider div');
 
-            // Pagination click handlers
-            $('#prevPost').on('click', function() {
-                if (cPost > 0) {
-                    cPost--;
-                    $('#currentPost').text(cPost);
-                    updateSliderTransform(beritaSlider, cPost, -100);
+            // Only proceed if slider elements exist
+            if (slides.length > 0) {
+                // Pagination click handlers
+                $('#prevPost').on('click', function() {
+                    if (cPost > 0) {
+                        cPost--;
+                        $('#currentPost').text(cPost);
+                        updateSliderTransform(beritaSlider, cPost, -100);
+                    }
+                });
+
+                $('#nextPost').on('click', function() {
+                    if (cPost < (beritaSlider.length - jmlSkip)) {
+                        cPost++;
+                        $('#currentPost').text(cPost);
+                        updateSliderTransform(beritaSlider, cPost, -100);
+                    }
+                });
+
+                // Update transform style for sliders
+                function updateSliderTransform(sliderElements, index, percentage) {
+                    sliderElements.css('transform', `translateX(${index * percentage}%)`);
                 }
-            });
 
-            $('#nextPost').on('click', function() {
-                if (cPost < (beritaSlider.length - jmlSkip)) {
-                    cPost++;
-                    $('#currentPost').text(cPost);
-                    updateSliderTransform(beritaSlider, cPost, -100);
+                // Show specific slide
+                function showSlide(n) {
+                    updateSliderTransform(slides, n, -100);
                 }
-            });
 
-            // Update transform style for sliders
-            function updateSliderTransform(sliderElements, index, percentage) {
-                sliderElements.css('transform', `translateX(${index * percentage}%)`);
-            }
+                // Show specific client
+                function showClient(n) {
+                    updateSliderTransform(clientSlider, n, -100);
+                }
 
-            // Show specific slide
-            function showSlide(n) {
-                updateSliderTransform(slides, n, -100);
-            }
+                // Show specific cooperation
+                function showCoop(n) {
+                    updateSliderTransform(coopSlider, n, -25);
+                }
 
-            // Show specific client
-            function showClient(n) {
-                updateSliderTransform(clientSlider, n, -100);
-            }
+                // Show specific testimonial
+                function showTesti(n) {
+                    updateSliderTransform(testiSlider, n, -100);
+                }
 
-            // Show specific cooperation
-            function showCoop(n) {
-                updateSliderTransform(coopSlider, n, -25);
-            }
+                // Automatic sliding functions
+                function nextSlide() {
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    showSlide(currentSlide);
+                }
 
-            // Show specific testimonial
-            function showTesti(n) {
-                updateSliderTransform(testiSlider, n, -100);
-            }
+                function nextTesti() {
+                    currentTesti = (currentTesti + 1) % testiSlider.length;
+                    showTesti(currentTesti);
+                }
 
-            // Automatic sliding functions
-            function nextSlide() {
-                currentSlide = (currentSlide + 1) % slides.length;
+                function nextClient() {
+                    currentClient = (currentClient + 1) % (clientSlider.length / (width <= 768 ? 1 : 2));
+                    showClient(currentClient);
+                }
+
+                function nextCoop() {
+                    currentCoop = (currentCoop + 1) % (coopSlider.length / (width <= 768 ? 1 : 6));
+                    showCoop(currentCoop);
+                }
+
+                // Start and stop the slide interval
+                function startSlideInterval() {
+                    intervalID = setInterval(nextSlide, 3500);
+                }
+
+                function stopSlideInterval() {
+                    clearInterval(intervalID);
+                    startSlideInterval();
+                }
+
+                // Initialize the sliders and intervals
                 showSlide(currentSlide);
-            }
-
-            function nextTesti() {
-                currentTesti = (currentTesti + 1) % testiSlider.length;
                 showTesti(currentTesti);
-            }
-
-            function nextClient() {
-                currentClient = (currentClient + 1) % (clientSlider.length / (width <= 768 ? 1 : 2));
                 showClient(currentClient);
-            }
-
-            function nextCoop() {
-                currentCoop = (currentCoop + 1) % (coopSlider.length / (width <= 768 ? 1 : 6));
                 showCoop(currentCoop);
-            }
 
-            // Start and stop the slide interval
-            function startSlideInterval() {
-                intervalID = setInterval(nextSlide, 3500);
-            }
-
-            function stopSlideInterval() {
-                clearInterval(intervalID);
+                setInterval(nextTesti, 5500);
+                setInterval(nextClient, 3000);
+                setInterval(nextCoop, 3500);
                 startSlideInterval();
             }
-
-            // Initialize the sliders and intervals
-            showSlide(currentSlide);
-            showTesti(currentTesti);
-            showClient(currentClient);
-            showCoop(currentCoop);
-
-            setInterval(nextTesti, 5500);
-            setInterval(nextClient, 3000);
-            setInterval(nextCoop, 3500);
-            startSlideInterval();
         });
     </script>
 

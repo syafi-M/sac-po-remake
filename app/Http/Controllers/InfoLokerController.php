@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\InfoLoker;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class InfoLokerController extends Controller
 {
@@ -36,21 +37,27 @@ class InfoLokerController extends Controller
      */
     public function store(Request $request)
     {
-
         $request->validate([
             'city' => 'required|string|max:255',
             'province' => 'nullable|string|max:255',
             'position' => 'required|string|max:255',
             'count' => 'required|min:0',
             'is_active' => 'required',
+            'description' => 'string|nullable',
         ]);
 
         $request['city'] = strtolower($request->city);
 
-        // dd($request->all());
+        $data = $request->except('img');
+
+        if ($request->hasFile('img')) {
+            $data['img'] = UploadImage($request, 'img', 'info_loker');
+        }
+
+        // dd($data);
 
         try {
-            InfoLoker::create($request->all());
+            InfoLoker::create($data);
             toastr()->success('Info Loker Has Been Created!', 'succcess');
             return to_route('info_loker.index');
         } catch (\Illuminate\Database\QueryException $e) {
@@ -88,10 +95,20 @@ class InfoLokerController extends Controller
             'position' => 'required|string|max:255',
             'count' => 'required|integer|min:0',
             'is_active' => 'required',
+            'img' => 'string|nullable',
+            'description' => 'string|nullable',
         ]);
 
+        $request['city'] = strtolower($request->city);
+
+        $data = $request->except('img');
+
+        if ($request->hasFile('img')) {
+            $data['img'] = UploadImage($request, 'img', 'info_loker');
+        }
+
         try {
-            $infoLoker->update($request->all());
+            $infoLoker->update($data);
             toastr()->success('Info Loker Has Been Updated!', 'succcess');
             return to_route('info_loker.index');
         } catch (\Illuminate\Database\QueryException $e) {
@@ -107,6 +124,7 @@ class InfoLokerController extends Controller
     public function destroy(InfoLoker $infoLoker)
     {
         try {
+            Storage::delete('public/' . $infoLoker->img);
             $infoLoker->delete();
             toastr()->success('Info Loker Has Been Deleted!', 'succcess');
             return to_route('info_loker.index');

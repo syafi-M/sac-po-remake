@@ -3,43 +3,42 @@
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 
-function UploadImage($request, $NameFile)
+function UploadImage($request, $NameFile, $location = 'images')
 {
     $file = $request->file($NameFile);
-    if ($file != null && $file->isValid()) {
+
+    if ($file && $file->isValid()) {
         $randomNumber = mt_rand(1, 999999);
-        $rename = 'data' . $randomNumber . '.webp'; // Always use .webp extension
+        $rename = 'data' . $randomNumber . '.webp';
 
         try {
-            // Store the original image temporarily
+            // temp upload
             $tempPath = $file->storeAs('temp', $rename, 'public');
             $fullTempPath = public_path('storage/temp/' . $rename);
 
-            // Initialize ImageManager with GD driver
             $manager = new ImageManager(new Driver());
             $image = $manager->read($fullTempPath);
 
-            // Resize to reasonable dimensions (max width 1920px)
-            // $image->resize(1920, null, function ($constraint) {
-            //     $constraint->aspectRatio();
-            //     $constraint->upsize();
-            // });
+            // ensure target directory exists
+            $targetDir = public_path("storage/{$location}");
+            if (!is_dir($targetDir)) {
+                mkdir($targetDir, 0755, true);
+            }
 
-            // Convert to WebP with 90% quality
-            $webpPath = public_path('storage/images/' . $rename);
-            $image->toWebp(1)->save($webpPath);
+            // save webp
+            $webpPath = $targetDir . '/' . $rename;
+            $image->toWebp(90)->save($webpPath);
 
-            // Delete the temporary file
+            // delete temp
             unlink($fullTempPath);
 
-            return $rename;
+            // dd($location, $rename);
+            return "{$location}/{$rename}";
         } catch (\Exception $e) {
-            // Log error but continue with original upload
             \Log::error('Image optimization failed: ' . $e->getMessage());
 
-            // Fallback: Store original image if conversion fails
-            $path = $file->storeAs('images', $rename, 'public');
-            return $rename;
+            // fallback
+            return $file->storeAs($location, $rename, 'public');
         }
     }
 

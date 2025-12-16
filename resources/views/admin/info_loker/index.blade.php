@@ -21,10 +21,13 @@
                     <thead class="bg-gray-50">
                         <tr>
                             <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">ID</th>
-                            <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Posisi</th>
+                            {{-- <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Posisi</th>
                             <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Lokasi</th>
                             <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Jumlah</th>
                             <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Status</th>
+                            <th class="px-6 py-3 text-xs font-medium tracking-wider text-right text-gray-500 uppercase">Aksi</th> --}}
+                            <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Gambar</th>
+                            <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Data</th>
                             <th class="px-6 py-3 text-xs font-medium tracking-wider text-right text-gray-500 uppercase">Aksi</th>
                         </tr>
                     </thead>
@@ -41,9 +44,31 @@
                                         <div class="text-sm text-gray-900">{{ $loop->index + 1 }}.</div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm text-gray-900">{{ $jobVacancy->position }}</div>
+                                        <div>
+                                            <img src="{{ asset('storage') . '/' . $jobVacancy->img }}" class="h-[260px] rounded-sm" alt="" srcset="">
+                                        </div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900 grid grid-cols-[120px_auto] gap-y-1">
+                                            <div>Posisi</div>
+                                            <div>: {{ $jobVacancy->position }}</div>
+
+                                            <div>Jumlah</div>
+                                            <div>: {{ $jobVacancy->count }}</div>
+
+                                            <div>Deskripsi</div>
+                                            <div>: {{ $jobVacancy->description }}</div>
+
+                                            <div>Status</div>
+                                            <div>
+                                                : <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full
+                                                    {{ $jobVacancy->is_active ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
+                                                    {{ $jobVacancy->is_active ? 'Aktif' : 'Tidak Aktif' }}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    {{-- <td class="px-6 py-4 whitespace-nowrap">
                                         <div class="text-sm text-gray-900">{{ $jobVacancy->province }}</div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
@@ -53,7 +78,7 @@
                                         <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full {{ $jobVacancy->is_active ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
                                             {{ $jobVacancy->is_active ? 'Aktif' : 'Tidak Aktif' }}
                                         </span>
-                                    </td>
+                                    </td> --}}
                                     <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                                         <div class="flex justify-end space-x-2">
                                             <button class="text-indigo-600 hover:text-indigo-900 edit-btn" data-id="{{ $jobVacancy->id }}">
@@ -80,7 +105,7 @@
     </div>
 
     <!-- Create Modal -->
-    <div id="createModal" class="fixed inset-0 z-50 hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div id="createModal" class="fixed inset-0 z-[900] hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
         <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
             <div class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75" aria-hidden="true"></div>
             <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
@@ -94,9 +119,15 @@
                     @csrf
                     @method('POST')
                     <div class="space-y-4">
-                        <div>
-                            <label for="position" class="block text-sm font-medium text-gray-700">Posisi (Cleaning service, security, dll)</label>
-                            <input type="text" name="position" id="position" required class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm">
+                        <div class="grid items-end grid-cols-1 gap-4 sm:grid-cols-2">
+                            <div>
+                                <label for="position" class="block text-sm font-medium text-gray-700">Posisi (Cleaning service, dll)</label>
+                                <input type="text" name="position" id="position" required class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm">
+                            </div>
+                            <div>
+                                <label for="count" class="block text-sm font-medium text-gray-700">Jumlah Posisi</label>
+                                <input type="number" name="count" id="count" min="1" required class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm">
+                            </div>
                         </div>
 
                         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -111,8 +142,18 @@
                         </div>
 
                         <div>
-                            <label for="count" class="block text-sm font-medium text-gray-700">Jumlah Posisi</label>
-                            <input type="number" name="count" id="count" min="1" required class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm">
+                            <label for="img" class="w-full form-control">
+                                <div class="label">
+                                    <span class="block text-sm font-medium text-gray-700 label-text">Pilih Gambar</span>
+                                    <span class="label-text-alt">Hanya gambar om</span>
+                                </div>
+                                <input type="file" name="img" id="img" accept="image/*" class="w-full file-input file-input-bordered focus:border-green-500 focus:ring-green-500 sm:text-sm">
+                            </label>
+                        </div>
+
+                        <div>
+                            <label for="description" class="block text-sm font-medium text-gray-700">Deskripsi</label>
+                            <textarea name="description" id="description" rows="3" placeholder="Deskripsi loker..." class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm"></textarea>
                         </div>
 
                         <div class="flex items-center">
@@ -155,10 +196,16 @@
                     @method('PATCH')
                     <div class="space-y-4">
                         <input type="hidden" name="id" id="editId">
+                        <div class="grid items-end grid-cols-1 gap-4 sm:grid-cols-2">
+                            <div>
+                                <label for="editPosition" class="block text-sm font-medium text-gray-700">Posisi</label>
+                                <input type="text" name="position" id="editPosition" required class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+                            </div>
 
-                        <div>
-                            <label for="editPosition" class="block text-sm font-medium text-gray-700">Posisi</label>
-                            <input type="text" name="position" id="editPosition" required class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+                            <div>
+                                <label for="editCount" class="block text-sm font-medium text-gray-700">Jumlah Posisi</label>
+                                <input type="number" name="count" id="editCount" min="1" required class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+                            </div>
                         </div>
 
                         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -173,8 +220,18 @@
                         </div>
 
                         <div>
-                            <label for="editCount" class="block text-sm font-medium text-gray-700">Jumlah Posisi</label>
-                            <input type="number" name="count" id="editCount" min="1" required class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+                            <label for="editImg" class="w-full form-control">
+                                <div class="label">
+                                    <span class="block text-sm font-medium text-gray-700 label-text">Pilih Gambar</span>
+                                    <span class="label-text-alt">Hanya gambar om</span>
+                                </div>
+                                <input type="file" name="img" id="editImg" accept="image/*" class="w-full file-input file-input-bordered focus:border-green-500 focus:ring-green-500 sm:text-sm">
+                            </label>
+                        </div>
+
+                        <div>
+                            <label for="editDescription" class="block text-sm font-medium text-gray-700">Deskripsi</label>
+                            <textarea name="description" id="editDescription" rows="3" placeholder="Deskripsi loker..." class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"></textarea>
                         </div>
 
                         <div class="flex items-center">
@@ -286,6 +343,8 @@
                             document.getElementById('editProvince').value = data.province;
                             document.getElementById('editCount').value = data.count;
                             document.getElementById('editIsActive').checked = data.is_active;
+                            document.getElementById('editDescription').value = data.description;
+                            document.getElementById('editImg').value = window.location.origin + '/storage/' + data.img;
 
                             editForm.action = `/admin/info_loker/${jobId}`;
                             openModal('edit');

@@ -493,19 +493,15 @@
                     <div class="flex flex-col justify-between sm:flex-row sm:items-center">
                         <div>
                             <h3 class="flex items-center text-xl font-bold text-white sm:text-2xl">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                    class="w-6 h-6 mr-2">
-                                    <path
-                                        d="M7 5V2C7 1.44772 7.44772 1 8 1H16C16.5523 1 17 1.44772 17 2V5H21C21.5523 5 22 5.44772 22 6V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V6C2 5.44772 2.44772 5 3 5H7ZM4 16V19H20V16H4ZM4 14H20V7H4V14ZM9 3V5H15V3H9ZM11 11H13V13H11V11Z">
-                                    </path>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 mr-2">
+                                    <path d="M7 5V2C7 1.44772 7.44772 1 8 1H16C16.5523 1 17 1.44772 17 2V5H21C21.5523 5 22 5.44772 22 6V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V6C2 5.44772 2.44772 5 3 5H7ZM4 16V19H20V16H4ZM4 14H20V7H4V14ZM9 3V5H15V3H9ZM11 11H13V13H11V11Z"></path>
                                 </svg>
                                 Lowongan Pekerjaan Tersedia
                             </h3>
                             <p class="mt-1 text-sm text-lime-100 sm:text-base">Bergabunglah bersama tim profesional kami</p>
                         </div>
                         <div class="mt-3 sm:mt-0">
-                            <span
-                                class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-white bg-white rounded-full bg-opacity-20">
+                            <span class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-white bg-white rounded-full bg-opacity-20">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 mr-1.5">
                                     <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd" />
                                 </svg>
@@ -519,7 +515,7 @@
                 <div class="p-4 sm:p-6">
                     @forelse ($loker as $index => $lok)
                     <!-- Location Section -->
-                    <div class="mb-8 location-section {{ $loop->index >= 2 ? 'hidden' : '' }}">
+                    <div class="mb-8 location-section {{ $loop->index >= 2 ? 'hidden' : '' }}" data-location-index="{{ $loop->index }}">
                         <!-- Location Header -->
                         <div class="flex items-center mb-4">
                             <div class="flex items-center justify-center flex-shrink-0 w-10 h-10 rounded-full bg-amber-100">
@@ -534,13 +530,13 @@
                         </div>
 
                         <!-- Jobs Grid -->
-                        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                        <div class="flex items-center gap-4 overflow-x-auto">
                             @foreach ($lok as $job)
                             <!-- Job Card -->
-                            <div class="flex flex-col overflow-hidden transition-all duration-500 transform border border-gray-200 rounded-lg shadow-sm group hover:shadow-xl hover:-translate-y-2">
+                            <div class="flex flex-col min-w-full min-h-full overflow-hidden transition-all duration-500 transform border border-gray-200 rounded-lg shadow-sm group hover:shadow-xl hover:-translate-y-2">
                                 <!-- Portrait Image Container -->
                                 <div class="relative flex-shrink-0 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 aspect-[3/4]">
-                                    <img class="absolute inset-0 object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
+                                    <img class="inset-0 object-cover transition-transform duration-700 group-hover:scale-110"
                                         src="{{ asset('storage') . '/' . $job->img }}"
                                         alt="{{ $job->position }}">
 
@@ -556,7 +552,7 @@
                                         @else
                                         <span class="inline-flex items-center px-3 py-1 text-xs font-medium text-white bg-red-500 rounded-full shadow-lg backdrop-blur-sm">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-3 h-3 mr-1">
-                                                <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z" clip-rule="evenodd" />
+                                                <path fill-rule="evenodd" d="M5.47 5.47a.75>.75 0 011.06 0L12 10.94l5.47-5.47a.75>.75 0 111.06 1.06L13.06 12l5.47 5.47a.75>.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75>.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75>.75 0 010-1.06z" clip-rule="evenodd" />
                                             </svg>
                                             Tidak Tersedia
                                         </span>
@@ -580,7 +576,6 @@
                                             data-job-id="{{ $job->id }}"
                                             data-job-position="{{ $job->position }}"
                                             data-job-description="{{ $job->description }}"
-                                            data-job-count="{{ $job->count }}"
                                             data-job-status="{{ $job->is_active ? 'Tersedia' : 'Tidak Tersedia' }}"
                                             data-job-image="{{ asset('storage') . '/' . $job->img }}"
                                             data-job-location="{{ $index }}, {{ $job->province }}">
@@ -596,7 +591,7 @@
                     <!-- Empty State -->
                     <div class="py-12 text-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-16 h-16 mx-auto text-gray-400">
-                            <path fill-rule="evenodd" d="M7.5 5.25a3 3 0 013-3h3a3 3 0 013 3v.205c.933.085 1.857.197 2.774.334 1.454.218 2.476 1.483 2.476 2.917v3.033c0 1.211-.734 2.352-1.936 2.752A24.726 24.726 0 0112 15.75c-2.73 0-5.392-.462-7.814-1.309C3.034 14.072 2.25 12.941 2.25 11.738v-3.03c0-1.434 1.022-2.7 2.476-2.917A48.814 48.814 0 017.5 5.455V5.25zm7.5 0v.09a49.488 49.488 0 00-6 0v-.09a1.5 1.5 0 011.5-1.5h3a1.5 1.5 0 011.5 1.5zm-3 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z" clip-rule="evenodd" />
+                            <path fill-rule="evenodd" d="M7.5 5.25a3 3 0 013-3h3a3 3 0 013 3v.205c.933.085 1.857.197 2.774.334 1.454.218 2.476 1.483 2.476 2.917v3.033c0 1.211-.734 2.352-1.936 2.752A24.726 24.726 0 0112 15.75c-2.73 0-5.392-.462-7.814-1.309C3.034 14.072 2.25 12.941 2.25 11.738v-3.03c0-1.434 1.022-2.7 2.476-2.917A48.814 48.814 0 017.5 5.455V5.25zm7.5 0v.09a49.488 49.488 0 00-6 0v-.09a1.5 1.5 0 011.5-1.5h3a1.5 1.5 0 011.5 1.5zm-3 8.25a.75>.75 0 100-1.5.75>.75 0 000 1.5z" clip-rule="evenodd" />
                             <path d="M3 18.4v-2.796a4.3 4.3 0 00.713.31A26.226 26.226 0 0012 17.25c2.892 0 5.68-.468 8.287-1.323a4.3 4.3 0 00.713-.31v2.796c0 1.452-1.047 2.728-2.523 2.923-2.12.282-4.282.427-6.477.427s-4.357-.145-6.477-.427C4.047 21.128 3 19.852 3 18.4z" />
                         </svg>
                         <p class="mt-4 text-lg font-medium text-gray-700">Tidak ada lowongan pekerjaan tersedia saat ini</p>
@@ -627,68 +622,48 @@
 
             <!-- Job Detail Modal -->
             <div id="jobModal" class="fixed inset-0 z-[900] hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-                <!-- Background overlay with blur effect -->
-                <div class="fixed inset-0 transition-opacity duration-300 ease-in-out bg-gray-900 bg-opacity-50 opacity-0 backdrop-blur-sm" id="modal-backdrop" aria-hidden="true"></div>
+                <!-- Background overlay -->
+                <div class="fixed inset-0 transition-opacity duration-300 ease-in-out opacity-0 bg-gray-900/50 backdrop-blur-md" id="modal-backdrop" aria-hidden="true"></div>
 
                 <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
                     <!-- This element is to trick the browser into centering the modal contents. -->
                     <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
 
                     <!-- Modal content with transition -->
-                    <div class="inline-block overflow-hidden text-left align-bottom transition-all duration-300 ease-in-out transform translate-y-4 bg-white rounded-lg shadow-2xl opacity-0 sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" id="modal-content">
-                        <!-- Modal header -->
-                        <div class="px-4 py-3 bg-gradient-to-r from-lime-600 to-emerald-600 sm:px-6">
-                            <div class="flex items-center justify-between">
-                                <h3 class="text-lg font-medium text-white" id="modal-title">Detail Lowongan</h3>
-                                <button type="button" id="modal-close-btn" class="p-1 text-white transition-colors duration-200 rounded-md hover:text-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white">
-                                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-
+                    <div class="inline-block w-full overflow-hidden text-left transition-all duration-300 ease-in-out transform translate-y-4 bg-white rounded-lg shadow-2xl opacity-0 sm:my-8 sm:max-w-3xl sm:w-full" id="modal-content">
                         <!-- Modal body -->
-                        <div class="px-4 pt-5 pb-4 bg-white sm:p-6 sm:pb-4">
-                            <div class="sm:flex sm:items-start">
-                                <div class="w-full mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                                    <!-- Job image with animation -->
-                                    <div class="relative mb-4 overflow-hidden rounded-lg shadow-md">
-                                        <img id="modal-image" src="" alt="" class="object-cover w-full h-64 transition-transform duration-500 hover:scale-105">
-                                        <div class="absolute inset-0 transition-opacity duration-300 opacity-0 bg-gradient-to-t from-black/30 to-transparent hover:opacity-100"></div>
-                                    </div>
+                        <div class="bg-white">
+                            <!-- Job image section -->
+                            <div class="relative bg-gray-100 h-[63vh] sm:h-[70vh] pt-4">
+                                <img id="modal-image" src="" alt="" class="object-contain w-full h-full rounded-sm cursor-pointer">
+                            </div>
 
-                                    <!-- Job details with animation -->
-                                    <div class="space-y-3">
-                                        <div class="transition-all duration-300 transform hover:translate-x-1">
-                                            <h4 class="text-xl font-bold text-gray-900" id="modal-position"></h4>
-                                        </div>
-
-                                        <div class="flex items-center justify-center text-sm text-gray-500 capitalize transition-all duration-300 hover:text-gray-700">
+                            <!-- Job details section -->
+                            <div class="p-4 sm:p-6">
+                                <div class="space-y-4">
+                                    <div>
+                                        <h3 class="text-xl font-bold text-gray-900 sm:text-2xl" id="modal-position"></h3>
+                                        <div class="flex items-center mt-1 text-sm text-gray-500">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 mr-1.5">
                                                 <path d="M18.364 17.364L12 23.7279L5.63604 17.364C2.12132 13.8492 2.12132 8.15076 5.63604 4.63604C9.15076 1.12132 14.8492 1.12132 18.364 4.63604C21.8787 8.15076 21.8787 13.8492 18.364 17.364ZM12 13C13.1046 13 14 12.1046 14 11C14 9.89543 13.1046 9 12 9C10.8954 9 10 9.89543 10 11C10 12.1046 10.8954 13 12 13Z"></path>
                                             </svg>
                                             <span id="modal-location"></span>
                                         </div>
+                                    </div>
 
-                                        <div class="p-4 mt-4 transition-all duration-300 rounded-lg bg-gray-50 hover:bg-gray-100">
-                                            <h5 class="mb-2 text-sm font-medium text-gray-700">Deskripsi Pekerjaan</h5>
-                                            <p class="text-sm text-gray-600" id="modal-description"></p>
-                                        </div>
+                                    <div class="p-4 overflow-y-auto rounded-lg bg-gray-50 max-h-60">
+                                        <h4 class="mb-2 text-sm font-medium text-gray-700">Deskripsi Pekerjaan</h4>
+                                        <p class="text-gray-600" id="modal-description"></p>
+                                    </div>
 
-                                        <div class="mt-2 transition-all duration-300 transform hover:translate-x-1">
-                                            <span id="modal-status" class="inline-flex items-center px-3 py-1 text-xs font-medium rounded-full"></span>
-                                        </div>
+                                    <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                                        <span id="modal-status" class="flex items-center justify-center px-3 py-1 text-xs font-medium rounded-full"></span>
+                                        <button id="modal-close-footer-btn" type="button" class="w-full px-6 py-2 text-sm font-medium text-white transition-all duration-300 transform border border-transparent rounded-md shadow-sm sm:w-auto bg-gradient-to-r from-lime-600 to-emerald-600 hover:from-lime-700 hover:to-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-lime-500 hover:scale-105 hover:shadow-md">
+                                            Tutup
+                                        </button>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <!-- Modal footer -->
-                        <div class="px-4 py-3 bg-gray-50 sm:px-6 sm:flex sm:flex-row-reverse">
-                            <button id="modal-close-footer-btn" type="button" class="inline-flex justify-center w-full px-4 py-2 text-base font-medium text-white transition-all duration-300 transform border border-transparent rounded-md shadow-sm bg-gradient-to-r from-lime-600 to-emerald-600 hover:from-lime-700 hover:to-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-lime-500 sm:ml-3 sm:w-auto sm:text-sm hover:scale-105 hover:shadow-md">
-                                Tutup
-                            </button>
                         </div>
                     </div>
                 </div>
@@ -909,116 +884,152 @@
             const showLessBtn = document.getElementById('show-less-btn');
             const viewAllSection = document.getElementById('view-all-section');
             const hiddenSections = document.querySelectorAll('.location-section.hidden');
+            const jobModal = document.getElementById('jobModal');
 
             if (showMoreBtn) {
                 showMoreBtn.addEventListener('click', function() {
                     hiddenSections.forEach(section => {
                         section.classList.remove('hidden');
-                        section.style.animation = 'fadeIn 0.5s ease-in-out';
+                        // Add animation for smoother appearance
+                        setTimeout(() => {
+                            section.style.opacity = '1';
+                            section.style.transform = 'translateY(0)';
+                        }, 10);
                     });
+                    jobModal.classList.remove('hidden');
                     showMoreBtn.parentElement.classList.add('hidden');
-                    viewAllSection.classList.remove('hidden');
+                    // viewAllSection.classList.remove('hidden');
+
+                    // Smooth scroll to the first newly revealed section
+                    const firstHiddenSection = document.querySelector('.location-section[data-location-index="2"]');
+                    if (firstHiddenSection) {
+                        firstHiddenSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
                 });
             }
 
             if (showLessBtn) {
                 showLessBtn.addEventListener('click', function() {
                     hiddenSections.forEach(section => {
-                        section.style.animation = 'fadeOut 0.3s ease-in-out';
+                        // Add animation for smoother disappearance
+                        section.style.opacity = '0';
+                        section.style.transform = 'translateY(-10px)';
+
                         setTimeout(() => {
                             section.classList.add('hidden');
                         }, 300);
                     });
                     showMoreBtn.parentElement.classList.remove('hidden');
                     viewAllSection.classList.add('hidden');
+
+                    // Smooth scroll to the top of job listings
+                    const jobListingsSection = document.querySelector('.p-4.sm\\:p-6');
+                    if (jobListingsSection) {
+                        jobListingsSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
                 });
             }
+
+            hiddenSections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(-10px)';
+                section.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+            });
 
             // Modal functionality
             const detailButtons = document.querySelectorAll('.detail-button');
             const modal = document.getElementById('jobModal');
             const modalBackdrop = document.getElementById('modal-backdrop');
             const modalContent = document.getElementById('modal-content');
-            const modalCloseBtn = document.getElementById('modal-close-btn');
             const modalCloseFooterBtn = document.getElementById('modal-close-footer-btn');
+            const modalImage = document.getElementById('modal-image');
 
             // Function to close modal
             function closeModal() {
-                // Animate modal closing
                 modalBackdrop.classList.remove('opacity-100');
                 modalBackdrop.classList.add('opacity-0');
                 modalContent.classList.remove('opacity-100', 'translate-y-0');
                 modalContent.classList.add('opacity-0', 'translate-y-4');
 
                 setTimeout(() => {
-                        modal.classList.add('hidden');
-                        document.body.style.overflow = 'auto'; // Restore background scrolling
-                    }, 300);
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }, 300);
             }
 
-            // Attach event listeners to close buttons
-            if (modalCloseBtn) {
-                modalCloseBtn.addEventListener('click', closeModal);
+            // Function to open modal
+            function openModal(button) {
+                // Get data attributes from the button
+                const position = button.getAttribute('data-job-position');
+                const description = button.getAttribute('data-job-description');
+                const status = button.getAttribute('data-job-status');
+                const image = button.getAttribute('data-job-image');
+                const location = button.getAttribute('data-job-location');
+
+                // Set modal content
+                document.getElementById('modal-position').textContent = position;
+                document.getElementById('modal-description').textContent = description;
+                modalImage.src = image;
+                modalImage.alt = position;
+                document.getElementById('modal-location').textContent = location;
+
+                // Set status badge
+                const statusBadge = document.getElementById('modal-status');
+                if (status === 'Tersedia') {
+                    // statusBadge.className = 'bg-green-100 text-green-800';
+                    statusBadge.style.background = 'oklch(96.2% 0.044 156.743)';
+                    statusBadge.style.color = 'oklch(44.8% 0.119 151.328)';
+                    statusBadge.innerHTML = `
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-3 h-3 mr-1">
+                            <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                        </svg>
+                        Tersedia
+                    `;
+                } else {
+                    // statusBadge.className = 'bg-red-100 text-red-800';
+                    statusBadge.style.background = 'oklch(93.6% 0.032 17.717)';
+                    statusBadge.style.color = 'oklch(44.4% 0.177 26.899)';
+                    statusBadge.innerHTML = `
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-3 h-3 mr-1">
+                            <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75>.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z" clip-rule="evenodd" />
+                        </svg>
+                        Tidak Tersedia
+                    `;
+                }
+
+                // Show modal with animation
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    modalBackdrop.classList.remove('opacity-0');
+                    modalBackdrop.classList.add('opacity-100');
+                    modalContent.classList.remove('opacity-0', 'translate-y-4');
+                    modalContent.classList.add('opacity-100', 'translate-y-0');
+                }, 10);
+
+                // document.body.style.overflow = 'hidden';
             }
 
-            if (modalCloseFooterBtn) {
-                modalCloseFooterBtn.addEventListener('click', closeModal);
-            }
-
-
+            // Attach event listeners to detail buttons
             detailButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    // Get data attributes from the button
-                    const position = this.getAttribute('data-job-position');
-                    const description = this.getAttribute('data-job-description');
-                    const count = this.getAttribute('data-job-count');
-                    const status = this.getAttribute('data-job-status');
-                    const image = this.getAttribute('data-job-image');
-                    const location = this.getAttribute('data-job-location');
-
-                    // Set modal content
-                    document.getElementById('modal-position').textContent = position;
-                    document.getElementById('modal-description').textContent = description;
-                    document.getElementById('modal-image').src = image;
-                    document.getElementById('modal-image').alt = position;
-                    document.getElementById('modal-location').textContent = location;
-
-                    // Set status badge
-                    const statusBadge = document.getElementById('modal-status');
-                    if (status === 'Tersedia') {
-                        statusBadge.className = 'inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800';
-                        statusBadge.innerHTML = `
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-3 h-3 mr-1">
-                                <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
-                            </svg>
-                            Tersedia
-                        `;
-                    } else {
-                        statusBadge.className = 'inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800';
-                        statusBadge.innerHTML = `
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-3 h-3 mr-1">
-                                <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z" clip-rule="evenodd" />
-                            </svg>
-                            Tidak Tersedia
-                        `;
-                    }
-
-                    // Show modal with animation
-                    modal.classList.remove('hidden');
-                    setTimeout(() => {
-                        modalBackdrop.classList.remove('opacity-0');
-                        modalBackdrop.classList.add('opacity-100');
-                        modalContent.classList.remove('opacity-0', 'translate-y-4');
-                        modalContent.classList.add('opacity-100', 'translate-y-0');
-                    }, 10);
-
-                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                    openModal(this);
                 });
             });
 
+            // Attach event listeners to close buttons
+            modalCloseFooterBtn.addEventListener('click', closeModal);
+
             // Close modal when clicking outside
-            modalBackdrop.addEventListener('click', function() {
-                closeModal();
+            modalBackdrop.addEventListener('click', function(e) {
+                if (e.target === modalBackdrop) {
+                    closeModal();
+                }
             });
 
             // Close modal with Escape key
@@ -1027,24 +1038,6 @@
                     closeModal();
                 }
             });
-
-            // Function to close modal
-            function closeModal() {
-                const modal = document.getElementById('jobModal');
-                const modalBackdrop = document.getElementById('modal-backdrop');
-                const modalContent = document.getElementById('modal-content');
-
-                // Animate modal closing
-                modalBackdrop.classList.remove('opacity-100');
-                modalBackdrop.classList.add('opacity-0');
-                modalContent.classList.remove('opacity-100', 'translate-y-0');
-                modalContent.classList.add('opacity-0', 'translate-y-4');
-
-                setTimeout(() => {
-                    modal.classList.add('hidden');
-                    document.body.style.overflow = 'auto'; // Restore background scrolling
-                }, 300);
-            }
 
             // Scroll indicator functionality
             const aboutContent = document.getElementById('about-content');

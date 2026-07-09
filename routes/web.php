@@ -12,7 +12,6 @@ use App\Http\Controllers\InfoLokerController;
 use App\Http\Controllers\VideoController;
 use App\Models\ImgClient;
 use Illuminate\Support\Facades\Route;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,10 +50,6 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function() {
     Route::resource('/videos', VideoController::class);
     Route::resource('/info_loker', InfoLokerController::class);
     Route::get('/admin-dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
-});
-
-Route::get('/phpinfo', function() {
-    return phpinfo();
 });
 
 

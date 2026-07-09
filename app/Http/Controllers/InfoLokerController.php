@@ -44,6 +44,9 @@ class InfoLokerController extends Controller
             'count' => 'required|min:0',
             'is_active' => 'required',
             'description' => 'string|nullable',
+            'contact_person' => 'nullable|string|max:255',
+            'contact_phone' => 'nullable|string|max:50',
+            'contact_email' => 'nullable|email|max:255',
         ]);
 
         $request['city'] = strtolower($request->city);
@@ -97,6 +100,9 @@ class InfoLokerController extends Controller
             'is_active' => 'required',
             'img' => 'string|nullable',
             'description' => 'string|nullable',
+            'contact_person' => 'nullable|string|max:255',
+            'contact_phone' => 'nullable|string|max:50',
+            'contact_email' => 'nullable|email|max:255',
         ]);
 
         $request['city'] = strtolower($request->city);

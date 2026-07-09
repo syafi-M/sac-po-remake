@@ -5,6 +5,11 @@
 
     RewriteEngine On
 
+    # Tolak file tersembunyi, dump path lokal, dan PHP publik selain front controller.
+    RewriteRule ^(?:\.|D_/) - [F,L,NC]
+    RewriteCond %{REQUEST_FILENAME} !/index\.php$ [NC]
+    RewriteRule \.php$ - [F,L,NC]
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]

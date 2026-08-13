@@ -62,6 +62,7 @@ jobs:
             **/node_modules/**
             **/vendor/**
             **/tests/**
+            **/storage/**
             **/storage/logs/**
             **/storage/framework/cache/**
             **/storage/framework/sessions/**

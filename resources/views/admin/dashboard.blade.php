@@ -146,7 +146,7 @@
                 </div>
             </div>
 
-            <!-- Partners Logo Card -->
+            {{-- <!-- Partners Logo Card -->
             <div class="relative overflow-hidden transition-all duration-300 bg-white border border-gray-100 shadow-md group rounded-xl hover:shadow-xl hover:border-indigo-200">
                 <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-cyan-500 to-cyan-600"></div>
                 <div class="p-6">
@@ -178,7 +178,7 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
             <!-- Collaboration Logo Card -->
             <div class="relative overflow-hidden transition-all duration-300 bg-white border border-gray-100 shadow-md group rounded-xl hover:shadow-xl hover:border-indigo-200">

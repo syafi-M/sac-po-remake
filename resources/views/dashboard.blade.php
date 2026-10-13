@@ -816,7 +816,7 @@
                     <div class="flex flex-col justify-around clientDiv carousel-item aspect-square px-[4svw] md:px-[0.5svw] transition-all duration-300 ease-in-out"
                         style="gap: 1rem;" role="group" aria-roledescription="slide">
                         <span class="flex items-center justify-center">
-                            <img src="{{ asset('storage/images/' . $cli->img) }}" width="100"
+                            <img src="{{ 'https://www.absensi-sac.sac-po.com/storage/images/' . $cli->logo }}" width="100"
                                 class="object-cover rounded-md" alt="{{ $cli->name }} logo" loading="lazy">
                         </span>
                         <p class="text-xs font-semibold text-center">{{ $cli->name }}</p>

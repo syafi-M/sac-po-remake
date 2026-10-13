@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class ImgClient extends Model
 {
     use HasFactory;
+
+    protected $connection = 'mysql2';
+    protected $table = 'clients';
     protected $fillable = [
         'img',
         'name'

@@ -126,7 +126,7 @@
                         </tr>
                         <tr>
                             <td class="p-2">Komisaris Utama</td>
-                            <td>: Ir. Slamet Riyadi,ST., M.Sc., Ph.D</td>
+                            <td>: Prof. Ir. Slamet Riyadi,ST., M.Sc., Ph.D</td>
                         </tr>
                         <tr>
                             <td class="p-2">Komisaris</td>
